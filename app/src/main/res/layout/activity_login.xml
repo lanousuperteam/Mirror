@@ -22,7 +22,7 @@
         android:layout_below="@id/login_activity_title_tv"
         android:layout_marginTop="@dimen/login_activity_line_margin_top"/>
     <ImageView
-
+        android:id="@+id/login_activity_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/icon_close"
@@ -113,6 +113,7 @@
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:layout_alignParentBottom="true">
+
          <ImageView
              android:layout_width="@dimen/login_activity_weight"
              android:layout_height="wrap_content"
@@ -123,18 +124,21 @@
              android:layout_width="@dimen/login_activity_weight"
              android:layout_height="wrap_content"
              android:layout_weight="1"
+             android:src="@mipmap/icon_login_weibo"
+             android:layout_alignParentBottom="true"
+             android:layout_marginBottom="@dimen/login_activity_margin_bottom"/>
+
+         <ImageView
+             android:id="@+id/login_activity_weChat_iv"
+             android:layout_width="@dimen/login_activity_weight"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
              android:src="@mipmap/icon_login_wechat"
              android:layout_alignParentBottom="true"
              android:layout_marginBottom="@dimen/login_activity_margin_bottom"
              android:layout_alignRight="@+id/login_activity_code_tv"
              />
-         <ImageView
-             android:layout_width="@dimen/login_activity_weight"
-             android:layout_height="wrap_content"
-             android:layout_weight="1"
-             android:src="@mipmap/icon_login_weibo"
-             android:layout_alignParentBottom="true"
-             android:layout_marginBottom="@dimen/login_activity_margin_bottom"/>
+
          <ImageView
              android:layout_width="@dimen/login_activity_weight"
              android:layout_height="wrap_content"
