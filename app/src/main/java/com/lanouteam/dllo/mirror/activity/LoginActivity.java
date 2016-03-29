@@ -18,9 +18,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
 
-    /**
-     * @param
-     */
     @Override
     protected void initData() {
         deleteIv.setOnClickListener(this);

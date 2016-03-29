@@ -2,7 +2,6 @@ package com.lanouteam.dllo.mirror.activity;
 
 import android.content.Intent;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.base.BaseActivity;
@@ -38,7 +37,7 @@ public class WelcomeActivity extends BaseActivity {
                 finish();
             }
         };
-        //2s后跳转    安排在指定的时间执行指定的任务。
+        //2s后跳转  安排在指定的时间执行指定的任务。
         timer.schedule(task, 1000 * 2);
 
 
