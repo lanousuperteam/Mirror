@@ -23,6 +23,12 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        /***
+         * Timer类是一种线程设施，可以用来实现某一个时间或某一段时间后安排某一个任务执行一次或定期重复执行。
+         * 该功能和TimerTask配合使用。TimerTask类用于实现由Timer安排的一次或重复执行的某个任务。
+         * 每一个Timer对象对应的是一个线程，因此计时器所执行的任务应该迅速完成，否则会延迟后续的任务执行。
+         *
+         * */
         final Intent intent=new Intent(this,MainActivity.class);
         Timer timer=new Timer();
         TimerTask task=new TimerTask() {
@@ -32,12 +38,11 @@ public class WelcomeActivity extends BaseActivity {
                 finish();
             }
         };
-        timer.schedule(task, 1000 * 2);//2s后跳转    安排在指定的时间执行指定的任务。
+        //2s后跳转    安排在指定的时间执行指定的任务。
+        timer.schedule(task, 1000 * 2);
 
 
-        //Timer类是一种线程设施，可以用来实现某一个时间或某一段时间后安排某一个任务执行一次或定期重复执行。
-        // 该功能和TimerTask配合使用。TimerTask类用于实现由Timer安排的一次或重复执行的某个任务。
-        // 每一个Timer对象对应的是一个线程，因此计时器所执行的任务应该迅速完成，否则会延迟后续的任务执行。
+
     }
 
     @Override
