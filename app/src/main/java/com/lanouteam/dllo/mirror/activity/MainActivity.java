@@ -1,7 +1,9 @@
-package com.lanouteam.dllo.mirror;
+package com.lanouteam.dllo.mirror.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.lanouteam.dllo.mirror.R;
 
 public class MainActivity extends AppCompatActivity {
 
