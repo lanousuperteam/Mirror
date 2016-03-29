@@ -14,7 +14,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".activity.WelcomeActivity">
+=======
+
+>>>>>>> feature/谷-登录页
 
         </activity>
     </application>

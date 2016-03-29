@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Mirror</string>
+    <string name="login_activity_number">賬號登錄</string>
+    <string name="login_activity_telephone">手機號</string>
+    <string name="login_activity_password">密碼</string>
+    <string name="login_activity_forget_password">忘記密碼?</string>
+    <string name="login_activity_login">登錄</string>
+    <string name="login_activity_creat_number">創建賬號</string>
+    <string name="login_activity_use_number">使用社交賬號</string>
+
 </resources>
