@@ -39,9 +39,6 @@ public class WelcomeActivity extends BaseActivity {
         };
         //2s后跳转  安排在指定的时间执行指定的任务。
         timer.schedule(task, 1000 * 2);
-
-
-
     }
 
     @Override
