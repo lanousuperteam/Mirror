@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="indent_datails_page_title">订单详情</string>
+    <string name="indent_datails_page_receiver_information">请填写收件人信息</string>
+    <string name="indent_datails_page_address">填写地址</string>
+    <string name="indent_datails_page_money">¥</string>
+    <string name="indent_datails_page_money_value">3278</string>
+    <string name="indent_datails_page_order_btn_font">确认下单</string>
+</resources>
