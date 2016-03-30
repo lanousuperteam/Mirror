@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/create_acount_activity_around_margin"
+    android:layout_marginRight="@dimen/create_acount_activity_around_margin"
+    android:layout_marginTop="@dimen/create_acount_activity_around_margin"
+    android:background="@color/colorLoginBackground">
+
+    <TextView
+        android:id="@+id/create_account_activity_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_acount_activity"
+        android:textColor="@color/colorBlackText"
+        android:textSize="@dimen/create_acount_activity_text" />
+
+    <ImageView
+        android:id="@+id/create_account_activity_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_account_activity_title_tv"
+        android:layout_marginTop="@dimen/create_acount_activity_line_margin_top"
+        android:background="@mipmap/icon_register_line" />
+
+    <ImageView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/create_account_activity_title_tv"
+        android:layout_marginRight="@dimen/create_acount_activity_delete_margin_right"
+        android:src="@mipmap/icon_close" />
+
+    <TextView
+        android:id="@+id/create_account_activity_phone_number_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_account_activity_line"
+        android:layout_marginTop="@dimen/create_acount_activity_number_margin_top"
+        android:text="@string/create_acount_activity_number"
+        android:textColor="@color/colorBlackText"
+        android:textSize="@dimen/create_acount_activity_number_text" />
+
+    <EditText
+        android:id="@+id/create_account_activity_phone_number_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_account_activity_phone_number_tv"
+        android:layout_marginTop="@dimen/create_acount_activity_line_margin_top"
+        android:background="@mipmap/et_phone_number" />
+
+    <TextView
+        android:id="@+id/create_account_activity_code_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_account_activity_phone_number_et"
+        android:layout_marginTop="@dimen/create_acount_activity_around_margin"
+        android:text="@string/create_acount_activity_code"
+        android:textColor="@color/colorBlackText"
+        android:textSize="@dimen/create_acount_activity_number_text"
+
+        />
+
+    <LinearLayout
+        android:id="@+id/create_account_activity_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_account_activity_code_tv"
+        android:orientation="horizontal"
+        android:weightSum="661">
+
+        <EditText
+            android:layout_width="@dimen/login_activity_weight"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/create_acount_activity_line_margin_top"
+            android:layout_weight="451"
+            android:background="@mipmap/et_phone_number" />
+
+        <Button
+            android:layout_width="@dimen/login_activity_weight"
+            android:layout_height="@dimen/create_acount_activity_send_code_btn_height"
+            android:layout_marginTop="@dimen/create_acount_activity_send_code_btn_height_margin_top"
+            android:layout_weight="210"
+            android:background="@mipmap/btn_auth_code_normal"
+            android:text="@string/create_acount_activity_send_code"
+            android:textColor="@color/colorLoginText"
+            android:textSize="@dimen/create_acount_activity_send_code_btn_text" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/create_account_activity_password_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_account_activity_linearlayout"
+        android:layout_marginTop="@dimen/create_acount_activity_around_margin"
+        android:text="@string/create_acount_activity_password"
+        android:textColor="@color/colorBlackText"
+        android:textSize="@dimen/create_acount_activity_number_text" />
+
+    <EditText
+        android:id="@+id/create_account_activity_password_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/create_account_activity_password_tv"
+        android:layout_marginTop="@dimen/create_acount_activity_line_margin_top"
+        android:background="@mipmap/et_phone_number" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/create_acount_activity_big_btn_height"
+        android:layout_below="@id/create_account_activity_password_et"
+        android:layout_marginTop="@dimen/create_acount_activity_big_btn_margin_top"
+        android:background="@mipmap/btn_auth_code_normal"
+        android:text="@string/create_acount_activity"
+        android:textColor="@color/colorLoginText"
+        android:textSize="@dimen/create_acount_activity_text" />
+</com.zhy.autolayout.AutoRelativeLayout>
