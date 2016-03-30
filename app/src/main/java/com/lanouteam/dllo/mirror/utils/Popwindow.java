@@ -35,7 +35,7 @@ public class Popwindow implements View.OnClickListener {
         popupWindow.setHeight(LinearLayout.LayoutParams.MATCH_PARENT);
         popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
         //使Popwindow附加动画
-        popupWindow.setAnimationStyle(R.anim.into);
+        popupWindow.setAnimationStyle(R.style.PopupAnimation);
         popupWindow.update();
         
         //实例化popwindow内的组件

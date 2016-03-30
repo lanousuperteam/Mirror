@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="goodsfragment_title_tv_marginleft">30px</dimen>
+    <dimen name="goodsfragment_title_tv_margintop">68px</dimen>
+    <dimen name="goodsfragment_title_tv_textsize">30px</dimen>
+    <dimen name="goodsfragment_down_im_marginleft">9px</dimen>
+    <dimen name="goodsfragment_down_im_margintop">79px</dimen>
+    <dimen name="goodsfragment_title_line_im_marginleft">30px</dimen>
+    <dimen name="goodsfragment_title_line_im_margintop">14px</dimen>
+    <dimen name="goodsfragment_title_second_tv_marginleft">30px</dimen>
+    <dimen name="goodsfragment_title_second_tv_margintop">26px</dimen>
+</resources>
