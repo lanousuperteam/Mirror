@@ -14,6 +14,7 @@ import java.util.TimerTask;
  * Created by dllo on 16/3/29.
  */
 public class WelcomeActivity extends BaseActivity {
+
     private ImageView imageView;
 
     @Override
