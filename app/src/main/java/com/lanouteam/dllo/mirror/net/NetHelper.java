@@ -37,7 +37,7 @@ public class NetHelper {
      *  @param netListener 网络请求成功和失败的监听对象
      * */
     public void getPhoneCode(String requestType, NetListener netListener, HashMap<String, String> mMap) {
-        String idUrl = "http://api101.test.mirroreye.cn/" + requestType;
+        String idUrl = requestType;
         postDataFromNet(idUrl, netListener, mMap);
     }
 

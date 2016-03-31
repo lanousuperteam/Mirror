@@ -87,5 +87,8 @@ public  interface RequestUrls {
     //我的优惠券列表
     String DISCOUNT_LIST = SERVER_URL + "index.php/user/discount_list";
 
+    //启动图
+    String STARTED_IMG=SERVER_URL+"index.php/index/started_img";
+
 
 }
