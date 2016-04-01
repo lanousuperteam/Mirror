@@ -2,6 +2,7 @@ package com.lanouteam.dllo.mirror.net;
 
 import android.content.Context;
 import android.os.Environment;
+import android.util.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -25,7 +26,7 @@ public class NetHelper {
     private Map<String, String> mMap;
 
     /**
-     * 定义一个ImageLoder 对象,用来加载网络图片
+     * 定义一个ImageLoder对象,用来加载网络图片
      */
     private ImageLoader imageLoader;
     private String diskPath;
@@ -44,15 +45,16 @@ public class NetHelper {
         //缓存分三级    第一级  硬盘级,缓存会存在SD卡中
         //            第二级  是在内存中,存在
         //            第三级  网络层
-
         //定义硬盘图片缓存的根路径
         //兼顾SD卡和根路径
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             File file = Environment.getExternalStorageDirectory();
             diskPath = file.getAbsolutePath();
+            Log.d("图片路径",diskPath);
         } else {
             File file = context.getFilesDir();
             diskPath = file.getAbsolutePath();
+            Log.d("图片路径",diskPath);
         }
 
         File file = new File(diskPath + "/img");
@@ -62,7 +64,7 @@ public class NetHelper {
         diskPath=file.getAbsolutePath();
 
         //实现三级缓存
-         imageLoader=new ImageLoader(requestQueue,new DoubleCache(diskPath));
+        imageLoader=new ImageLoader(requestQueue,new DoubleCache(diskPath));
     }
 
     /**

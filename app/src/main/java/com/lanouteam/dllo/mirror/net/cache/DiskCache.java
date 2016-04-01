@@ -2,8 +2,10 @@ package com.lanouteam.dllo.mirror.net.cache;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.lanouteam.dllo.mirror.utils.MD5Util;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -24,9 +26,11 @@ public class DiskCache implements ImageLoader.ImageCache {
     public Bitmap getBitmap(String url) {
         //截取 url 中的图片的名称
         String fileName = url.substring(url.lastIndexOf("/"), url.length());
+        String nameToMD5 = MD5Util.MD5(fileName);
         //用文件名拼接处实际文件存储路径
-        String filePath = diskPath + "/" + fileName;
+        String filePath = diskPath + "/" + nameToMD5;
         Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+        Log.d("存储路径",filePath);
         return bitmap;
     }
 
@@ -34,8 +38,11 @@ public class DiskCache implements ImageLoader.ImageCache {
     public void putBitmap(String url, Bitmap bitmap) {
         //截取 url 中的图片的名称
         String fileName = url.substring(url.lastIndexOf("/"), url.length());
+        //将截取到的后缀名使用MD5加密成32位字符
+        String nameToMD5 = MD5Util.MD5(fileName);
         //用文件名拼接出实际文件储存路径
-        String filePath = diskPath + "/" + fileName;
+        String filePath = diskPath + "/" + nameToMD5;
+        Log.d("提取路径",filePath);
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(filePath);
