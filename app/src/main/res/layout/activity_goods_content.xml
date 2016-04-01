@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/ic_launcher" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/activity_goods_content_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    <RelativeLayout
+
+        android:id="@+id/activity_goods_content_relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible">
+
+       <ImageView
+           android:id="@+id/activity_goods_content_return_iv"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@mipmap/btn_return"
+           android:layout_marginLeft="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/btn_wear"
+            android:layout_toRightOf="@id/activity_goods_content_return_iv"
+            android:layout_marginLeft="31dp"
+            android:text="佩戴图集"
+            android:textColor="#ffffff"
+            android:gravity="center"
+           />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/btn_buy"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"/>
+
+    </RelativeLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>
