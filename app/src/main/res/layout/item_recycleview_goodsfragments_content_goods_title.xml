@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
@@ -8,19 +8,19 @@
         android:id="@+id/item_goodsfragment_content_goods_title_brand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="54px"
-        android:layout_marginTop="102px"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="51dp"
         android:text="水蓝色晶透板材太阳镜"
         android:textColor="#333"
-        android:textSize="32px" />
+        android:textSize="16dp" />
 
     <ImageView
         android:id="@+id/item_goodsfragment_content_goods_title_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/item_goodsfragment_content_goods_title_brand"
-        android:layout_marginLeft="54px"
-        android:layout_marginTop="24px"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="12dp"
         android:src="@mipmap/icon_register_line" />
 
     <ImageView
@@ -30,20 +30,21 @@
         android:layout_below="@id/item_goodsfragment_content_goods_title_line"
         android:src="@mipmap/ic_launcher" />
 
-    <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="590px"
+    <RelativeLayout
+        android:id="@+id/item_goodsfragment_content_goods_title_relativelayout"
+        android:layout_width="295dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/item_goodsfragment_content_goods_title_line"
+        android:layout_below="@id/item_goodsfragment_content_goods_title_img"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="466px"
+        android:layout_marginTop="200dp"
         android:background="#000000">
 
         <ImageView
             android:id="@+id/item_goodsfragment_content_goods_title_whiteline_top"
-            android:layout_width="510px"
+            android:layout_width="255dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="28px"
+            android:layout_marginTop="14dp"
             android:background="@mipmap/icon_title_line" />
 
         <TextView
@@ -52,22 +53,22 @@
             android:layout_height="wrap_content"
             android:layout_alignRight="@id/item_goodsfragment_content_goods_title_whiteline_top"
             android:layout_below="@id/item_goodsfragment_content_goods_title_whiteline_top"
-            android:layout_marginTop="34px"
+            android:layout_marginTop="17dp"
             android:text="巴黎"
             android:textColor="#ffffff"
-            android:textSize="64px" />
+            android:textSize="32dp" />
 
         <TextView
             android:id="@+id/item_goodsfragment_content_goods_title_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40px"
+            android:layout_marginTop="20dp"
             android:layout_below="@id/item_goodsfragment_content_goods_title_whiteline_top"
             android:layout_toLeftOf="@id/item_goodsfragment_content_goods_title_country"
-            android:layout_marginRight="26px"
+            android:layout_marginRight="13dp"
             android:text="來自時尚之都韓國"
             android:textColor="#ffffff"
-            android:textSize="32px" />
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/item_goodsfragment_content_goods_title_english"
@@ -75,19 +76,19 @@
             android:layout_height="wrap_content"
             android:text="The frame comes from Korea"
             android:textColor="#ffffff"
-            android:textSize="24px"
+            android:textSize="12dp"
             android:layout_below="@id/item_goodsfragment_content_goods_title_location"
             android:layout_alignRight="@id/item_goodsfragment_content_goods_title_location"
-            android:layout_marginTop="10px"
+            android:layout_marginTop="5dp"
 
             />
 
         <ImageView
             android:id="@+id/item_goodsfragment_content_goods_title_whiteline_bottom"
-            android:layout_width="510px"
+            android:layout_width="255dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="26px"
+            android:layout_marginTop="13dp"
             android:background="@mipmap/icon_title_line"
             android:layout_below="@id/item_goodsfragment_content_goods_title_english"/>
         <TextView
@@ -97,12 +98,12 @@
             android:text="这款眼镜来自现在正热的韩国大势眼镜品牌Gentle Monster，专注复古，眼镜均为纯手工打造。这款飞行员金属太阳镜，镜圈采用黑色金属框，散发前卫与帅气相融合的气息，银色镜片时髦又新颖。"
             android:textColor="#ffffff"
             android:layout_below="@id/item_goodsfragment_content_goods_title_whiteline_bottom"
-            android:layout_marginTop="28px"
+            android:layout_marginTop="14dp"
             android:layout_alignLeft="@id/item_goodsfragment_content_goods_title_whiteline_bottom"
-            android:layout_marginRight="40px"
-            android:layout_marginBottom="44px"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="22dp"
             />
 
-    </com.zhy.autolayout.AutoRelativeLayout>
+    </RelativeLayout>
 
-</com.zhy.autolayout.AutoRelativeLayout>
+</RelativeLayout>

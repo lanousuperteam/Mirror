@@ -1,8 +1,11 @@
 package com.lanouteam.dllo.mirror;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.lanouteam.dllo.mirror.base.BaseActivity;
 
@@ -38,18 +41,31 @@ public class GoodsContentActivity extends BaseActivity {
         gm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(gm);
         recyclerView.setAdapter(goodsContentApapter);
+
+
         /**
          * 该方法为对recycleview进行滑动监听 获取滑动距离
          * */
+
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                value-=dy;
+                Log.d("数据确认", "dx =    " + dx + "     " + "dy     " + dy + "   ");
+
+                /**
+                 * 这里的 value 是获得recyclerview 所有的滑动距离,将每一次的滑动距离叠加形成的结果.
+                 * */
+                value -= dy;
+                Log.d("滑动效果", value + "");
+
                 //这是Recyclerview 的方法来获得当前的 value 值.
                 goodsContentApapter.setScrollValue(value);
             }
         });
+
+
+
     }
 
     @Override

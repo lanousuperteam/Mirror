@@ -8,16 +8,18 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity android:name=".activity.MainActivity" >
+
+        </activity>
+        <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.WelcomeActivity"/>
+        <activity android:name=".activity.CreatAccountActivity"/>
+        <activity android:name=".GoodsContentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.LoginActivity"/>
-        <activity android:name=".activity.WelcomeActivity"/>
-        <activity android:name=".activity.CreatAccountActivity"/>
-        <activity android:name=".GoodsContentActivity"></activity>
         <meta-data android:name="design_width" android:value="768">
         </meta-data>
         <meta-data android:name="design_height" android:value="1280">

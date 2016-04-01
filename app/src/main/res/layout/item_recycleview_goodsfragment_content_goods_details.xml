@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
@@ -8,22 +8,24 @@
     <ImageView
         android:id="@+id/item_goodsfragment_content_goods_details_img"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher" />
+        android:layout_height="300dp"
+        android:src="@mipmap/lalala" />
 
-    <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="590px"
+    <RelativeLayout
+        android:id="@+id/item_goodsfragment_content_goods_details_relativelayout"
+        android:layout_width="295dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="514px"
+        android:layout_marginTop="57dp"
+        android:layout_below="@id/item_goodsfragment_content_goods_details_img"
         android:background="#000000">
 
         <ImageView
             android:id="@+id/item_goodsfragment_content_goods_details_line_top"
-            android:layout_width="510px"
+            android:layout_width="255dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="28px"
+            android:layout_marginTop="14dp"
             android:background="@mipmap/icon_title_line" />
 
         <TextView
@@ -32,19 +34,19 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/item_goodsfragment_content_goods_details_line_top"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="30px"
+            android:layout_marginTop="15dp"
             android:text="專註復古"
             android:textColor="#ffffff"
-            android:textSize="60px"
+            android:textSize="30dp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/item_goodsfragment_content_goods_details_line_bottom"
-            android:layout_width="510px"
+            android:layout_width="255dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_goodsfragment_content_goods_details_name"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="34px"
+            android:layout_marginTop="17dp"
             android:background="@mipmap/icon_title_line" />
 
         <TextView
@@ -54,11 +56,11 @@
             android:layout_alignLeft="@id/item_goodsfragment_content_goods_details_line_bottom"
             android:layout_alignRight="@id/item_goodsfragment_content_goods_details_line_top"
             android:layout_below="@+id/item_goodsfragment_content_goods_details_line_bottom"
-            android:layout_marginBottom="44px"
-            android:layout_marginTop="30px"
+            android:layout_marginBottom="22dp"
+            android:layout_marginTop="15dp"
             android:text="从侧面看，银色金属框较宽，相比镜框纤细的镜腿与镜框形成强烈反差，镜腿也采用黑色金属，纤细精致的极简设计，使整个太阳镜十分轻巧，告别黑色沉闷感。"
             android:textColor="#ffffff"
-            android:textSize="26px" />
+            android:textSize="13dp" />
 
-    </com.zhy.autolayout.AutoRelativeLayout>
-</com.zhy.autolayout.AutoRelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>
