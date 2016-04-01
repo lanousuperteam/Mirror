@@ -9,5 +9,5 @@ public interface NetListener  {
     void getSuccess(Object object);
 
     //请求失败
-    void getFailed(String s);
+    void getFailed(int s);
 }

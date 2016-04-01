@@ -6,4 +6,7 @@
     <string name="indent_datails_page_money">¥</string>
     <string name="indent_datails_page_money_value">3278</string>
     <string name="indent_datails_page_order_btn_font">确认下单</string>
+
+    <!-- NetHelper 里面的文字-->
+    <string name="nethelper_failed">拉取失败</string>
 </resources>

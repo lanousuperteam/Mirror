@@ -72,7 +72,7 @@ public class WelcomeActivity extends BaseActivity implements RequestUrls,NetList
     }
 
     @Override
-    public void getFailed(String s) {
+    public void getFailed(int s) {
 
     }
 }
