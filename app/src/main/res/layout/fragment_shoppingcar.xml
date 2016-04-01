@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background">
+
+    <LinearLayout
+        android:id="@+id/shoppingcar_title_linearlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/goodsfragment_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/goodsfragment_title_tv_marginleft"
+                android:layout_marginTop="@dimen/goodsfragment_title_tv_margintop"
+                android:text="@string/shoppingcarfragment_title_text"
+                android:textColor="@color/goodsfragment_title_color"
+                android:textSize="@dimen/goodsfragment_title_tv_textsize" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/goodsfragment_down_im_marginleft"
+                android:layout_marginTop="@dimen/goodsfragment_down_im_margintop"
+                android:src="@mipmap/icon_goods_down" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/goodsfragment_title_line_im_marginleft"
+            android:layout_marginTop="@dimen/goodsfragment_title_line_im_margintop"
+            android:src="@mipmap/icon_title_line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/goodsfragment_title_second_tv_marginleft"
+            android:layout_marginTop="@dimen/goodsfragment_title_second_tv_margintop"
+            android:text="@string/goodsfragment_second_title_text"
+            android:textColor="@color/goodsfragment_title_second_color" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/shoppingcarfragment_second_linearlayout_margintop"
+        android:layout_centerHorizontal="true">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_shopping_car_nothing"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/shoppingcarfragment_textview_margintop"
+            android:textColor="@color/shoppingcarfragment_textview_textcolor"
+            android:text="@string/shoppingcarfragment_textview_text"/>
+
+    </LinearLayout>
+
+</com.zhy.autolayout.AutoRelativeLayout>

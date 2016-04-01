@@ -22,9 +22,9 @@
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.CreatAccountActivity"/>
-        <meta-data android:name="design_width" android:value="768">
+        <meta-data android:name="design_width" android:value="720">
         </meta-data>
-        <meta-data android:name="design_height" android:value="1280">
+        <meta-data android:name="design_height" android:value="1319">
         </meta-data>
 
     </application>

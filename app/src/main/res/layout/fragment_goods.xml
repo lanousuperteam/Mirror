@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/goodsfragment_title_linearlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/goodsfragment_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/goodsfragment_title_tv_marginleft"
+                android:layout_marginTop="@dimen/goodsfragment_title_tv_margintop"
+                android:text="@string/goodsfragment_title_text"
+                android:textColor="@color/goodsfragment_title_color"
+                android:textSize="@dimen/goodsfragment_title_tv_textsize" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/goodsfragment_down_im_marginleft"
+                android:layout_marginTop="@dimen/goodsfragment_down_im_margintop"
+                android:src="@mipmap/icon_goods_down" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/goodsfragment_title_line_im_marginleft"
+            android:layout_marginTop="@dimen/goodsfragment_title_line_im_margintop"
+            android:src="@mipmap/icon_title_line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/goodsfragment_title_second_tv_marginleft"
+            android:layout_marginTop="@dimen/goodsfragment_title_second_tv_margintop"
+            android:text="@string/goodsfragment_second_title_text"
+            android:textColor="@color/goodsfragment_title_second_color" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/goodsfragment_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/goodsfragment_recyclerview_height"
+        android:layout_marginTop="@dimen/goodsfragment_recyclerview_margintop"
+        android:background="@color/goodsfragment_listview_background"/>
+
+
+
+
+</com.zhy.autolayout.AutoLinearLayout>
