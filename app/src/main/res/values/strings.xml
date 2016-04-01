@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Mirror</string>
+
+    <!-- 登录页-->
     <string name="login_activity_number">賬號登錄</string>
     <string name="login_activity_telephone">手機號</string>
     <string name="login_activity_password">密碼</string>
@@ -11,5 +13,26 @@
     <string name="goodsfragment_second_title_text">顯示排序為 最新推薦</string>
     <string name="shoppingcarfragment_title_text">我的購物車</string>
     <string name="shoppingcarfragment_textview_text">你的購物車沒有商品</string>
+
+    <!-- 注册页面-->
+    <string name="create_acount_activity">創建賬號</string>
+    <string name="create_acount_activity_number">手機號</string>
+    <string name="create_acount_activity_code">驗證碼</string>
+    <string name="create_acount_activity_send_code">發送驗證碼</string>
+    <string name="create_acount_activity_password">設置密碼</string>
+
+    <!-- 订单管理-->
+    <string name="indent_datails_page_title">订单详情</string>
+    <string name="indent_datails_page_receiver_information">请填写收件人信息</string>
+    <string name="indent_datails_page_address">填写地址</string>
+    <string name="indent_datails_page_money">¥</string>
+    <string name="indent_datails_page_money_value">3278</string>
+    <string name="indent_datails_page_order_btn_font">确认下单</string>
+
+    <!-- NetHelper 里面的文字-->
+    <string name="nethelper_failed">拉取失败</string>
+
+
+
 
 </resources>

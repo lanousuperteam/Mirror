@@ -1,17 +1,13 @@
 package com.lanouteam.dllo.mirror.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lanouteam.dllo.mirror.R;
-import com.lanouteam.dllo.mirror.activity.MainActivity;
-import com.lanouteam.dllo.mirror.bean.MenuListBean;
 
 import java.util.ArrayList;
 
@@ -56,7 +52,7 @@ public class PopwindowListviewAdapter extends BaseAdapter {
         }
         if (datas != null) {
             holder.titleTv.setText(datas.get(position));
-            holder.lineIv.setVisibility();
+//            holder.lineIv.setVisibility();
         }
 
         return convertView;

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="create_acount_activity">創建賬號</string>
-    <string name="create_acount_activity_number">手機號</string>
-    <string name="create_acount_activity_code">驗證碼</string>
-    <string name="create_acount_activity_send_code">發送驗證碼</string>
-    <string name="create_acount_activity_password">設置密碼</string>
-
-</resources>
