@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="1319px"
+    android:alpha="0.5"
+    android:background="#000">
+
+    <ImageView
+        android:id="@+id/item_goodsfragment_content_head_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_goods_frame"
+        android:layout_marginTop="253px"
+        android:layout_centerHorizontal="true"
+
+        />
+    <TextView
+        android:id="@+id/item_goodsfragment_content_head_goods_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GOODS NAME"
+        android:textColor="#ffffff"
+        android:textSize="70px"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="291px"
+        />
+    <ImageView
+        android:id="@+id/item_goodsfragment_content_head_line_top"
+        android:layout_width="510px"
+        android:layout_height="4px"
+        android:background="@mipmap/icon_title_line"
+        android:layout_below="@id/item_goodsfragment_content_head_goods_name"
+        android:layout_marginTop="54px"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/item_goodsfragment_content_head_brand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="水蓝色晶透板材太阳镜"
+        android:textColor="#ffffff"
+        android:textSize="42px"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/item_goodsfragment_content_head_line_top"
+        android:layout_marginTop="17px"/>
+
+    <ImageView
+        android:id="@+id/item_goodsfragment_content_head_line_bottom"
+        android:layout_width="510px"
+        android:layout_height="4px"
+        android:background="@mipmap/icon_title_line"
+        android:layout_below="@id/item_goodsfragment_content_head_brand"
+        android:layout_marginTop="17px"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/item_goodsfragment_content_head_info_des"
+        android:layout_width="510px"
+        android:layout_height="wrap_content"
+        android:text="Gentle Monster一直是大热的韩国眼镜品牌，继全智贤在《星你》中的热推后，在热播韩剧《看见味道的少女》中又被当作定情信物，是权志龙等韩流明星的热衷单品，也备受李晨、范冰冰、Anglebaby等明星追捧。GM除了设计复古气息浓郁的圆形墨镜，还有许多配色夸张、造型奇特的镜面太阳镜，这也印证了品牌的名字——绅士怪物。而这款独特的BIG BULLY，是最新推出的时尚款。 搭配建议：银色袖口、白色双肩包、J.Crew衬衫、GIUSEPPE ZANOTTI白色运动"
+        android:textColor="#ffffff"
+        android:textSize="24px"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/item_goodsfragment_content_head_line_bottom"
+        android:layout_marginTop="50px"/>
+    <TextView
+        android:id="@+id/item_goodsfragment_content_head_goods_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="450"
+        android:textSize="36px"
+        android:textColor="#ffffff"
+        android:drawableLeft="@mipmap/icon_money"
+        android:textStyle="bold"
+        android:layout_below="@id/item_goodsfragment_content_head_info_des"
+        android:layout_marginTop="48px"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/item_goodsfragment_content_head_scroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="滑動瀏覽詳情"
+        android:textColor="#ffffff"
+        android:textSize="24px"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/item_goodsfragment_content_head_frame"
+        android:layout_marginTop="48px"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/icon_goods_down"
+        android:layout_below="@id/item_goodsfragment_content_head_scroll"
+        android:layout_marginTop="14px"/>
+
+</com.zhy.autolayout.AutoRelativeLayout>
