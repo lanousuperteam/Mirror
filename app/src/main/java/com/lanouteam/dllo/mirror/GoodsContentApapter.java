@@ -1,11 +1,14 @@
 package com.lanouteam.dllo.mirror;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,15 +23,16 @@ import java.util.ArrayList;
  */
 public class GoodsContentApapter extends RecyclerView.Adapter {
     private ArrayList<String> datas;
+    private RecyclerView recyclerView;
     private int layoutScrollValue;
     final int TYPE_HEAD = 0;
     final int TYPE_TRANSPARENT = 1;
     final int TYPE_GOODS_TITLE = 2;
     final int TYPE_GOODS_DETAILS = 3;
 
+
     public GoodsContentApapter(ArrayList<String> datas) {
         this.datas = datas;
-
 
     }
 
@@ -37,7 +41,7 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
      */
     public void setScrollValue(int scrollValue) {
         this.layoutScrollValue = scrollValue;
-        Log.i("传递过来的value", layoutScrollValue + "我是传递的值");
+        //   Log.i("传递过来的value", layoutScrollValue + "我是传递的值");
         //刷新UI
         /**
          * 必须加上这句话,持续的刷新从Actvity 接收的滑动值.
@@ -47,7 +51,6 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
 
     }
@@ -69,11 +72,15 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
         else if (position == 1)
             return TYPE_TRANSPARENT;
         else if (position == 2)
+
             return TYPE_GOODS_TITLE;
         else
+
             return TYPE_GOODS_DETAILS;
 
+
     }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         /** * 渲染具体的ViewHolder
@@ -86,19 +93,17 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
         if (viewType == TYPE_HEAD) {
             View viewHead = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycleview_goodsfragment_content_head, parent, false);
             return new HeadViewHolder(viewHead);
-        }
-        else if (viewType == TYPE_TRANSPARENT) {
-            View   viewTransparent = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycleview_goodsfragments_content_transparent, parent, false);
+        } else if (viewType == TYPE_TRANSPARENT) {
+            View viewTransparent = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycleview_goodsfragments_content_transparent, parent, false);
             return new TransparentViewHolder(viewTransparent);
-        }
-        else if (viewType == TYPE_GOODS_TITLE) {
-            View  viewGoodsTitle = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycleview_goodsfragments_content_goods_title, parent, false);
+        } else if (viewType == TYPE_GOODS_TITLE) {
+            View viewGoodsTitle = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycleview_goodsfragments_content_goods_title, parent, false);
             return new GoodsTitleViewHolder(viewGoodsTitle);
-        }
-        else {
+        } else {
             View viewGoodsDetails = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycleview_goodsfragment_content_goods_details, parent, false);
             return new GoodsDetailsViewHolder(viewGoodsDetails);
         }
+
 
     }
 
@@ -111,17 +116,15 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
         if (holder instanceof HeadViewHolder) {
 
         } else if (holder instanceof GoodsTitleViewHolder) {//如果holder的实例是GoodsTitleViewHolder的话
-            int valueTitle=layoutScrollValue;
-            Log.e("ValueTitle", layoutScrollValue + "啦啦");
-            RelativeLayout.LayoutParams paramsTitle= (RelativeLayout.LayoutParams) ((GoodsTitleViewHolder) holder).goodsTitleRelativeLayout.getLayoutParams();
+            int valueTitle = layoutScrollValue;
+            //   Log.e("ValueTitle", layoutScrollValue + "啦啦");
+            RelativeLayout.LayoutParams paramsTitle = (RelativeLayout.LayoutParams) ((GoodsTitleViewHolder) holder).goodsTitleRelativeLayout.getLayoutParams();
 
-            paramsTitle.setMargins(0, (int) (valueTitle*0.1), 0, 0);
+            paramsTitle.setMargins(0, (int) (valueTitle * 0.1), 0, 0);
             ((GoodsTitleViewHolder) holder).goodsTitleRelativeLayout.setLayoutParams(paramsTitle);
 
 
-
-        }
-        else if(holder instanceof GoodsDetailsViewHolder) {
+        } else if (holder instanceof GoodsDetailsViewHolder) {
             int valueDetails = layoutScrollValue;
             RelativeLayout.LayoutParams paramsDetails = (RelativeLayout.LayoutParams) ((GoodsDetailsViewHolder) holder).goodsDetailsRelativeLayout.getLayoutParams();
 
@@ -129,11 +132,12 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
             Log.d("ValueAdapter", layoutScrollValue + "");
             ((GoodsDetailsViewHolder) holder).goodsDetailsRelativeLayout.setLayoutParams(paramsDetails);
 
-//Я
+
         }
 
 
     }
+
 
     @Override
     public int getItemCount() {
