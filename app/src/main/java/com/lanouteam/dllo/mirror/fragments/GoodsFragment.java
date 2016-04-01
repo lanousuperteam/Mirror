@@ -48,7 +48,7 @@ public class GoodsFragment extends BaseFragment implements View.OnClickListener 
 
         datas = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            datas.add("hahahahahahhhahahaha");
+            datas.add("法國巴黎");
         }
 
 

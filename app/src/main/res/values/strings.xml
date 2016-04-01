@@ -9,5 +9,7 @@
     <string name="login_activity_use_number">使用社交賬號</string>
     <string name="goodsfragment_title_text">遊覽所有分類</string>
     <string name="goodsfragment_second_title_text">顯示排序為 最新推薦</string>
+    <string name="shoppingcarfragment_title_text">我的購物車</string>
+    <string name="shoppingcarfragment_textview_text">你的購物車沒有商品</string>
 
 </resources>

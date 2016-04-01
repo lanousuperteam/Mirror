@@ -1,53 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
-    
-    <ImageView
-        android:id="@+id/goodsfragment_item_imageview"
-        android:layout_width="540px"
-        android:layout_height="595px"
-        android:layout_marginLeft="22px"
-        android:src="@mipmap/ic_launcher"/>
-    <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="540px"
-        android:layout_height="238px"
-        android:layout_marginLeft="22px">
 
-        <TextView
-            android:id="@+id/item_recyclerview_model"
-            android:layout_marginTop="50px"
-            android:layout_marginLeft="32px"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SEE CONCEPT"
-            android:textSize="30px"
-            android:textColor="#000"
-            android:textStyle="bold"/>
-        <TextView
-            android:id="@+id/item_recyclerview_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="法国巴黎"
-            android:textColor="#333"
-            android:textSize="24px"
-            android:layout_below="@id/item_recyclerview_model"
-            android:layout_marginLeft="32px"
-            android:layout_marginTop="16px"/>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/goodsfragment_item_linearlayout_maginleft"
+        android:background="@color/goodsfragment_item_linearlayout_background"
+        android:orientation="vertical">
+
+
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32px"
-            android:layout_marginRight="32px"
-            android:layout_marginTop="30px"
-            android:src="@mipmap/icon_register_line"
-            android:layout_below="@id/item_recyclerview_address" />
+            android:id="@+id/goodsfragment_item_imageview"
+            android:layout_width="@dimen/goodsfragment_item_imageview_width"
+            android:layout_height="@dimen/goodsfragment_item_imageview_heitht"
+            android:src="@mipmap/ic_launcher" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="@dimen/goodsfragment_item_relativelayout_width"
+            android:layout_height="@dimen/goodsfragment_item_relativelayout_height">
+
+            <TextView
+                android:id="@+id/item_recyclerview_model"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/goodsfragment_item_model_marginleft"
+                android:layout_marginTop="@dimen/goodsfragment_item_model_margintop"
+                android:text="SEE CONCEPT"
+                android:textColor="@color/goodsfragment_item_model_textcolor"
+                android:textSize="@dimen/goodsfragment_item_model_textsize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/item_recyclerview_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_recyclerview_model"
+                android:layout_marginLeft="@dimen/goodsfragment_item_address_marginleft"
+                android:layout_marginTop="@dimen/goodsfragment_item_address_margintop"
+                android:text="法国巴黎"
+                android:textColor="@color/goodsfragment_item_address_textcolor"
+                android:textSize="@dimen/goodsfragment_item_address_textsize" />
+
+            <ImageView
+                android:id="@+id/item_recyclerview_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_recyclerview_address"
+                android:layout_marginLeft="@dimen/goodsfragment_item_line_marginleft"
+                android:layout_marginRight="@dimen/goodsfragment_item_line_marginright"
+                android:layout_marginTop="@dimen/goodsfragment_item_line_margintop"
+                android:src="@mipmap/icon_register_line" />
+
+            <TextView
+                android:id="@+id/item_recyclerview_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_recyclerview_line"
+                android:layout_marginLeft="@dimen/goodsfragment_item_name_marginleft"
+                android:layout_marginTop="@dimen/goodsfragment_item_name_margintop"
+                android:text="草莓紅色圓框閱讀鏡"
+                android:textColor="@color/goodsfragment_item_name_textcolor"
+                android:textSize="@dimen/goodsfragment_item_name_textsize" />
+
+            <TextView
+                android:id="@+id/item_recyclerview_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/goodsfragment_item_price_marginright"
+                android:layout_marginTop="@dimen/goodsfragment_item_price_margintop"
+                android:text="¥450"
+                android:textColor="@color/goodsfragment_item_price_textcolor"
+                android:textSize="@dimen/goodsfragment_item_price_textsize"
+                android:textStyle="bold" />
 
 
-    </com.zhy.autolayout.AutoRelativeLayout>
-
-    
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
 
 
 </com.zhy.autolayout.AutoLinearLayout>

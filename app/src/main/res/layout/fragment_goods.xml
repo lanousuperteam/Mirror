@@ -54,7 +54,8 @@
         android:id="@+id/goodsfragment_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="@dimen/goodsfragment_recyclerview_height"
-        android:layout_marginTop="@dimen/goodsfragment_recyclerview_margintop" />
+        android:layout_marginTop="@dimen/goodsfragment_recyclerview_margintop"
+        android:background="@color/goodsfragment_listview_background"/>
 
 
 

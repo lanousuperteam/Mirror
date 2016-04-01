@@ -21,6 +21,7 @@ public class MainActivity extends BaseActivity {
     private ArrayList<Fragment> data;
     private MainViewpagerAdapter adapter;
     private DirectionalViewPager viewPager;
+    private int currentItem;
 
 
     @Override
@@ -39,6 +40,13 @@ public class MainActivity extends BaseActivity {
         adapter = new MainViewpagerAdapter(getSupportFragmentManager(),data);
         viewPager.setAdapter(adapter);
         viewPager.setOrientation(DirectionalViewPager.VERTICAL);
+
+        currentItem = viewPager.getCurrentItem();
+
+    }
+
+    public int getCurrentItem() {
+        return currentItem;
     }
 
     @Override
@@ -56,7 +64,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public class ViewPagerScroller extends Scroller {
-        private int mScrollDuration = 2000;             // 滑动速度
+        private int mScrollDuration;             // 滑动速度
 
         /**
          * 设置速度速度

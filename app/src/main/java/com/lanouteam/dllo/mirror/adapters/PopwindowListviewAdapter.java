@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.activity.MainActivity;
+import com.lanouteam.dllo.mirror.bean.MenuListBean;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ import java.util.ArrayList;
  */
 public class PopwindowListviewAdapter extends BaseAdapter {
     private ArrayList<String> datas;
+
 
     public PopwindowListviewAdapter(ArrayList<String> datas) {
         this.datas = datas;
@@ -52,7 +54,11 @@ public class PopwindowListviewAdapter extends BaseAdapter {
         } else {
             holder = (PopwindowHolder) convertView.getTag();
         }
-        holder.titleTv.setText(datas.get(position));
+        if (datas != null) {
+            holder.titleTv.setText(datas.get(position));
+            holder.lineIv.setVisibility();
+        }
+
         return convertView;
     }
 

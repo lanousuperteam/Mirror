@@ -44,7 +44,7 @@ public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecycler
 
         public GoodsViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.text_view);
+            textView = (TextView) itemView.findViewById(R.id.item_recyclerview_address);
         }
     }
 }
