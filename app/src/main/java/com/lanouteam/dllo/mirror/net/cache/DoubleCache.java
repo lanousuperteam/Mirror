@@ -1,7 +1,6 @@
 package com.lanouteam.dllo.mirror.net.cache;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import com.android.volley.toolbox.ImageLoader;
 
@@ -19,7 +18,6 @@ public class DoubleCache implements ImageLoader.ImageCache {
 
     @Override
     public Bitmap getBitmap(String url) {
-        Log.d("url",url+"");
         Bitmap bitmap=memoryCache.getBitmap(url);
         //先从内存中寻找,因为内存速度最快,寻找顺序  内存-->硬盘-->网络
         if (bitmap == null){
