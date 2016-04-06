@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
+    <string name="activity_goods_content_wear">佩戴图集</string>
+    <string name="item_goodsfragment_content_details_name_text">專註復古</string>
+    <string name="item_goodsfragment_content_details_intro_content_test_text">从侧面看，银色金属框较宽，相比镜框纤细的镜腿与镜框形成强烈反差，镜腿也采用黑色金属，纤细精致的极简设计，使整个太阳镜十分轻巧，告别黑色沉闷感。</string>
+    <string name="item_goodsfragment_content_head_test_goods_name_text">GOODS NAME</string>
+    <string name="item_goodsfragment_content_head_test_price_text">450</string>
+    <string name="item_goodsfragment_content_head_test_scroll_text">滑動瀏覽詳情</string>
+    <string name="item_goodsfragment_content_head_test_brand_text">水蓝色晶透板材太阳镜</string>
+    <string name="item_goodsfragment_content_head_test_info_text">Gentle Monster一直是大热的韩国眼镜品牌，继全智贤在《星你》中的热推后，在热播韩剧《看见味道的少女》中又被当作定情信物，是权志龙等韩流明星的热衷单品，也备受李晨、范冰冰、Anglebaby等明星追捧。GM除了设计复古气息浓郁的圆形墨镜，还有许多配色夸张、造型奇特的镜面太阳镜，这也印证了品牌的名字——绅士怪物。而这款独特的BIG BULLY，是最新推出的时尚款。 搭配建议：银色袖口、白色双肩包、J.Crew衬衫、GIUSEPPE ZANOTTI白色运动</string>
+    <string name="item_goodsfragment_content_goods_title_brand_text">水蓝色晶透板材太阳镜</string>
+    <string name="item_goodsfragment_content_goods_title_test_country_text">巴黎</string>
+    <string name="item_goodsfragment_content_goods_title_location_test_text">來自時尚之都韓國</string>
+    <string name="item_goodsfragment_content_goods_title_intro_test_text">这款眼镜来自现在正热的韩国大势眼镜品牌Gentle Monster，专注复古，眼镜均为纯手工打造。这款飞行员金属太阳镜，镜圈采用黑色金属框，散发前卫与帅气相融合的气息，银色镜片时髦又新颖。</string>
 </resources>
