@@ -61,6 +61,7 @@
         android:background="@mipmap/et_auth_code"
         android:layout_below="@id/login_activity_password_tv"
         android:layout_marginTop="@dimen/login_activity_line_margin_top"
+        android:inputType="textPassword"
         />
     <TextView
         android:id="@+id/login_activity_forget_password_tv"
@@ -83,9 +84,11 @@
          android:text="@string/login_activity_login"
          android:textSize="@dimen/login_activity_login_text"
          android:textColor="@color/colorLoginText"
+         android:enabled="false"
          />
     <!--该button未设选择器-->
     <Button
+        android:id="@+id/login_activity_create_account_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/login_activity_btn_height"
         android:background="@mipmap/btn_register_normal"
