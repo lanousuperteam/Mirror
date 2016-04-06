@@ -5,16 +5,13 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.activity.MainActivity;
 import com.lanouteam.dllo.mirror.adapters.PopwindowListviewAdapter;
-import com.lanouteam.dllo.mirror.bean.MenuListBean;
 
 import java.util.ArrayList;
 
