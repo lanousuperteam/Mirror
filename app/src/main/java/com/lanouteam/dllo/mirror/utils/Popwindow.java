@@ -58,7 +58,7 @@ public class Popwindow implements RequestUrls, NetListener {
 
     private void initDataPopwindow() {
         netHelper = new NetHelper(context);
-        netHelper.getPhoneCode(MENU_LIST, this, null);
+        netHelper.getJsonData(MENU_LIST, this, null);
 //        datas.add("全部分類");
 //        datas.add("遊覽平光鏡");
 //        datas.add("遊覽太陽鏡");

@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.DirectionalViewPager;
 import android.support.v4.view.ViewPager;
 import android.widget.Scroller;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
@@ -41,7 +40,7 @@ public class MainActivity extends BaseActivity implements RequestUrls, NetListen
     protected void initData() {
         fragments = new ArrayList<>();
         netHelper = new NetHelper(this);
-        netHelper.getPhoneCode(MENU_LIST, this, null);
+        netHelper.getJsonData(MENU_LIST, this, null);
 
 
 //        fragments = new ArrayList<>();

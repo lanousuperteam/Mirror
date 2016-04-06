@@ -39,7 +39,7 @@ public class WelcomeActivity extends BaseActivity implements RequestUrls, NetLis
         welcomeNetHelper = new NetHelper(this);
         HashMap<String, String> mMap = new HashMap<>();
         mMap = null;
-        welcomeNetHelper.getPhoneCode(STARTED_IMG, this, mMap);
+        welcomeNetHelper.getJsonData(STARTED_IMG, this, mMap);
 
 
         /***

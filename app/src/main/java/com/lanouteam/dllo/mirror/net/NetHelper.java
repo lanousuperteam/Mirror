@@ -63,13 +63,13 @@ public class NetHelper {
     }
 
     /**
-     * 方法:getPhoneCode() 获取需要拉取的数据,使其拼接成可请求的 url
+     * 方法:getJsonData() 获取需要拉取的数据,使其拼接成可请求的 url
      *
      * @param requestType 请求类型
      * @param mMap        请求参数
      * @param netListener 网络请求成功和失败的监听对象
      */
-    public void getPhoneCode(String requestType, NetListener netListener, HashMap<String, String> mMap) {
+    public void getJsonData(String requestType, NetListener netListener, HashMap<String, String> mMap) {
         String idUrl = requestType;
         postDataFromNet(idUrl, netListener, mMap);
     }

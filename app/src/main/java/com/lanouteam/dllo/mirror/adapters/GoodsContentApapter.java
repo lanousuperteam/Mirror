@@ -218,8 +218,6 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
 
                 detailsImageLoader.get(datas.getData().getDesign_des().get(position - 3).getImg(), detailsImageLoader.getImageListener(
                         ((GoodsDetailsViewHolder) holder).goodsDetailsImg, R.mipmap.ic_launcher, R.mipmap.background));
-
-
             } else {
                 ((GoodsDetailsViewHolder) holder).goodsDetailsRelativeLayout.setVisibility(View.INVISIBLE);
                 detailsImageLoader.get(datas.getData().getDesign_des().get(position - 3).getImg(), detailsImageLoader.getImageListener(

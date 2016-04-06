@@ -58,12 +58,12 @@ public class GoodsContentActivity extends BaseActivity {
 
         netHelper=new NetHelper(this);
 
-        netHelper.getPhoneCode(RequestUrls.GOODS_INFO, new NetListener() {
+        netHelper.getJsonData(RequestUrls.GOODS_INFO, new NetListener() {
             @Override
             public void getSuccess(Object object) {
                 Gson gson = new Gson();
                 GoodsContentBean data = gson.fromJson(object.toString(), GoodsContentBean.class);
-                goodsContentApapter = new GoodsContentApapter(data,getBaseContext());
+                goodsContentApapter = new GoodsContentApapter(data, getBaseContext());
                 GridLayoutManager gm = new GridLayoutManager(getBaseContext(), 1);
                 gm.setOrientation(LinearLayoutManager.VERTICAL);
                 recyclerView.setLayoutManager(gm);
@@ -80,7 +80,7 @@ public class GoodsContentActivity extends BaseActivity {
             public void getFailed(int s) {
 
             }
-        },goodsInfo);
+        }, goodsInfo);
 
 
 
