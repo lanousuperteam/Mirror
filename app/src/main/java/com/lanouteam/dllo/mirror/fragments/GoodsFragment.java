@@ -13,9 +13,15 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
+import com.lanouteam.dllo.mirror.activity.MainActivity;
 import com.lanouteam.dllo.mirror.adapters.GoodsRecyclerViewAdapter;
 import com.lanouteam.dllo.mirror.base.BaseFragment;
+import com.lanouteam.dllo.mirror.bean.MenuListBean;
+import com.lanouteam.dllo.mirror.bean.RequestUrls;
+import com.lanouteam.dllo.mirror.net.NetHelper;
+import com.lanouteam.dllo.mirror.net.NetListener;
 import com.lanouteam.dllo.mirror.utils.Popwindow;
 
 import java.util.ArrayList;
@@ -24,13 +30,16 @@ import java.util.ArrayList;
 /**
  * Created by dllo on 16/3/30.
  */
-public class GoodsFragment extends BaseFragment implements View.OnClickListener {
+public class GoodsFragment extends BaseFragment implements RequestUrls,View.OnClickListener, NetListener {
     private LinearLayout linearLayout;
     private TextView titleTv;
     private Popwindow popwindow;
     private GoodsRecyclerViewAdapter adapter;
     private ArrayList<String> datas;
     private RecyclerView recyclerView;
+    private NetHelper netHelper;
+    private int position;
+    private MainActivity activity;
 
 
     @Override
@@ -41,6 +50,9 @@ public class GoodsFragment extends BaseFragment implements View.OnClickListener 
 
         popwindow = new Popwindow(getContext());
         linearLayout.setOnClickListener(this);
+
+        netHelper = new NetHelper(getContext());
+        netHelper.getPhoneCode(MENU_LIST,this,null);
 
         GridLayoutManager gm = new GridLayoutManager(getContext(), 1);
         gm.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -57,6 +69,7 @@ public class GoodsFragment extends BaseFragment implements View.OnClickListener 
 
     }
 
+
     @Override
     public int initLayout() {
         return R.layout.fragment_goods;
@@ -69,5 +82,23 @@ public class GoodsFragment extends BaseFragment implements View.OnClickListener 
                 popwindow.showPopUpWindow(v);
                 break;
         }
+    }
+
+    @Override
+    public void getSuccess(Object object) {
+        Gson gson = new Gson();
+        MenuListBean bean = gson.fromJson(object.toString(), MenuListBean.class);
+        activity = (MainActivity) getContext();
+
+        position = activity.getCurrentItem();
+
+        Log.d("GoodsFragment", position + "");
+
+        titleTv.setText(bean.getData().getList().get(position).getTitle());
+    }
+
+    @Override
+    public void getFailed(int s) {
+
     }
 }

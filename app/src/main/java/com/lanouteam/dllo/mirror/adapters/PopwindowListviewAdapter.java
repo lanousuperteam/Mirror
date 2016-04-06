@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lanouteam.dllo.mirror.R;
+import com.lanouteam.dllo.mirror.activity.MainActivity;
+import com.lanouteam.dllo.mirror.bean.MenuListBean;
 
 import java.util.ArrayList;
 
@@ -15,21 +17,20 @@ import java.util.ArrayList;
  * Created by dllo on 16/3/31.
  */
 public class PopwindowListviewAdapter extends BaseAdapter {
-    private ArrayList<String> datas;
+    private MenuListBean datas;
 
-
-    public PopwindowListviewAdapter(ArrayList<String> datas) {
+    public PopwindowListviewAdapter(MenuListBean datas) {
         this.datas = datas;
     }
 
     @Override
     public int getCount() {
-        return datas != null && datas.size() > 0 ? datas.size() : 0;
+        return datas != null && datas.getData().getList().size() > 0 ? datas.getData().getList().size() : 0;
     }
 
     @Override
     public Object getItem(int position) {
-        return datas != null && datas.size() > 0 ? datas.get(position) : null;
+        return datas != null && datas.getData().getList().size() > 0 ? datas.getData().getList().get(position) : null;
     }
 
     @Override
@@ -45,14 +46,12 @@ public class PopwindowListviewAdapter extends BaseAdapter {
             holder = new PopwindowHolder();
             holder.titleTv = (TextView) convertView.findViewById(R.id.item_list_popupwindow_title);
             holder.lineIv = (ImageView) convertView.findViewById(R.id.item_list_popupwindow_line);
-
             convertView.setTag(holder);
         } else {
             holder = (PopwindowHolder) convertView.getTag();
         }
         if (datas != null) {
-            holder.titleTv.setText(datas.get(position));
-//            holder.lineIv.setVisibility();
+            holder.titleTv.setText(datas.getData().getList().get(position).getTitle());
         }
 
         return convertView;
