@@ -9,17 +9,9 @@ import java.util.Map;
 
 /**
  * Created by dllo on 16/4/5.
- *
- 对SharedPreference的使用做了建议的封装，对外公布出put，get，remove，clear等等方法；
- 注意一点，里面所有的commit操作使用了SharedPreferencesCompat.apply进行了替代，目的是尽可能的使用apply代替commit
-
- 首先说下为什么，因为commit方法是同步的，并且我们很多时候的commit操作都是UI线程中，毕竟是IO操作，尽可能异步；
-
- 所以我们使用apply进行替代，apply异步的进行写入；
-
- 但是apply相当于commit来说是new API呢，为了更好的兼容，我们做了适配；
-
- SharedPreferencesCompat也可以给大家创建兼容类提供了一定的参考~~
+ * 对SharedPreference的使用做出封装，对外公布出put，get，remove，clear等等方法；
+ * 这里用 apply 代替 common 方法,因为 common是在UI 线程操作同步到硬盘,而 apply是将数据先提交到内存,在提交,
+ * 属于IO 操作,异步提交,而且 apply 的效率会比 common 高;
  */
 public class SPUtils {
     /**
@@ -82,7 +74,7 @@ public class SPUtils {
         } else if (defaultObject instanceof Long) {
             return sp.getLong(key, (Long) defaultObject);
         } else {
-            T.showShort(context,"默认数据类型为空,或者类型不符");
+            T.showShort(context, "默认数据类型为空,或者类型不符");
         }
         return null;
     }
@@ -115,12 +107,12 @@ public class SPUtils {
     }
 
     /**
-         * 查询某个key是否已经存在
-         *
-         * @param context
-         * @param key
-         * @return
-         */
+     * 查询某个key是否已经存在
+     *
+     * @param context
+     * @param key
+     * @return
+     */
     public static boolean contains(Context context, String key) {
         SharedPreferences sp = context.getSharedPreferences(FILE_NAME,
                 Context.MODE_PRIVATE);
@@ -152,6 +144,7 @@ public class SPUtils {
          *
          * @return
          */
+        //去除警告
         @SuppressWarnings({"unchecked", "rawtypes"})
         private static Method findApplyMethod() {
             try {
