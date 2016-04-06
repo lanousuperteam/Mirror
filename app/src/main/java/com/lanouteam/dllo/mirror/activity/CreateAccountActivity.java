@@ -1,10 +1,9 @@
 package com.lanouteam.dllo.mirror.activity;
 
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.ScaleAnimation;
+import android.os.CountDownTimer;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.base.BaseActivity;
@@ -12,7 +11,11 @@ import com.lanouteam.dllo.mirror.base.BaseActivity;
 /**
  * Created by dllo on 16/3/30.
  */
-public class CreatAccountActivity extends BaseActivity {
+public class CreateAccountActivity extends BaseActivity implements View.OnClickListener {
+    private EditText phoneNumberEt, codeEv, passwordEt;
+    private Button sendCodeBtn;
+    //倒计时工具类
+    private CountDownTimer timer;
 
     @Override
     protected int getLayout() {
@@ -67,10 +70,62 @@ public class CreatAccountActivity extends BaseActivity {
 //            // 实现动画的View
 //            ivMirror.startAnimation(animationSet);
 //        }
+        /**
+         * 分割线-----------------------------------------------------------------
+         * */
+        //给按钮设置监听
+        findViewById(R.id.create_account_activity_create_account_btn).setOnClickListener(this);
+        findViewById(R.id.create_account_activity_send_code_btn).setOnClickListener(this);
+        findViewById(R.id.create_account_activity_return_iv).setOnClickListener(this);
+        //创建倒计时控件
+        timer = new CountDownTimer(60000, 1000) {
+            /**
+             * @param millisUntilFinished  当前的剩余时间
+             * 每经过一次间隔时间,就会调用一次此方法
+             * */
+            @Override
+            public void onTick(long millisUntilFinished) {
+                int time = (int) (millisUntilFinished/1000);
+                sendCodeBtn.setText(time+"秒后重新发送");
+            }
+
+            /**
+             * 倒计时结束时调用此方法.
+             * */
+            @Override
+            public void onFinish() {
+                sendCodeBtn.setEnabled(true);
+                sendCodeBtn.setText(R.string.create_acount_activity_send_code);
+            }
+        };
+
     }
 
     @Override
     protected void initView() {
-
+        phoneNumberEt = bindView(R.id.create_account_activity_phone_number_et);
+        codeEv = bindView(R.id.create_account_activity_code_ev);
+        sendCodeBtn = bindView(R.id.create_account_activity_send_code_btn);
+        passwordEt = bindView(R.id.create_account_activity_password_et);
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            //创建账号
+            case R.id.create_account_activity_create_account_btn:
+                break;
+            //发送验证码
+            case R.id.create_account_activity_send_code_btn:
+                //点击发送验证码,然后出现60s 之后可以再次发送
+                timer.start();
+                sendCodeBtn.setEnabled(false);
+                break;
+            case R.id.create_account_activity_return_iv:
+                finish();
+                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                break;
+        }
+    }
+
 }

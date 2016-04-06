@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.lanouteam.dllo.mirror.utils.L;
 import com.lanouteam.dllo.mirror.utils.MD5Util;
 
 import java.io.FileNotFoundException;
@@ -25,13 +26,17 @@ public class DiskCache implements ImageLoader.ImageCache {
     @Override
     public Bitmap getBitmap(String url) {
         //截取 url 中的图片的名称
-        String fileName = url.substring(url.lastIndexOf("/"), url.length());
-        String nameToMD5 = MD5Util.MD5(fileName);
-        //用文件名拼接处实际文件存储路径
-        String filePath = diskPath + "/" + nameToMD5;
-        Bitmap bitmap = BitmapFactory.decodeFile(filePath);
-        Log.d("存储路径",filePath);
-        return bitmap;
+        if (url.contains("/")) {
+            String fileName = url.substring(url.lastIndexOf("/"), url.length());
+            String nameToMD5 = MD5Util.MD5(fileName);
+            //用文件名拼接处实际文件存储路径
+            String filePath = diskPath + "/" + nameToMD5;
+            Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+            L.d("存储路径", filePath);
+            return bitmap;
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -42,7 +47,7 @@ public class DiskCache implements ImageLoader.ImageCache {
         String nameToMD5 = MD5Util.MD5(fileName);
         //用文件名拼接出实际文件储存路径
         String filePath = diskPath + "/" + nameToMD5;
-        Log.d("提取路径",filePath);
+        Log.d("提取路径", filePath);
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(filePath);

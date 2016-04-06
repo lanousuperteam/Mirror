@@ -11,6 +11,7 @@ import com.lanouteam.dllo.mirror.base.BaseActivity;
 import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
+import com.lanouteam.dllo.mirror.utils.SPUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +27,7 @@ public class WelcomeActivity extends BaseActivity implements RequestUrls, NetLis
     private ImageView welcomeImageView;
     private NetHelper welcomeNetHelper;
     private ProgressBar welcomeProgressBar;
+    private String imageUrl;
 
     @Override
     protected int getLayout() {
@@ -38,6 +40,8 @@ public class WelcomeActivity extends BaseActivity implements RequestUrls, NetLis
         HashMap<String, String> mMap = new HashMap<>();
         mMap = null;
         welcomeNetHelper.getPhoneCode(STARTED_IMG, this, mMap);
+
+
         /***
          * Timer类是一种线程设施，可以用来实现某一个时间或某一段时间后安排某一个任务执行一次或定期重复执行。
          * 该功能和TimerTask配合使用。TimerTask类用于实现由Timer安排的一次或重复执行的某个任务。
@@ -60,7 +64,7 @@ public class WelcomeActivity extends BaseActivity implements RequestUrls, NetLis
     @Override
     protected void initView() {
         welcomeImageView = bindView(R.id.welcome_activity_imageview);
-        welcomeProgressBar=bindView(R.id.welcome_activity_progressbar);
+        welcomeProgressBar = bindView(R.id.welcome_activity_progressbar);
     }
 
 
@@ -68,11 +72,11 @@ public class WelcomeActivity extends BaseActivity implements RequestUrls, NetLis
     public void getSuccess(Object object) {
         try {
             JSONObject obj = new JSONObject(object.toString());
-            String imageUrl = obj.getString("img");
+            imageUrl = obj.getString("img");
             ImageLoader welcomeImageLoader = welcomeNetHelper.getImageLoader();
-            welcomeImageLoader.get(imageUrl,welcomeImageLoader.getImageListener(
-                    welcomeImageView,R.mipmap.background,R.mipmap.background));
-            welcomeProgressBar.setVisibility(View.GONE);
+            //将获得的图片url 储存,使用Sharedpreference
+            SPUtils.put(this,"imageurl",imageUrl);
+            initImage(welcomeImageLoader, imageUrl);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -81,6 +85,21 @@ public class WelcomeActivity extends BaseActivity implements RequestUrls, NetLis
 
     @Override
     public void getFailed(int s) {
+        ImageLoader welcomeImageLoader = welcomeNetHelper.getImageLoader();
+        String data= (String) SPUtils.get(this,"imageurl","null");
+        initImage(welcomeImageLoader, data);
+    }
 
+    /**
+     * 简化流程把拉取图片的过程写在方法里面
+     *
+     * @param imageUrl           ImageLoader需要的一个拉取图片的URL
+     * @param welcomeImageLoader 整个过程需要使用的ImageLoader
+     */
+    private void initImage(ImageLoader welcomeImageLoader, String imageUrl) {
+        welcomeImageLoader.get(imageUrl, welcomeImageLoader.getImageListener(
+                welcomeImageView, R.mipmap.background, R.mipmap.background));
+        //当图片拉取
+        welcomeProgressBar.setVisibility(View.GONE);
     }
 }

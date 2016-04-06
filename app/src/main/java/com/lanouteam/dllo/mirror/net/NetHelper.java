@@ -1,8 +1,6 @@
 package com.lanouteam.dllo.mirror.net;
 
 import android.content.Context;
-import android.os.Environment;
-import android.util.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -12,6 +10,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.lanouteam.dllo.mirror.R;
+import com.lanouteam.dllo.mirror.base.BaseApplication;
 import com.lanouteam.dllo.mirror.net.cache.DoubleCache;
 
 import java.io.File;
@@ -46,31 +45,20 @@ public class NetHelper {
         //            第二级  是在内存中,存在
         //            第三级  网络层
         //定义硬盘图片缓存的根路径
-        //兼顾SD卡和根路径
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            File file = Environment.getExternalStorageDirectory();
-            diskPath = file.getAbsolutePath();
-            Log.d("图片路径",diskPath);
-        } else {
-            File file = context.getFilesDir();
-            diskPath = file.getAbsolutePath();
-            Log.d("图片路径",diskPath);
-        }
-
-        File file = new File(diskPath + "/img");
+        //将图片储存在/data/data 目录下
+        File file = BaseApplication.mContext.getCacheDir();
         if (!file.exists()) {
             file.mkdir();
         }
-        diskPath=file.getAbsolutePath();
-
+        diskPath = BaseApplication.mContext.getCacheDir().toString();
         //实现三级缓存
-        imageLoader=new ImageLoader(requestQueue,new DoubleCache(diskPath));
+        imageLoader = new ImageLoader(requestQueue, new DoubleCache(diskPath));
     }
 
     /**
      * 获取ImageLoader的方法
-     * */
-    public ImageLoader getImageLoader(){
+     */
+    public ImageLoader getImageLoader() {
         return imageLoader;
     }
 

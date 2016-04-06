@@ -24,7 +24,7 @@
         android:background="@mipmap/icon_register_line" />
 
     <ImageView
-
+        android:id="@+id/create_account_activity_return_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -48,7 +48,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/create_account_activity_phone_number_tv"
         android:layout_marginTop="@dimen/create_acount_activity_line_margin_top"
-        android:background="@mipmap/et_phone_number" />
+        android:background="@mipmap/et_phone_number"
+        android:inputType="number"
+        />
 
     <TextView
         android:id="@+id/create_account_activity_code_tv"
@@ -71,13 +73,16 @@
         android:weightSum="661">
 
         <EditText
+            android:id="@+id/create_account_activity_code_ev"
             android:layout_width="@dimen/login_activity_weight"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/create_acount_activity_line_margin_top"
             android:layout_weight="451"
-            android:background="@mipmap/et_phone_number" />
+            android:background="@mipmap/et_phone_number"
+            android:inputType="number"/>
 
         <Button
+            android:id="@+id/create_account_activity_send_code_btn"
             android:layout_width="@dimen/login_activity_weight"
             android:layout_height="@dimen/create_acount_activity_send_code_btn_height"
             android:layout_marginTop="@dimen/create_acount_activity_send_code_btn_height_margin_top"
@@ -109,6 +114,7 @@
         android:background="@mipmap/et_phone_number" />
 
     <Button
+        android:id="@+id/create_account_activity_create_account_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/create_acount_activity_big_btn_height"
         android:layout_below="@id/create_account_activity_password_et"
