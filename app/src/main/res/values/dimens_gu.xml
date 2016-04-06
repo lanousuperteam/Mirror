@@ -1,4 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--商品二级页面activity-->
+    <dimen name="activity_goods_content_return_btn_margin_left">10dp</dimen>
+    <dimen name="activity_goods_content_wear_tv_margin_left">31dp</dimen>
+    <dimen name="activity_goods_content_buy_margin_right">20dp</dimen>
+    <dimen name="activity_goods_content_buy_margin_bottom">10dp</dimen>
+    <!--商品二级页面recycleview的子布局-->
+    <dimen name="item_goodsfragment_content_details_test_picture_height">300dp</dimen>
+    <dimen name="item_goodsfragment_content_details_move_frame_width">295dp</dimen>
+    <dimen name="item_goodsfragment_content_details_move_frame_margin_top">57dp</dimen>
+    <dimen name="item_goodsfragment_content_details_line_margin_top">14dp</dimen>
+    <dimen name="item_goodsfragment_content_details_name_margin_top">15dp</dimen>
+    <dimen name="item_goodsfragment_content_details_name_tetx">30sp</dimen>
+    <dimen name="item_goodsfragment_content_details_line_bottom_margin_top">17dp</dimen>
+    <dimen name="item_goodsfragment_content_details_intro_content_margin_bottom">22dp</dimen>
+    <dimen name="item_goodsfragment_content_details_intro_content_margin_top">15dp</dimen>
+    <dimen name="item_goodsfragment_content_details_intro_content_text">13sp</dimen>
 
+    <dimen name="item_goodsfragment_content_head_frame_margin_top" > 127dp</dimen>
+    <dimen name="item_goodsfragment_content_details_line_width">255dp</dimen>
+    <dimen name="item_goodsfragment_content_head_goods_name_text">35sp</dimen>
+    <dimen name="item_goodsfragment_content_head_line_top_width">255dp</dimen>
+    <dimen name="item_goodsfragment_content_head_line_top_height">2dp</dimen>
+    <dimen name="item_goodsfragment_content_head_line_top_margin_top">27dp</dimen>
+    <dimen name="item_goodsfragment_content_head_brand_text">21sp</dimen>
+    <dimen name="item_goodsfragment_content_head_line_bottom_width">255dp</dimen>
+    <dimen name="item_goodsfragment_content_head_line_bottom_height">2dp</dimen>
+    <dimen name="item_goodsfragment_content_head_info_width">255dp</dimen>
+    <dimen name="item_goodsfragment_content_head_info_text">12sp</dimen>
+    <dimen name="item_goodsfragment_content_head_info_margin_top">25dp</dimen>
+    <dimen name="item_goodsfragment_content_head_price_text">18sp</dimen>
+    <dimen name="item_goodsfragment_content_head_price_margin_top">20dp</dimen>
+    <dimen name="item_goodsfragment_content_head_scroll_text">12sp</dimen>
+    <dimen name="item_goodsfragment_content_head_scroll_margin_top">24dp</dimen>
+    <dimen name="item_goodsfragment_content_head_down_margin_top">7dp</dimen>
+    <dimen name="item_goodsfragment_content_head_goods_name_margin_top">145dp </dimen>
+    <dimen name="item_goodsfragment_content_head_brand_margin_top">  7dp  </dimen>
+    <dimen name="item_goodsfragment_content_head_line_bottom_margin_top">7dp</dimen>
+
+
+    <dimen name="item_goodsfragment_content_goods_title_brand_text">16sp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_brand_margin_left">27dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_brand_margin_top">51dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_line_margin_left">27dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_line_margin_top">12dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_frame_width">295dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title__frame_margin_top">200dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_line_width">255dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_whiteline_margin_top">14dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_country_margin_top">17dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_country_text">32sp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_location_margin_top">20dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_location_margin_right">13dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_location_text">16sp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_english_text">12sp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_english_margin_top">5dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_whiteline_bottom_width">255dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_whiteline_bottom_margin_top">13dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_intro_margin_top">14dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_intro_margin_right">20dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title_intro_margin_bottom">22dp</dimen>
 </resources>

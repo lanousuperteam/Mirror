@@ -4,9 +4,11 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/activity_goods_content_background_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/ic_launcher" />
+        android:background="@mipmap/ic_launcher"
+        android:scaleType="fitXY"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/activity_goods_content_recyclerview"
@@ -25,15 +27,15 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:background="@mipmap/btn_return"
-           android:layout_marginLeft="10dp"/>
+           android:layout_marginLeft="@dimen/activity_goods_content_return_btn_margin_left"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/btn_wear"
             android:layout_toRightOf="@id/activity_goods_content_return_iv"
-            android:layout_marginLeft="31dp"
-            android:text="佩戴图集"
-            android:textColor="#ffffff"
+            android:layout_marginLeft="@dimen/activity_goods_content_wear_tv_margin_left"
+            android:text="@string/activity_goods_content_wear"
+            android:textColor="@color/colorText"
             android:gravity="center"
            />
         <ImageView
@@ -41,8 +43,8 @@
             android:layout_height="wrap_content"
             android:background="@mipmap/btn_buy"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginRight="@dimen/activity_goods_content_buy_margin_right"
+            android:layout_marginBottom="@dimen/activity_goods_content_buy_margin_bottom"/>
 
     </RelativeLayout>
 
