@@ -3,7 +3,7 @@ package com.lanouteam.dllo.mirror.bean;
 /**
  * Created by dllo on 16/3/30.
  */
-public  interface RequestUrls {
+public interface RequestUrls {
     //请求测试服务器网址
     String SERVER_URL = "http://api101.test.mirroreye.cn/";
 
@@ -88,7 +88,10 @@ public  interface RequestUrls {
     String DISCOUNT_LIST = SERVER_URL + "index.php/user/discount_list";
 
     //启动图
-    String STARTED_IMG=SERVER_URL+"index.php/index/started_img";
+    String STARTED_IMG = SERVER_URL + "index.php/index/started_img";
+
+    //商品分类列表
+    String MENU_LIST = SERVER_URL + "index.php/index/menu_list";
 
 
 }

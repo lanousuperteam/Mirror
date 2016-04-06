@@ -4,24 +4,32 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.DirectionalViewPager;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.Scroller;
+import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.adapters.MainViewpagerAdapter;
 import com.lanouteam.dllo.mirror.base.BaseActivity;
+import com.lanouteam.dllo.mirror.bean.MenuListBean;
+import com.lanouteam.dllo.mirror.bean.RequestUrls;
+import com.lanouteam.dllo.mirror.fragments.AllFragment;
 import com.lanouteam.dllo.mirror.fragments.GoodsFragment;
+import com.lanouteam.dllo.mirror.fragments.ShareFragment;
 import com.lanouteam.dllo.mirror.fragments.ShoppingCarFragment;
+import com.lanouteam.dllo.mirror.net.NetHelper;
+import com.lanouteam.dllo.mirror.net.NetListener;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class MainActivity extends BaseActivity {
-    private ArrayList<Fragment> data;
+public class MainActivity extends BaseActivity implements RequestUrls, NetListener, ViewPager.OnPageChangeListener {
+    private ArrayList<Fragment> fragments;
     private MainViewpagerAdapter adapter;
     private DirectionalViewPager viewPager;
     private int currentItem;
+
+    private NetHelper netHelper;
 
 
     @Override
@@ -31,17 +39,22 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        data = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            data.add(new GoodsFragment());
-        }
-        data.add(new ShoppingCarFragment());
+        fragments = new ArrayList<>();
+        netHelper = new NetHelper(this);
+        netHelper.getPhoneCode(MENU_LIST, this, null);
 
-        adapter = new MainViewpagerAdapter(getSupportFragmentManager(),data);
+
+//        fragments = new ArrayList<>();
+//        for (int i = 0; i < 5; i++) {
+//            fragments.add(new GoodsFragment());
+//        }
+//        fragments.add(new ShoppingCarFragment());
+
+        adapter = new MainViewpagerAdapter(getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
         viewPager.setOrientation(DirectionalViewPager.VERTICAL);
 
-        currentItem = viewPager.getCurrentItem();
+        viewPager.setOnPageChangeListener(this);
 
     }
 
@@ -55,7 +68,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    public void getPositionFromPopwindow(int position){
+    public void getPositionFromPopwindow(int position) {
         //这个是设置viewPager切换过度时间的类
         ViewPagerScroller scroller = new ViewPagerScroller(this);
         scroller.setScrollDuration(50);
@@ -63,14 +76,63 @@ public class MainActivity extends BaseActivity {
         viewPager.setCurrentItem(position);
     }
 
+    @Override
+    public void getSuccess(Object object) {
+        Gson gson = new Gson();
+        MenuListBean bean = gson.fromJson(object.toString(), MenuListBean.class);
+
+        for (int i = 0; i < bean.getData().getList().size(); i++) {
+            String type = bean.getData().getList().get(i).getType();
+
+            switch (type) {
+                case "3":
+                    fragments.add(new GoodsFragment());
+                    break;
+                case "4":
+                    fragments.add(new ShoppingCarFragment());
+                    break;
+                case "6":
+                    fragments.add(new AllFragment());
+                    break;
+                case "2":
+                    fragments.add(new ShareFragment());
+                    break;
+            }
+
+        }
+
+
+    }
+
+    @Override
+    public void getFailed(int s) {
+
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        currentItem = position;
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
     public class ViewPagerScroller extends Scroller {
         private int mScrollDuration;             // 滑动速度
 
         /**
          * 设置速度速度
+         *
          * @param duration
          */
-        public void setScrollDuration(int duration){
+        public void setScrollDuration(int duration) {
             this.mScrollDuration = duration;
         }
 
@@ -90,13 +152,12 @@ public class MainActivity extends BaseActivity {
         }
 
 
-
         public void initViewPagerScroll(ViewPager viewPager) {
             try {
                 Field mScroller = ViewPager.class.getDeclaredField("mScroller");
                 mScroller.setAccessible(true);
                 mScroller.set(viewPager, this);
-            } catch(Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

@@ -12,9 +12,23 @@
         android:layout_height="wrap_content">
 
     </ListView>
-
-    <ImageView
+    <TextView
+        android:id="@+id/popupwindow_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_marginStart="@dimen/popwindow_item_marginstart"
+        android:layout_marginTop="@dimen/popwindow_item_margintop"
+        android:text="返回首页"
+        android:textColor="@color/popwindow_item_textview_color"
+        android:textSize="@dimen/popwindow_item_textsize" />
+    <TextView
+        android:id="@+id/popupwindow_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/popwindow_item_marginstart"
+        android:layout_marginTop="78px"
+        android:text="退出"
+        android:textColor="@color/popwindow_item_textview_color"
+        android:textSize="@dimen/popwindow_item_textsize" />
+
 </LinearLayout>
