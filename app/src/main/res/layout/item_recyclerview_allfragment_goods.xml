@@ -3,15 +3,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.zhy.autolayout.AutoLinearLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="833px"
         android:layout_marginLeft="@dimen/goodsfragment_item_linearlayout_maginleft"
         android:background="@color/goodsfragment_item_linearlayout_background"
         android:orientation="vertical">
 
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/allfragment_item_goods_imageview"
             android:layout_width="@dimen/goodsfragment_item_imageview_width"
             android:layout_height="@dimen/goodsfragment_item_imageview_heitht"
@@ -19,7 +19,9 @@
 
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="@dimen/goodsfragment_item_relativelayout_width"
-            android:layout_height="@dimen/goodsfragment_item_relativelayout_height">
+            android:layout_height="@dimen/goodsfragment_item_relativelayout_height"
+            android:background="#fff"
+            android:layout_alignParentBottom="true">
 
             <TextView
                 android:id="@+id/allfragment_item_goods_model"
@@ -78,6 +80,6 @@
 
 
         </com.zhy.autolayout.AutoRelativeLayout>
-    </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
 
 </com.zhy.autolayout.AutoLinearLayout>

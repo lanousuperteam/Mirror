@@ -47,7 +47,7 @@
     <dimen name="popwindow_item_line_margintop">22px</dimen>
     <dimen name="goodsfragment_item_linearlayout_maginleft">22px</dimen>
     <dimen name="goodsfragment_item_imageview_width">540px</dimen>
-    <dimen name="goodsfragment_item_imageview_heitht">595px</dimen>
+    <dimen name="goodsfragment_item_imageview_heitht">833px</dimen>
     <dimen name="goodsfragment_item_relativelayout_width">540px</dimen>
     <dimen name="goodsfragment_item_relativelayout_height">238px</dimen>
     <dimen name="goodsfragment_item_model_marginleft">32px</dimen>

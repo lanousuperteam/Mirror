@@ -1,6 +1,7 @@
 package com.lanouteam.dllo.mirror.activity;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.DirectionalViewPager;
 import android.support.v4.view.ViewPager;
@@ -82,10 +83,14 @@ public class MainActivity extends BaseActivity implements RequestUrls, NetListen
 
         for (int i = 0; i < bean.getData().getList().size(); i++) {
             String type = bean.getData().getList().get(i).getType();
-
+            String categoryId = bean.getData().getList().get(i).getInfo_data();
             switch (type) {
                 case "3":
-                    fragments.add(new GoodsFragment());
+                    GoodsFragment goodsFragment = new GoodsFragment();
+                    fragments.add(goodsFragment);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("category_id", categoryId);
+                    goodsFragment.setArguments(bundle);
                     break;
                 case "4":
                     fragments.add(new ShoppingCarFragment());
@@ -97,6 +102,8 @@ public class MainActivity extends BaseActivity implements RequestUrls, NetListen
                     fragments.add(new ShareFragment());
                     break;
             }
+
+
 
         }
 
