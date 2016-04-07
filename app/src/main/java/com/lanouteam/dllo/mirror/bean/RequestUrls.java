@@ -10,8 +10,14 @@ public interface RequestUrls {
     /**
      * 以下是请求各类数据的URL
      */
+    //获取验证码
+    String SEND_CODE =SERVER_URL+"index.php/user/send_code";
+
     //用户注册
     String USER_REGISTER = SERVER_URL + "index.php/user/reg";
+
+    //用户登录
+    String LOGIN =SERVER_URL+"index.php/user/login";
 
     //故事列表
     String STORY_LIST = SERVER_URL + "index.php/story/story_list";
