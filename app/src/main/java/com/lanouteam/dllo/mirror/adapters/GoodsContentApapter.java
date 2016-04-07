@@ -153,20 +153,21 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
             double valueScroll = layoutScrollValue;
             //TODO 背景颜色改变
             //TODO 接着做背景透明度
-            double colorHead=(-valueScroll/1701)*255;
-            ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (255-(colorHead)));
-            if(((HeadViewHolder) holder).relativeLayoutHead.getBackground().getAlpha()>255 ){
-                ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha(255);
-            }else if(((HeadViewHolder) holder).relativeLayoutHead.getBackground().getAlpha()<=255&&((HeadViewHolder) holder).relativeLayoutHead.getBackground().getAlpha()>0){
-                ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (255-(colorHead)));
-                Log.i("透明度", "  " + ((HeadViewHolder) holder).relativeLayoutHead.getBackground().getAlpha() + "    dy值" + valueScroll + "     高度" + ((HeadViewHolder) holder).relativeLayoutHead.getHeight() + "      "+colorHead );
 
-            }else{
-                ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha(0);
-            }
+          //  ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (255-(colorHead)));
 
-//            ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (colorHead));
-//            Log.i("透明度", "  " + ((HeadViewHolder) holder).relativeLayoutHead.getBackground().getAlpha() + "    dy值" + valueScroll + "     高度" + ((HeadViewHolder) holder).relativeLayoutHead.getHeight() + "      " + mmm);
+//              double valueColor=layoutScrollValue;
+//               int headHeight = ((HeadViewHolder) holder).relativeLayoutHead.getHeight();
+//
+//
+//              double colorHead=((int) -(((-valueColor) - headHeight * (position - 1))))*255;
+//                ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (255 - (colorHead)*3));
+            ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (255 - (-valueScroll / 10) * 1.25f));
+
+
+            Log.i("透明度", "  " + ((HeadViewHolder) holder).relativeLayoutHead.getBackground().getAlpha() + "    dy值" + valueScroll + "     高度" + ((HeadViewHolder) holder).relativeLayoutHead.getHeight()  );
+
+
             //加载网络数据喽!!!!!!!
             ((HeadViewHolder) holder).headGoodsNameTv.setText(datas.getData().getGoods_name());
             ((HeadViewHolder) holder).headBrandTv.setText(datas.getData().getBrand());
