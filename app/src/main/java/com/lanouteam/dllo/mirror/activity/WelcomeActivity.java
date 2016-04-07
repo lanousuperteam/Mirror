@@ -16,7 +16,6 @@ import com.lanouteam.dllo.mirror.utils.SPUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -37,15 +36,14 @@ public class WelcomeActivity extends BaseActivity implements RequestUrls, NetLis
     @Override
     protected void initData() {
         welcomeNetHelper = new NetHelper(this);
-        HashMap<String, String> mMap = new HashMap<>();
-        mMap = null;
-        welcomeNetHelper.getJsonData(STARTED_IMG, this, mMap);
+        welcomeNetHelper.getJsonData(STARTED_IMG, this, null);
 
 
         /***
-         * Timer类是一种线程设施，可以用来实现某一个时间或某一段时间后安排某一个任务执行一次或定期重复执行。
-         * 该功能和TimerTask配合使用。TimerTask类用于实现由Timer安排的一次或重复执行的某个任务。
-         * 每一个Timer对象对应的是一个线程，因此计时器所执行的任务应该迅速完成，否则会延迟后续的任务执行。
+         * Timer类是一种线程设施，可以用来实现某一个时间或某一段时间后安排某一个任务执行一次或定期重复执行
+         * 该功能和TimerTask配合使用
+         * TimerTask类用于实现由Timer安排的一次或重复执行的某个任务
+         * 每一个Timer对象对应的是一个线程，因此计时器所执行的任务应该迅速完成，否则会延迟后续的任务执行
          *
          * */
         final Intent jumpMainActivityIntent = new Intent(this, MainActivity.class);
