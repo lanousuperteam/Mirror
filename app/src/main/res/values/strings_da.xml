@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="indent_datails_page_product_name">SEE CONCEPT</string>
+    <string name="all_address">我的所有地址</string>
+    <string name="IndentDatailsPageProductInformation">文案(订购商品)文案(订购商品)文案(订购商品)文案(订购商品)</string>
+</resources>

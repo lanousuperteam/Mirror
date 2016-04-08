@@ -22,15 +22,16 @@
     <string name="create_acount_activity_password">設置密碼</string>
 
     <!-- 订单管理-->
-    <string name="indent_datails_page_title">订单详情</string>
-    <string name="indent_datails_page_receiver_information">请填写收件人信息</string>
-    <string name="indent_datails_page_address">填写地址</string>
+    <string name="indent_datails_page_title">購買詳情</string>
+    <string name="indent_datails_page_receiver_information">请添加收件人信息</string>
+    <string name="indent_datails_page_address">添加地址</string>
     <string name="indent_datails_page_money">¥</string>
     <string name="indent_datails_page_money_value">3278</string>
     <string name="indent_datails_page_order_btn_font">确认下单</string>
 
     <!-- NetHelper 里面的文字-->
     <string name="nethelper_failed">拉取失败</string>
+
 
 
 </resources>

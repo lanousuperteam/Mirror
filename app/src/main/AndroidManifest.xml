@@ -14,12 +14,12 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name=".activity.WelcomeActivity">
-
-        </activity>
+        <activity android:name=".activity.WelcomeActivity"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.MainActivity" />
         <activity android:name=".activity.CreateAccountActivity"/>
+        <activity android:name=".activity.BuyDetailsActivity"/>
+        <activity android:name=".activity.AddressActivity"/>
         <activity android:name=".activity.GoodsContentActivity">
 
             <intent-filter>
