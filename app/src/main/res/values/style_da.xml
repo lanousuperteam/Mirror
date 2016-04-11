@@ -20,5 +20,44 @@
         <item name="android:layout_marginRight">15dp</item>
     </style>
 
+    <!-- 添加地址页TextView 字体样式-->
+    <style name="AddAddressFontTypeName">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">#333</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <!-- 添加地址页其他TextView 的字体样式-->
+    <style name="AddAddressFontTypeOther">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">#333</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <!-- 添加地址页 EditText 格式姓名与联络号码-->
+    <style name="AddAddressEditTextTypeNameAndTel">
+        <item name="android:maxLength">20</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#333</item>
+    </style>
+
+    <!-- 添加地址页 EditText 添加收货地址-->
+    <style name="AddAddressEditTextType">
+        <item name="android:maxLines">5</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#333</item>
+    </style>
+
+    <!-- 添加地址页 添加地址按钮-->
+    <style name="AddAddressButtonType">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:background">@mipmap/btn_login_normal</item>
+    </style>
 
 </resources>

@@ -28,6 +28,7 @@
                 android:text="@string/indent_datails_page_title" />
 
             <ImageView
+                android:id="@+id/activity_indent_details_page_return_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/indent_datails_page_title_close_icon_marginRight"
@@ -48,13 +49,39 @@
         android:background="@drawable/textview_border"
         android:orientation="vertical">
 
-        <TextView
-            style="@style/IndentDatailsPageFontFirstEditText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/indent_datails_page_first_edittext_height"
-            android:layout_marginTop="@dimen/indent_datails_page_first_edittext_marginTop"
-            android:gravity="top"
-            android:hint="@string/indent_datails_page_receiver_information" />
+            android:orientation="vertical"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/activity_indent_details_page_contact_person_tv"
+                style="@style/IndentDatailsPageFontFirstEditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/indent_datails_page_first_edittext_marginTop"
+                android:gravity="top"
+                android:text="@string/indent_datails_page_receiver_information" />
+
+            <TextView
+                android:id="@+id/activity_indent_details_page_tel_tv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                style="@style/IndentDatailsPageFontFirstEditText"
+                />
+
+            <TextView
+                android:id="@+id/activity_indent_details_page_address_tv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                style="@style/IndentDatailsPageFontFirstEditText"
+                android:ellipsize="end"
+                />
+        </LinearLayout>
 
 
         <TextView
@@ -62,6 +89,7 @@
             style="@style/IndentDatailsPageFontFirstTextView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/indent_datails_page_first_edittext_address_height"
+            android:clickable="true"
             android:gravity="center"
             android:text="@string/indent_datails_page_address" />
 

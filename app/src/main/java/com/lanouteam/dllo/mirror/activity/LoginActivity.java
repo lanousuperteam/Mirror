@@ -18,6 +18,7 @@ import com.lanouteam.dllo.mirror.db.Admin;
 import com.lanouteam.dllo.mirror.db.AdminHelper;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
+import com.lanouteam.dllo.mirror.utils.L;
 import com.lanouteam.dllo.mirror.utils.T;
 
 import org.json.JSONException;
@@ -72,7 +73,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         switch (v.getId()) {
             case R.id.login_activity_delete:
                 finish();
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 break;
             case R.id.login_activity_weibo_iv:
 
@@ -105,6 +105,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 loginNetHelper.getJsonData(LOGIN, this, loginData);
                 break;
         }
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
 
@@ -138,6 +139,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             if (result.equals("1")) {
                 Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                 String token = accountData.getJSONObject("data").getString("token");
+                L.d(token);
                 String uid = accountData.getJSONObject("data").getString("uid");
                 //利用数据库储存数据
                 AdminHelper adminHelper = new AdminHelper(LoginActivity.this, "Admin");

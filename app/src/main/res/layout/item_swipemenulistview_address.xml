@@ -1,67 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="12dp"
     android:background="@android:color/white"
-    android:orientation="vertical">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/item_all_address_name"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:text="收件人:刘德华"
-            android:textColor="#333"
-            android:textSize="13sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp">
-
-        <TextView
-            android:id="@+id/item_all_address_detailed_address"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="地址:中国香港跑马路100号"
-            android:textSize="12sp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="30dp"
-            android:src="@mipmap/edit_address" />
-    </LinearLayout>
+    android:weightSum="1.3">
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/item_all_address_ll"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:orientation="horizontal"
-        >
+        android:layout_weight="1.299"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/item_all_address_tel"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_all_address_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:text="收件人:刘德华"
+                android:textColor="#333"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
             android:layout_marginTop="8dp"
-            android:text="13001000260"
-            android:textSize="12sp" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_all_address_detailed_address"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="地址:中国香港跑马路100号"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/edit_address_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/edit_address"
+                android:layout_marginRight="30dp"/>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/item_all_address_tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="8dp"
+                android:text="13001000260"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
+
+
+
 
 </LinearLayout>

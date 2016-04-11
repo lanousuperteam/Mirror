@@ -27,6 +27,7 @@
                 android:text="@string/all_address" />
 
             <ImageView
+                android:id="@+id/activity_address_return_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/indent_datails_page_title_close_icon_marginRight"
@@ -40,8 +41,8 @@
             android:background="@mipmap/icon_black_line" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/activity_address_add_tv"
+    <Button
+        android:id="@+id/activity_address_add_btn"
         style="@style/MyAddressFontType"
         android:layout_width="match_parent"
         android:background="@android:color/white"
