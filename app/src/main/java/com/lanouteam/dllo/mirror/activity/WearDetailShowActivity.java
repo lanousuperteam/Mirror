@@ -1,14 +1,11 @@
 package com.lanouteam.dllo.mirror.activity;
 
 import android.app.Activity;
-
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 
 import com.android.volley.toolbox.ImageLoader;
 import com.google.gson.Gson;
@@ -21,7 +18,6 @@ import com.lanouteam.dllo.mirror.utils.L;
 import com.lanouteam.dllo.mirror.utils.SmoothImageView;
 
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by dllo on 16/4/8.

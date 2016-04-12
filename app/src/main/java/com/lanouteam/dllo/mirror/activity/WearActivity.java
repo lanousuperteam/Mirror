@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+
 import com.android.volley.toolbox.ImageLoader;
 import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
@@ -27,7 +28,7 @@ import java.util.HashMap;
 /**
  * Created by dllo on 16/4/8.
  */
-public class WearActivity extends BaseActivity implements View.OnClickListener {
+public class WearActivity extends BaseActivity implements View.OnClickListener,RequestUrls {
     //视频
     private JCVideoPlayer jcVideoPlayer;
     //网络解析
@@ -51,15 +52,16 @@ public class WearActivity extends BaseActivity implements View.OnClickListener {
         //网络解析
         netHelper = new NetHelper(this);
         wearInfo = new HashMap();
-        wearInfo.put("device_type", 2 + "");
+        wearInfo.put("device_type", "2" );
         wearInfo.put("goods_id", "269");
         wearInfo.put("version", "1.0.1");
         wearImageLoader = netHelper.getImageLoader();
         //video上的图片填充类型:图片充满
         JCVideoPlayer.setThumbImageViewScalType(ImageView.ScaleType.CENTER_CROP);
-        netHelper.getJsonData(RequestUrls.GOODS_LIST, new NetListener() {
+        netHelper.getJsonData(GOODS_LIST, new NetListener() {
             @Override
             public void getSuccess(Object object) {
+                L.d(object.toString());
 
                 Gson gson = new Gson();
                 WearBean data = gson.fromJson(object.toString(), WearBean.class);
