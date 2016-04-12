@@ -10,8 +10,8 @@ import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.base.BaseActivity;
 import com.lanouteam.dllo.mirror.bean.RequestParams;
 import com.lanouteam.dllo.mirror.bean.RequestUrls;
+import com.lanouteam.dllo.mirror.db.AddressDataHelperSingle;
 import com.lanouteam.dllo.mirror.db.Admin;
-import com.lanouteam.dllo.mirror.db.AdminHelper;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
 
@@ -44,9 +44,9 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
          * @Param Duration 动画持续时间
          * @Param RELATIVE_TO_SELF 相对于自身变化点在中心(0.5f,o.5f)
          * @Param Interpolator 被用来修饰动画效果，定义动画的变化率，
-        可以使存在的动画效果accelerated(加速)，decelerated(减速),repeated(重复),bounced(弹跳)等
-         @Param setFillAfter 动画终止时停留在最后一帧~不然会回到没有执行之前的状态
-          * */
+         *        可以使存在的动画效果accelerated(加速)，decelerated(减速),repeated(重复),bounced(弹跳)等
+         * @Param setFillAfter 动画终止时停留在最后一帧~不然会回到没有执行之前的状态
+         * */
 
         // 按钮动画
 //        private void playHeartbeatAnimation() {
@@ -160,8 +160,8 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
                                 String token = accountData.getJSONObject("data").getString("token");
                                 String uid = accountData.getJSONObject("data").getString("uid");
                                 //利用数据库储存数据
-                                AdminHelper adminHelper = new AdminHelper(CreateAccountActivity.this, "Admin");
-                                adminHelper.insert(new Admin(phoneNumber, token, uid));
+                                AddressDataHelperSingle addressDataHelperSingle = AddressDataHelperSingle.getInstance(CreateAccountActivity.this);
+                                addressDataHelperSingle.insert(new Admin(phoneNumber, token, uid));
                             } else {
                                 Toast.makeText(CreateAccountActivity.this, msg, Toast.LENGTH_SHORT).show();
                             }

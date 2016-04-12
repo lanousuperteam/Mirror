@@ -15,19 +15,7 @@ public class MyClass {
         admin.addStringProperty("token");
         //用户标识储存
         admin.addStringProperty("uid");
-
-        //在创建一张地址表
-        Entity addressData = schema.addEntity("AddressData");
-        //创建ID 列
-        addressData.addIdProperty().primaryKey().autoincrement();
-        //创建的列名--收件人列
-        addressData.addStringProperty("name");
-        //联系电话列
-        addressData.addStringProperty("tel");
-        //地址信息列
-        addressData.addStringProperty("address");
-
-
+        
         try {
             new DaoGenerator().generateAll(schema, "./app/src/main/java");
         } catch (Exception e) {

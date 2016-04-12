@@ -160,6 +160,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/activity_indent_details_page_submit_order_btn"
         style="@style/IndentDatailsPageOrderBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

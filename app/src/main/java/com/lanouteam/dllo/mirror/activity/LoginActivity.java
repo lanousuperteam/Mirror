@@ -14,8 +14,8 @@ import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.base.BaseActivity;
 import com.lanouteam.dllo.mirror.bean.RequestParams;
 import com.lanouteam.dllo.mirror.bean.RequestUrls;
+import com.lanouteam.dllo.mirror.db.AddressDataHelperSingle;
 import com.lanouteam.dllo.mirror.db.Admin;
-import com.lanouteam.dllo.mirror.db.AdminHelper;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
 import com.lanouteam.dllo.mirror.utils.L;
@@ -85,17 +85,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                 startActivity(jumpCreateAccountActivityIntent);
                 break;
             case R.id.login_activity_forget_password_tv:
-                T.showShort(this, "请您到官网重置密码");
+                T.showShort(this, R.string.reset_password);
                 break;
             case R.id.login_activity_login_btn:
                 //点击登录按钮
                 if (phoneNumber.length() != 11) {
-                    Toast.makeText(LoginActivity.this, "请检查您的手机号, 并重新输入", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, R.string.check_phone, Toast.LENGTH_SHORT).show();
                     break;
                 }
                 String firstNumber = phoneNumber.substring(0, 1);
                 if (!firstNumber.equals("1")) {
-                    Toast.makeText(LoginActivity.this, "请检查您的手机号, 并重新输入", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, R.string.check_phone, Toast.LENGTH_SHORT).show();
                     break;
                 }
                 NetHelper loginNetHelper = new NetHelper(LoginActivity.this);
@@ -137,17 +137,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             String result = accountData.getString("result");
             String msg = accountData.getString("msg");
             if (result.equals("1")) {
-                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
                 String token = accountData.getJSONObject("data").getString("token");
                 L.d(token);
                 String uid = accountData.getJSONObject("data").getString("uid");
                 //利用数据库储存数据
-                AdminHelper adminHelper = new AdminHelper(LoginActivity.this, "Admin");
-
-                List<Admin> names = adminHelper.queryName(phoneNumber);
+                AddressDataHelperSingle addressDataHelperSingle=AddressDataHelperSingle.getInstance(LoginActivity.this);
+                List<Admin> names = addressDataHelperSingle.queryListName(phoneNumber);
                 //判断该用户名是否存在数据库,如果存在就无需添加到数据库中.
                 if (names == null) {
-                    adminHelper.insert(new Admin(phoneNumber, token, uid));
+                    addressDataHelperSingle.insert(new Admin(phoneNumber, token, uid));
                 }
             } else {
                 Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
