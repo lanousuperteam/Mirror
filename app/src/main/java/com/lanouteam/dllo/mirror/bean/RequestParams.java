@@ -17,6 +17,22 @@ public interface RequestParams {
 
 
     /**
+     * 获取验证码  SEND_CODE
+     * 输入参数:手机号
+     * 输出参数:调用结果(result),错误信息(msg)
+     * */
+    //获取验证码(参数重复,可直接调用)
+
+
+    /**
+     * 用户登录 LOGIN
+     * 输入参数:手机号,密码
+     * 输出参数:调用结果(result),错误信息(msg),返回内容(data),凭证(token),用户id(uid)
+     * */
+    //用户登录(参数重复,可直接调用)
+
+
+    /**
      * 请求故事列表数据 STORY_LIST
      * 输入参数:凭证(token),用户id(uid),设备类型(device_type),请求条数(page),
      * 最后一条数据插入时间(last_time)
@@ -214,6 +230,8 @@ public interface RequestParams {
      *         优惠券名称(discount_name)
      * */
     //我的优惠券列表(请求参数重复,可直接调用)
+
+
 
 
 

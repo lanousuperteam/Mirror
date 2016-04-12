@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/IndentDatailsPageMargin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/indent_datails_page_title_content_marginBottom"
+            android:layout_marginTop="@dimen/indent_datails_page_title_content_marginTop"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                style="@style/IndentDatailsPageFontTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/add_address" />
+
+            <ImageView
+                android:id="@+id/activity_add_address_return_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/indent_datails_page_title_close_icon_marginRight"
+                android:src="@mipmap/icon_close" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/icon_black_line" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/AddAddressFontTypeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_name_tv" />
+
+    <EditText
+        android:id="@+id/activity_add_address_name_et"
+        style="@style/AddAddressEditTextTypeNameAndTel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/et_auth_code" />
+
+    <TextView
+        style="@style/AddAddressFontTypeOther"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_tel_tv" />
+
+    <EditText
+        android:id="@+id/activity_add_address_tel_et"
+        style="@style/AddAddressEditTextTypeNameAndTel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/et_phone_number"
+        android:inputType="phone" />
+
+    <TextView
+        style="@style/AddAddressFontTypeOther"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_address_tv" />
+
+    <EditText
+        android:id="@+id/activity_add_address_et"
+        style="@style/AddAddressFontTypeOther"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/et_address"
+        android:gravity="top|left" />
+
+    <Button
+        android:id="@+id/activity_add_address_commit_btn"
+        style="@style/AddAddressButtonType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/commit_address_btn" />
+
+
+</LinearLayout>

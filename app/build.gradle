@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23+'
     compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
@@ -40,5 +40,7 @@ dependencies {
     compile files('src/main/libs/ShareSDK-Wechat-Core-2.7.0.jar')
     compile files('src/main/libs/ShareSDK-Wechat-Favorite-2.7.0.jar')
     compile files('src/main/libs/ShareSDK-Wechat-Moments-2.7.0.jar')
+    compile 'de.greenrobot:greendao:2.1.0'
+    compile 'com.baoyz.swipemenulistview:library:1.3.0'
 
 }

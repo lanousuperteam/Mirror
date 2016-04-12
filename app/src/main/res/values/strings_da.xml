@@ -1,2 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <!-- 所有地址页-->
+    <string name="indent_datails_page_product_name">SEE CONCEPT</string>
+    <string name="all_address">我的所有地址</string>
+    <string name="IndentDatailsPageProductInformation">文案(订购商品)文案(订购商品)文案(订购商品)文案(订购商品)</string>
+
+    <!-- 添加地址页-->
+    <string name="add_address">添加地址</string>
+    <string name="add_name_tv">添加收件人姓名</string>
+    <string name="add_tel_tv">添加联络电话号码</string>
+    <string name="add_address_tv">添加收货地址</string>
+    <string name="commit_address_btn">提交地址</string>
+    
+    <!--登录页 java 文件-->
+    <string name="reset_password">请您到官网重置密码</string>
+    <string name="check_phone">请检查您的手机号,并重新输入</string>
+    <string name="login_success">登录成功</string>
+
+    
+</resources>

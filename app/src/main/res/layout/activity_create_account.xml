@@ -50,6 +50,7 @@
         android:layout_marginTop="@dimen/create_acount_activity_line_margin_top"
         android:background="@mipmap/et_phone_number"
         android:inputType="number"
+        style="@style/LoginAndCreateAccountEditText"
         />
 
     <TextView
@@ -73,13 +74,14 @@
         android:weightSum="661">
 
         <EditText
-            android:id="@+id/create_account_activity_code_ev"
+            android:id="@+id/create_account_activity_code_et"
             android:layout_width="@dimen/login_activity_weight"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/create_acount_activity_line_margin_top"
             android:layout_weight="451"
             android:background="@mipmap/et_phone_number"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:maxLength="10"/>
 
         <Button
             android:id="@+id/create_account_activity_send_code_btn"
@@ -111,7 +113,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/create_account_activity_password_tv"
         android:layout_marginTop="@dimen/create_acount_activity_line_margin_top"
-        android:background="@mipmap/et_phone_number" />
+        android:background="@mipmap/et_phone_number"
+        android:inputType="textPassword"
+        style="@style/LoginAndCreateAccountEditText"/>
 
     <Button
         android:id="@+id/create_account_activity_create_account_btn"

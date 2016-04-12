@@ -28,6 +28,7 @@
                 android:text="@string/indent_datails_page_title" />
 
             <ImageView
+                android:id="@+id/activity_indent_details_page_return_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/indent_datails_page_title_close_icon_marginRight"
@@ -45,24 +46,50 @@
         style="@style/IndentDatailsPageMargin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:background="@drawable/textview_border"
         android:orientation="vertical">
 
-        <EditText
-            style="@style/IndentDatailsPageFontFirstEditText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/indent_datails_page_first_edittext_height"
-            android:layout_marginTop="@dimen/indent_datails_page_first_edittext_marginTop"
-            android:gravity="top"
-            android:hint="@string/indent_datails_page_receiver_information" />
+            android:orientation="vertical"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/activity_indent_details_page_contact_person_tv"
+                style="@style/IndentDatailsPageFontFirstEditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/indent_datails_page_first_edittext_marginTop"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:text="@string/indent_datails_page_receiver_information" />
+
+            <TextView
+                android:id="@+id/activity_indent_details_page_tel_tv"
+                style="@style/IndentDatailsPageFontFirstEditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/activity_indent_details_page_address_tv"
+                style="@style/IndentDatailsPageFontFirstEditText"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end" />
+        </LinearLayout>
 
 
-        <EditText
-            style="@style/IndentDatailsPageFontFirstEditText"
+        <TextView
+            android:id="@+id/activity_indent_details_page_address"
+            style="@style/IndentDatailsPageFontFirstTextView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/indent_datails_page_first_edittext_address_height"
+            android:clickable="true"
             android:gravity="center"
-            android:hint="@string/indent_datails_page_address" />
+            android:text="@string/indent_datails_page_address" />
 
     </LinearLayout>
 
@@ -71,7 +98,6 @@
         style="@style/IndentDatailsPageMargin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -96,34 +122,35 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/indent_datails_page_product_name_marginBottom"
                 android:layout_marginTop="@dimen/indent_datails_page_product_name_marginTop"
-                android:text="woodlike" />
+                android:text="@string/indent_datails_page_product_name"
+                android:textStyle="bold" />
 
             <TextView
                 style="@style/IndentDatailsPageProductInformation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦" />
+                android:text="@string/IndentDatailsPageProductInformation" />
 
 
             <LinearLayout
+                style="@style/IndentDatailsPageMoneyMargin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/IndentDatailsPageMoneyMargin"
                 android:orientation="horizontal">
 
                 <TextView
+                    style="@style/IndentDatailsPageMoneyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginRight="4dp"
-                    android:text="@string/indent_datails_page_money"
-                    style="@style/IndentDatailsPageMoneyStyle"/>
+                    android:text="@string/indent_datails_page_money" />
 
 
                 <TextView
+                    style="@style/IndentDatailsPageMoneyStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/indent_datails_page_money_value"
-                    style="@style/IndentDatailsPageMoneyStyle"/>
+                    android:text="@string/indent_datails_page_money_value" />
 
             </LinearLayout>
 
@@ -133,12 +160,12 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/activity_indent_details_page_submit_order_btn"
         style="@style/IndentDatailsPageOrderBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@mipmap/btn_wechat_pay_press"
-        android:text="@string/indent_datails_page_order_btn_font"
- />
+        android:text="@string/indent_datails_page_order_btn_font" />
 
 
 </LinearLayout>

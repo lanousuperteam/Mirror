@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLoginBackground"
     android:layout_marginLeft="@dimen/login_activity_around_margin"
     android:layout_marginRight="@dimen/login_activity_around_margin"
-    android:layout_marginTop="@dimen/login_activity_around_margin">
+    android:layout_marginTop="@dimen/login_activity_around_margin"
+    android:background="@color/colorLoginBackground">
 
     <TextView
         android:id="@+id/login_activity_title_tv"
@@ -14,140 +14,145 @@
         android:text="@string/login_activity_number"
         android:textColor="@color/colorBlackText"
         android:textSize="@dimen/login_text" />
+
     <ImageView
         android:id="@+id/login_activity_line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@mipmap/icon_register_line"
         android:layout_below="@id/login_activity_title_tv"
-        android:layout_marginTop="@dimen/login_activity_line_margin_top"/>
+        android:layout_marginTop="@dimen/login_activity_line_margin_top"
+        android:background="@mipmap/icon_register_line" />
+
     <ImageView
         android:id="@+id/login_activity_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/icon_close"
         android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/login_activity_title_tv"
         android:layout_marginRight="@dimen/login_activity_delete_margin_right"
-        android:layout_alignTop="@id/login_activity_title_tv"/>
+        android:src="@mipmap/icon_close" />
+
     <TextView
         android:id="@+id/login_activity_phone_number_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_activity_telephone"
         android:layout_below="@id/login_activity_line"
         android:layout_marginTop="@dimen/login_activity_margin_top"
+        android:text="@string/login_activity_telephone"
         android:textColor="@color/colorBlackText"
-        android:textSize="@dimen/login_activity_phone_text"/>
+        android:textSize="@dimen/login_activity_phone_text" />
+
     <EditText
         android:id="@+id/login_activity_phone_number_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@mipmap/et_phone_number"
         android:layout_below="@id/login_activity_phone_number_tv"
-        android:layout_marginTop="@dimen/login_activity_line_margin_top"/>
+        android:layout_marginTop="@dimen/login_activity_line_margin_top"
+        android:background="@mipmap/et_phone_number"
+        style="@style/LoginAndCreateAccountEditText"
+        />
+
     <TextView
         android:id="@+id/login_activity_password_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login_activity_password"
-        android:textSize="@dimen/login_activity_phone_text"
-        android:textColor="@color/colorBlackText"
         android:layout_below="@id/login_activity_phone_number_et"
-        android:layout_marginTop="@dimen/login_activity_margin_top"/>
+        android:layout_marginTop="@dimen/login_activity_margin_top"
+        android:text="@string/login_activity_password"
+        android:textColor="@color/colorBlackText"
+        android:textSize="@dimen/login_activity_phone_text" />
+
     <EditText
+        style="@style/LoginAndCreateAccountEditText"
         android:id="@+id/login_activity_password_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@mipmap/et_auth_code"
         android:layout_below="@id/login_activity_password_tv"
         android:layout_marginTop="@dimen/login_activity_line_margin_top"
-        android:inputType="textPassword"
-        />
+        android:background="@mipmap/et_auth_code"
+        android:inputType="textPassword" />
+
     <TextView
         android:id="@+id/login_activity_forget_password_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_activity_forget_password"
-        android:layout_below="@id/login_activity_password_et"
-        android:textColor="@color/colorBlackText"
-        android:textSize="@dimen/login_activity_phone_text"
-        android:layout_marginTop="@dimen/login_activity_line_margin_top"
         android:layout_alignParentRight="true"
-        />
-     <Button
-         android:id="@+id/login_activity_login_btn"
-         android:layout_width="match_parent"
-         android:layout_height="@dimen/login_activity_btn_height"
-         android:background="@mipmap/btn_cannot_use"
-         android:layout_below="@id/login_activity_password_et"
-         android:layout_marginTop="@dimen/login_activity_btn_height"
-         android:text="@string/login_activity_login"
-         android:textSize="@dimen/login_activity_login_text"
-         android:textColor="@color/colorLoginText"
-         android:enabled="false"
-         />
+        android:layout_below="@id/login_activity_password_et"
+        android:layout_marginTop="@dimen/login_activity_line_margin_top"
+        android:text="@string/login_activity_forget_password"
+        android:textColor="@color/colorBlackText"
+        android:textSize="@dimen/login_activity_phone_text" />
+
+    <Button
+        android:id="@+id/login_activity_login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/login_activity_btn_height"
+        android:layout_below="@id/login_activity_password_et"
+        android:layout_marginTop="@dimen/login_activity_btn_height"
+        android:background="@mipmap/btn_cannot_use"
+        android:enabled="false"
+        android:text="@string/login_activity_login"
+        android:textColor="@color/colorLoginText"
+        android:textSize="@dimen/login_activity_login_text" />
     <!--该button未设选择器-->
     <Button
         android:id="@+id/login_activity_create_account_btn"
         android:layout_width="match_parent"
         android:layout_height="@dimen/login_activity_btn_height"
-        android:background="@mipmap/btn_register_normal"
         android:layout_below="@id/login_activity_login_btn"
         android:layout_marginTop="@dimen/login_activity_around_margin"
-        android:textSize="@dimen/login_activity_login_text"
+        android:background="@mipmap/btn_register_normal"
         android:text="@string/login_activity_creat_number"
         android:textColor="@color/colorLoginText"
-        />
+        android:textSize="@dimen/login_activity_login_text" />
     <!--该button未设选择器-->
 
     <TextView
         android:id="@+id/login_activity_code_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_activity_use_number"
         android:layout_above="@+id/login_activity_linearlayout"
-        android:layout_marginBottom="@dimen/login_activity_margin_bottom"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/login_activity_margin_bottom"
+        android:text="@string/login_activity_use_number"
         android:textColor="@color/colorBlackText"
-        android:textSize="@dimen/login_activity_login_text"
-        />
-     <LinearLayout
-         android:id="@+id/login_activity_linearlayout"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_alignParentBottom="true">
+        android:textSize="@dimen/login_activity_login_text" />
 
-         <ImageView
-             android:layout_width="@dimen/login_activity_weight"
-             android:layout_height="wrap_content"
-             android:layout_weight="1"/>
+    <LinearLayout
+        android:id="@+id/login_activity_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
 
-         <ImageView
-             android:id="@+id/login_activity_weibo_iv"
-             android:layout_width="@dimen/login_activity_weight"
-             android:layout_height="wrap_content"
-             android:layout_weight="1"
-             android:src="@mipmap/icon_login_weibo"
-             android:layout_alignParentBottom="true"
-             android:layout_marginBottom="@dimen/login_activity_margin_bottom"/>
+        <ImageView
+            android:layout_width="@dimen/login_activity_weight"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
-         <ImageView
-             android:id="@+id/login_activity_weChat_iv"
-             android:layout_width="@dimen/login_activity_weight"
-             android:layout_height="wrap_content"
-             android:layout_weight="1"
-             android:src="@mipmap/icon_login_wechat"
-             android:layout_alignParentBottom="true"
-             android:layout_marginBottom="@dimen/login_activity_margin_bottom"
-             android:layout_alignRight="@+id/login_activity_code_tv"
-             />
+        <ImageView
+            android:id="@+id/login_activity_weibo_iv"
+            android:layout_width="@dimen/login_activity_weight"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/login_activity_margin_bottom"
+            android:layout_weight="1"
+            android:src="@mipmap/icon_login_weibo" />
 
-         <ImageView
-             android:layout_width="@dimen/login_activity_weight"
-             android:layout_height="wrap_content"
-             android:layout_weight="1"/>
-     </LinearLayout>
+        <ImageView
+            android:id="@+id/login_activity_weChat_iv"
+            android:layout_width="@dimen/login_activity_weight"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/login_activity_code_tv"
+            android:layout_marginBottom="@dimen/login_activity_margin_bottom"
+            android:layout_weight="1"
+            android:src="@mipmap/icon_login_wechat" />
 
+        <ImageView
+            android:layout_width="@dimen/login_activity_weight"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 
 </RelativeLayout>
