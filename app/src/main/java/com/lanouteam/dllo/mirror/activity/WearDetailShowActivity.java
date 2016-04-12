@@ -1,0 +1,128 @@
+package com.lanouteam.dllo.mirror.activity;
+
+import android.app.Activity;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+
+import com.android.volley.toolbox.ImageLoader;
+import com.google.gson.Gson;
+import com.lanouteam.dllo.mirror.R;
+import com.lanouteam.dllo.mirror.bean.RequestUrls;
+import com.lanouteam.dllo.mirror.bean.WearBean;
+import com.lanouteam.dllo.mirror.net.NetHelper;
+import com.lanouteam.dllo.mirror.net.NetListener;
+import com.lanouteam.dllo.mirror.utils.L;
+import com.lanouteam.dllo.mirror.utils.SmoothImageView;
+
+import java.util.HashMap;
+import java.util.List;
+
+/**
+ * Created by dllo on 16/4/8.
+ */
+public class WearDetailShowActivity extends Activity {
+    //接收值
+    private int mLocationX;
+    private int mLocationY;
+    private int mWidth;
+    private int mHeight;
+    //网络解析
+    private NetHelper netHelper;
+    private HashMap wearInfo;
+    private ImageLoader wearImageLoader;
+    //自定义imageview
+    SmoothImageView imageView = null;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        //网络解析
+        netHelper = new NetHelper(this);
+        wearInfo = new HashMap();
+        wearInfo.put("device_type", 2 + "");
+        wearInfo.put("goods_id", "269");
+        wearInfo.put("version", "1.0.1");
+        wearImageLoader = netHelper.getImageLoader();
+        //接收值
+        mLocationX = getIntent().getIntExtra("locationX",0);
+        mLocationY = getIntent().getIntExtra("locationY", 0);
+        mWidth = getIntent().getIntExtra("width", 0);
+        mHeight = getIntent().getIntExtra("height", 0);
+        L.i("XY值", mLocationX + "  " + mLocationY + "  "+mWidth+" "+mHeight+"mmmmm");
+        imageView = new SmoothImageView(this);
+        imageView.setOriginalInfo(mWidth, mHeight, mLocationX, mLocationY);
+        imageView.transformIn();
+        imageView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));//创建一个指定宽高参数  参数为-1,-1因为代表MATCH_PARENT(源码中有说明)
+        imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        setContentView(imageView);
+
+        netHelper.getJsonData(RequestUrls.GOODS_LIST, new NetListener() {
+            @Override
+            public void getSuccess(Object object) {
+                Gson gson = new Gson();
+                WearBean data = gson.fromJson(object.toString(), WearBean.class);
+                wearImageLoader.get(data.getData().getList().get(0).getWear_video().get(1).getData(), wearImageLoader.getImageListener(
+                        imageView, Color.BLACK, R.mipmap.ic_launcher));
+
+            }
+
+            @Override
+            public void getFailed(int s) {
+
+            }
+        }, wearInfo);
+
+    }
+
+    /**
+     * 点击返回键退出的方法
+     */
+    @Override
+    public void onBackPressed() {
+        imageView.setOnTransformListener(new SmoothImageView.TransformListener() {
+            @Override
+            public void onTransformComplete(int mode) {
+                if (mode == 2) {
+                    finish();
+                }
+            }
+        });
+        imageView.transformOut();
+    }
+
+    /***
+     * @param event 图片触摸事件
+     * @return
+     */
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        imageView.setOnTransformListener(new SmoothImageView.TransformListener() {
+            @Override
+            public void onTransformComplete(int mode) {
+                if (mode == 2) {
+                    finish();
+                }
+            }
+        });
+        imageView.transformOut();
+        return true;
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (isFinishing()) {
+            overridePendingTransition(0, 0);
+        }
+    }
+
+}
+

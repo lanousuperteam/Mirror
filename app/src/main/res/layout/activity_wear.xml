@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="330dp"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/wear_activity_tv"
+            android:layout_width="@dimen/wear_activity_tv_width"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/wear_activity_title_margin_top"
+            android:text="@string/wear_activity_title"
+            android:textColor="@color/colorBlackText"
+            android:textSize="@dimen/wear_activity_title_text" />
+
+        <ImageView
+            android:id="@+id/wear_activity_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wear_activity_tv"
+            android:layout_marginTop="@dimen/wear_activity_line_margin_top"
+            android:src="@mipmap/icon_register_line" />
+
+        <ListView
+            android:id="@+id/wear_activity_listview"
+            android:layout_width="@dimen/wear_activity_tv_width"
+            android:layout_height="match_parent"
+            android:layout_below="@id/wear_activity_line"
+            android:layout_centerHorizontal="true">
+
+
+        </ListView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/relativeLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/relativeLayout">
+
+        <ImageView
+            android:id="@+id/activity_wear_return_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@mipmap/btn_return" />
+
+        <ImageView
+            android:id="@+id/activity_wear_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:src="@mipmap/btn_buy" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,6 +1,8 @@
 package com.lanouteam.dllo.mirror.adapters;
 
 import android.content.Context;
+import android.graphics.PointF;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,10 +14,12 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.lanouteam.dllo.mirror.R;
-
+import com.facebook.drawee.view.SimpleDraweeView;
+import com.lanouteam.dllo.mirror.base.BaseApplication;
 import com.lanouteam.dllo.mirror.bean.GoodsContentBean;
 
 import com.lanouteam.dllo.mirror.net.NetHelper;
+import com.lanouteam.dllo.mirror.utils.LoginAndShare;
 
 
 import java.util.HashMap;
@@ -26,29 +30,32 @@ import java.util.HashMap;
  */
 public class GoodsContentApapter extends RecyclerView.Adapter {
     private GoodsContentBean datas;
-    private RecyclerView recyclerView;
-    private int layoutScrollValue, valueDy;
+    private int layoutScrollValue;
+    private LoginAndShare loginAndShare;
+    private String id="28JeX1452078872";
     final int TYPE_HEAD = 0;
     final int TYPE_TRANSPARENT = 1;
     final int TYPE_GOODS_TITLE = 2;
     final int TYPE_GOODS_DETAILS = 3;
-    GoodsContentInterface goodsContentInterface;
+
     private NetHelper netHelper;
     private HashMap goodsInfo;
-    private Context context;
     private ImageLoader detailsImageLoader, titleImageLoader;
 
+    private GoodsContentInterface goodsContentInterface;
 
-    public GoodsContentApapter(GoodsContentBean datas, Context context) {
+
+    public GoodsContentApapter(GoodsContentBean datas) {
         this.datas = datas;
-        this.context = context;
-        //网络解析
+//        //网络解析
+
         goodsInfo = new HashMap();
         goodsInfo.put("device_type", 2 + "");
         goodsInfo.put("goods_id", "96Psa1455524521");
-        netHelper = new NetHelper(context);
+        netHelper = new NetHelper(BaseApplication.mContext);
         titleImageLoader = netHelper.getImageLoader();
         detailsImageLoader = netHelper.getImageLoader();
+        loginAndShare=new LoginAndShare(id);
 
 
     }
@@ -58,7 +65,6 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
      */
     public void setScrollValue(int scrollValue) {
         this.layoutScrollValue = scrollValue;
-
         //刷新UI
         /**
          * 必须加上这句话,持续的刷新从Actvity 接收的滑动值.
@@ -68,8 +74,6 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
 
@@ -130,48 +134,35 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
     /**
      * 加载数据
      *
-     * @instanceof instanceof是Java的一个二元操作符，和==，>，<是同一类东东。由于它是由字母组成的，所以也是Java的保留关键字。
+     * @instanceof instanceof是Java的一个二元操作符。由于它是由字母组成的，所以也是Java的保留关键字。
      * 它的作用是测试它左边的对象是否是它右边的类的实例，返回boolean类型的数据
      * java 中的instanceof 运算符是用来在运行时指出对象是否是特定类的一个实例。instanceof通过返回一个布尔值来指出，这个对象是否是这个特定类或者是它的子类的一个实例。
-     * <p/>
-     * 用法：
-     * result = object instanceof class
-     * 参数：
-     * Result：布尔类型。
-     * Object：必选项。任意对象表达式。
-     * Class：必选项。任意已定义的对象类。
-     * 说明：
-     * 如果 object 是 class 的一个实例，则 instanceof 运算符返回 true。如果 object 不是指定类的一个实例，或者 object 是 null，则返回 false。
      * @该步骤也可以用switch判断类型TYPE_HEAD之类代替if这样就可以不用instanceof.
      */
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
-        //goodsContentInterface.getPosition(position);//为注掉的动画的第二种方法,将adapter的position传入activity
+        goodsContentInterface.getPosition(position);//为注掉的动画的第二种方法,将adapter的position传入activity
 
         if (holder instanceof HeadViewHolder) {
             double valueScroll = layoutScrollValue;
             //TODO 背景颜色改变
             //TODO 接着做背景透明度
-            double colorHead=(-valueScroll/1701)*255;
-            ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (255-(colorHead)));
-            if(((HeadViewHolder) holder).relativeLayoutHead.getBackground().getAlpha()>255 ){
-                ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha(255);
-            }else if(((HeadViewHolder) holder).relativeLayoutHead.getBackground().getAlpha()<=255&&((HeadViewHolder) holder).relativeLayoutHead.getBackground().getAlpha()>0){
-                ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (255-(colorHead)));
-                Log.i("透明度", "  " + ((HeadViewHolder) holder).relativeLayoutHead.getBackground().getAlpha() + "    dy值" + valueScroll + "     高度" + ((HeadViewHolder) holder).relativeLayoutHead.getHeight() + "      "+colorHead );
+//            ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (255 - (-valueScroll / 10) * 1.25f));
+//            Log.i("透明度", "  " + ((HeadViewHolder) holder).relativeLayoutHead.getBackground().getAlpha() + "     value值" + valueScroll + "     高度" + ((HeadViewHolder) holder).relativeLayoutHead.getHeight());
 
-            }else{
-                ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha(0);
-            }
-
-//            ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (colorHead));
-//            Log.i("透明度", "  " + ((HeadViewHolder) holder).relativeLayoutHead.getBackground().getAlpha() + "    dy值" + valueScroll + "     高度" + ((HeadViewHolder) holder).relativeLayoutHead.getHeight() + "      " + mmm);
             //加载网络数据喽!!!!!!!
             ((HeadViewHolder) holder).headGoodsNameTv.setText(datas.getData().getGoods_name());
             ((HeadViewHolder) holder).headBrandTv.setText(datas.getData().getBrand());
             ((HeadViewHolder) holder).headGoodsPriceTv.setText(datas.getData().getGoods_price() + "");
             ((HeadViewHolder) holder).headInfoDesTv.setText(datas.getData().getInfo_des());
+
+            ((HeadViewHolder) holder).imageViewShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    loginAndShare.MyShare();
+                }
+            });
 
 
         } else if (holder instanceof GoodsTitleViewHolder) {
@@ -191,10 +182,9 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
             ((GoodsTitleViewHolder) holder).goodsTitleEnglishTv.setText(datas.getData().getGoods_data().get(0).getEnglish());
             ((GoodsTitleViewHolder) holder).goodsTitleIntroContent.setText(datas.getData().getGoods_data().get(position).getIntroContent());
             ((GoodsTitleViewHolder) holder).goodsTitleLocationTv.setText(datas.getData().getGoods_data().get(0).getLocation());
+           // ((GoodsTitleViewHolder) holder).goodsTitleImg.setImageURI(Uri.parse(datas.getData().getGoods_pic()));
+            titleImageLoader.get(datas.getData().getGoods_pic(),titleImageLoader.getImageListener(((GoodsTitleViewHolder) holder).goodsTitleImg,R.mipmap.ic_launcher,R.mipmap.background));
 
-
-            titleImageLoader.get(datas.getData().getGoods_pic(), titleImageLoader.getImageListener(
-                    ((GoodsTitleViewHolder) holder).goodsTitleImg, R.mipmap.ic_launcher, R.mipmap.background));
 
 
         } else if (holder instanceof GoodsDetailsViewHolder) {
@@ -211,17 +201,19 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
                 ((GoodsDetailsViewHolder) holder).goodsDetailsRelativeLayout.setLayoutParams(paramsDetails);
                 ((GoodsDetailsViewHolder) holder).goodsDetailsRelativeLayout.setVisibility(View.VISIBLE);
                 //加载网络数据喽!!!!!!!
-
+                //((GoodsDetailsViewHolder) holder).goodsDetailsImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0f));
                 ((GoodsDetailsViewHolder) holder).goodsDetailsDetailsName.setText(datas.getData().getGoods_data().get(position - 2).getName());
                 ((GoodsDetailsViewHolder) holder).goodsDetailsIntroContent.setText(datas.getData().getGoods_data().get(position - 2).getIntroContent());
+               // ((GoodsDetailsViewHolder) holder).goodsDetailsImg.setImageURI(Uri.parse(datas.getData().getDesign_des().get(position - 3).getImg()));
+                detailsImageLoader.get(datas.getData().getDesign_des().get(position - 3).getImg(),detailsImageLoader.getImageListener(((GoodsDetailsViewHolder) holder).goodsDetailsImg,R.mipmap.ic_launcher,R.mipmap.background));
 
-
-                detailsImageLoader.get(datas.getData().getDesign_des().get(position - 3).getImg(), detailsImageLoader.getImageListener(
-                        ((GoodsDetailsViewHolder) holder).goodsDetailsImg, R.mipmap.ic_launcher, R.mipmap.background));
             } else {
+
+              //  ((GoodsDetailsViewHolder) holder).goodsDetailsImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0f));
                 ((GoodsDetailsViewHolder) holder).goodsDetailsRelativeLayout.setVisibility(View.INVISIBLE);
-                detailsImageLoader.get(datas.getData().getDesign_des().get(position - 3).getImg(), detailsImageLoader.getImageListener(
-                        ((GoodsDetailsViewHolder) holder).goodsDetailsImg, R.mipmap.ic_launcher, R.mipmap.background));
+
+                  //  ((GoodsDetailsViewHolder) holder).goodsDetailsImg.setImageURI(Uri.parse(datas.getData().getDesign_des().get(position - 3).getImg()));
+                    detailsImageLoader.get(datas.getData().getDesign_des().get(position - 3).getImg(),detailsImageLoader.getImageListener(((GoodsDetailsViewHolder) holder).goodsDetailsImg,R.mipmap.ic_launcher,R.mipmap.background));
 
             }
 
@@ -233,7 +225,7 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return datas.getData().getDesign_des().size() + 3;
+        return datas != null && datas.getData().getDesign_des().size() + 3 > 0 ? datas.getData().getDesign_des().size() + 3 : 0;
     }
 
     /**
@@ -244,6 +236,7 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
         //需要网络解析的数据
         private TextView headGoodsNameTv, headBrandTv, headInfoDesTv, headGoodsPriceTv;
         private RelativeLayout relativeLayoutHead;
+        private ImageView imageViewShare;
 
         public HeadViewHolder(View itemView) {
             super(itemView);
@@ -252,6 +245,7 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
             headInfoDesTv = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_head_info_des);
             headGoodsPriceTv = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_head_goods_price);
             relativeLayoutHead = (RelativeLayout) itemView.findViewById(R.id.item_goodsfragment_content_head_relativelayout);
+            imageViewShare= (ImageView) itemView.findViewById(R.id.item_goodsfragment_content_head_share);
         }
     }
 
@@ -266,7 +260,7 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
     public class GoodsTitleViewHolder extends RecyclerView.ViewHolder {
         //需要网络解析的数据
         private TextView goodsTitleBrandTv, goodsTitleCountryTv, goodsTitleLocationTv, goodsTitleEnglishTv, goodsTitleIntroContent;
-        private ImageView goodsTitleImg;
+        private  ImageView  goodsTitleImg;
         private RelativeLayout goodsTitleRelativeLayout;
 
         public GoodsTitleViewHolder(View itemView) {
@@ -287,7 +281,7 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
     public class GoodsDetailsViewHolder extends RecyclerView.ViewHolder {
         //需要网络解析的数据
         private TextView goodsDetailsDetailsName, goodsDetailsIntroContent;
-        private ImageView goodsDetailsImg;
+        private ImageView  goodsDetailsImg;
         private RelativeLayout goodsDetailsRelativeLayout, detailsRelativeLayoutAll;
 
         public GoodsDetailsViewHolder(View itemView) {

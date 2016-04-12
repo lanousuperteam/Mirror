@@ -26,8 +26,9 @@
 
     <ImageView
         android:id="@+id/item_goodsfragment_content_goods_title_img"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/item_goodsfragment_content_goods_title_line"
         android:src="@mipmap/ic_launcher" />
 
@@ -38,7 +39,7 @@
         android:layout_below="@id/item_goodsfragment_content_goods_title_img"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/item_goodsfragment_content_goods_title__frame_margin_top"
-        android:background="#000000">
+        android:background="@color/goodsfragment_item_price_textcolor">
 
         <ImageView
             android:id="@+id/item_goodsfragment_content_goods_title_whiteline_top"

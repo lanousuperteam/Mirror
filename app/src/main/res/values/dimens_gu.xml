@@ -8,7 +8,7 @@
     <!--商品二级页面recycleview的子布局-->
     <dimen name="item_goodsfragment_content_details_test_picture_height">300dp</dimen>
     <dimen name="item_goodsfragment_content_details_move_frame_width">295dp</dimen>
-    <dimen name="item_goodsfragment_content_details_move_frame_margin_top">57dp</dimen>
+    <dimen name="item_goodsfragment_content_details_move_frame_margin_top">100dp</dimen>
     <dimen name="item_goodsfragment_content_details_line_margin_top">14dp</dimen>
     <dimen name="item_goodsfragment_content_details_name_margin_top">15dp</dimen>
     <dimen name="item_goodsfragment_content_details_name_tetx">30sp</dimen>
@@ -45,7 +45,7 @@
     <dimen name="item_goodsfragment_content_goods_title_line_margin_left">27dp</dimen>
     <dimen name="item_goodsfragment_content_goods_title_line_margin_top">12dp</dimen>
     <dimen name="item_goodsfragment_content_goods_title_frame_width">295dp</dimen>
-    <dimen name="item_goodsfragment_content_goods_title__frame_margin_top">200dp</dimen>
+    <dimen name="item_goodsfragment_content_goods_title__frame_margin_top">100dp</dimen>
     <dimen name="item_goodsfragment_content_goods_title_line_width">255dp</dimen>
     <dimen name="item_goodsfragment_content_goods_title_whiteline_margin_top">14dp</dimen>
     <dimen name="item_goodsfragment_content_goods_title_country_margin_top">17dp</dimen>

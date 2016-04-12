@@ -3,10 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alpha="0.5"
-    android:background="#000000"
+    android:background="@color/goodsfragment_item_price_textcolor"
     android:id="@+id/item_goodsfragment_content_head_relativelayout"
 
     >
+    <ImageView
+        android:id="@+id/item_goodsfragment_content_head_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_share"
+        android:layout_alignRight="@+id/item_goodsfragment_content_head_frame"
+        android:layout_marginTop="90dp"/>
 
     <ImageView
         android:id="@+id/item_goodsfragment_content_head_frame"

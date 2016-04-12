@@ -81,5 +81,13 @@
     <dimen name="indent_datails_page_product_name_marginBottom">15dp</dimen>
 
 
+    <dimen name="wear_activity_title_text">17sp</dimen>
+    <dimen name="wear_activity_title_margin_top">10dp</dimen>
+    <dimen name="wear_activity_tv_width">330dp</dimen>
+    <dimen name="wear_activity_line_margin_top">10dp</dimen>
+    <dimen name="item_wear_activity_iv_margin_top">10dp</dimen>
+    <dimen name="item_wear_activity_video_height">165dp</dimen>
+    <dimen name="item_wear_activity_video_margin_top">10dp</dimen>
+
 
 </resources>
