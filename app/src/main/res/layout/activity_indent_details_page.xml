@@ -60,27 +60,25 @@
                 style="@style/IndentDatailsPageFontFirstEditText"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
                 android:layout_marginTop="@dimen/indent_datails_page_first_edittext_marginTop"
+                android:layout_weight="1"
                 android:gravity="top"
                 android:text="@string/indent_datails_page_receiver_information" />
 
             <TextView
                 android:id="@+id/activity_indent_details_page_tel_tv"
+                style="@style/IndentDatailsPageFontFirstEditText"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1"
-                style="@style/IndentDatailsPageFontFirstEditText"
-                />
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/activity_indent_details_page_address_tv"
+                style="@style/IndentDatailsPageFontFirstEditText"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                style="@style/IndentDatailsPageFontFirstEditText"
-                android:ellipsize="end"
-                />
+                android:ellipsize="end" />
         </LinearLayout>
 
 
@@ -100,8 +98,6 @@
         style="@style/IndentDatailsPageMargin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/white"
         android:orientation="horizontal">
 
         <LinearLayout

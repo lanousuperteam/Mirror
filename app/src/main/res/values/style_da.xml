@@ -60,4 +60,13 @@
         <item name="android:background">@mipmap/btn_login_normal</item>
     </style>
 
+    <!-- 所有地址页 显示地址的 listview-->
+    <style name="AllAddressSwipemenuListviewStyle">
+        <item name="android:dividerHeight">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+
+
+
 </resources>

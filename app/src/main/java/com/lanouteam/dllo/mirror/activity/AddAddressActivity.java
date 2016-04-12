@@ -40,7 +40,6 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     @Override
     protected void initData() {
         netHelper = new NetHelper(AddAddressActivity.this);
-        //TODO  更改跳转
         //接收传递过来的地址信息类
         Intent intent=this.getIntent();
         AddressSwipeMenuBean addressData = (AddressSwipeMenuBean) intent.getSerializableExtra("address");

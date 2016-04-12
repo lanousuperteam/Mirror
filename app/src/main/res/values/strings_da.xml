@@ -7,4 +7,8 @@
 
     <!-- 添加地址页-->
     <string name="add_address">添加地址</string>
+    <string name="add_name_tv">添加收件人姓名</string>
+    <string name="add_tel_tv">添加联络电话号码</string>
+    <string name="add_address_tv">添加收货地址</string>
+    <string name="commit_address_btn">提交地址</string>
 </resources>
