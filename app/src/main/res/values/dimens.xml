@@ -46,9 +46,9 @@
     <dimen name="popwindow_item_line_marginstart">69px</dimen>
     <dimen name="popwindow_item_line_margintop">22px</dimen>
     <dimen name="goodsfragment_item_linearlayout_maginleft">22px</dimen>
-    <dimen name="goodsfragment_item_imageview_width">540px</dimen>
-    <dimen name="goodsfragment_item_imageview_heitht">595px</dimen>
-    <dimen name="goodsfragment_item_relativelayout_width">540px</dimen>
+    <dimen name="goodsfragment_item_imageview_width">450px</dimen>
+    <dimen name="goodsfragment_item_imageview_heitht">833px</dimen>
+    <dimen name="goodsfragment_item_relativelayout_width">450px</dimen>
     <dimen name="goodsfragment_item_relativelayout_height">238px</dimen>
     <dimen name="goodsfragment_item_model_marginleft">32px</dimen>
     <dimen name="goodsfragment_item_model_margintop">50px</dimen>
@@ -65,7 +65,7 @@
     <dimen name="goodsfragment_item_price_marginright">32px</dimen>
     <dimen name="goodsfragment_item_price_margintop">50px</dimen>
     <dimen name="goodsfragment_item_price_textsize">30px</dimen>
-    <dimen name="shoppingcarfragment_second_linearlayout_margintop">350px</dimen>
+    <dimen name="shoppingcarfragment_second_linearlayout_margintop">400px</dimen>
     <dimen name="shoppingcarfragment_textview_margintop">20px</dimen>
 
     <!-- 订单管理页面-->
@@ -81,6 +81,7 @@
     <dimen name="indent_datails_page_product_name_marginBottom">15dp</dimen>
 
 
+    <!-- 佩戴图集-->
     <dimen name="wear_activity_title_text">17sp</dimen>
     <dimen name="wear_activity_title_margin_top">10dp</dimen>
     <dimen name="wear_activity_tv_width">330dp</dimen>
@@ -88,6 +89,7 @@
     <dimen name="item_wear_activity_iv_margin_top">10dp</dimen>
     <dimen name="item_wear_activity_video_height">165dp</dimen>
     <dimen name="item_wear_activity_video_margin_top">10dp</dimen>
+
 
 
 </resources>

@@ -1,4 +1,4 @@
-package com.lanouteam.dllo.mirror.jcvideoplayer_lib;
+package com.lanouteam.dllo.mirror.jcvideoplayerlib;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,7 +10,6 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.lanouteam.dllo.mirror.R;
-import com.lanouteam.dllo.mirror.activity.WearActivity;
 
 /**
  * <p>全屏的activity</p>

@@ -15,7 +15,7 @@ import com.lanouteam.dllo.mirror.base.BaseActivity;
 import com.lanouteam.dllo.mirror.base.BaseApplication;
 import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.bean.WearBean;
-import com.lanouteam.dllo.mirror.jcvideoplayer_lib.JCVideoPlayer;
+import com.lanouteam.dllo.mirror.jcvideoplayerlib.JCVideoPlayer;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
 import com.lanouteam.dllo.mirror.utils.L;

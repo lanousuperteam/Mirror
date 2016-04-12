@@ -4,23 +4,25 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.zhy.autolayout.AutoLinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="@dimen/goodsfragment_item_linearlayout_width"
+        android:layout_height="@dimen/goodsfragment_item_linearlayout_height"
         android:layout_marginLeft="@dimen/goodsfragment_item_linearlayout_maginleft"
         android:background="@color/goodsfragment_item_linearlayout_background"
         android:orientation="vertical">
 
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:scaleType="fitXY"
             android:id="@+id/goodsfragment_item_imageview"
             android:layout_width="@dimen/goodsfragment_item_imageview_width"
-            android:layout_height="@dimen/goodsfragment_item_imageview_heitht"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_height="@dimen/goodsfragment_item_imageview_heitht" />
 
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="@dimen/goodsfragment_item_relativelayout_width"
-            android:layout_height="@dimen/goodsfragment_item_relativelayout_height">
+            android:layout_height="@dimen/goodsfragment_item_relativelayout_height"
+            android:background="@color/goodsfragment_item_relativelayout_background"
+            android:layout_alignParentBottom="true">
 
             <TextView
                 android:id="@+id/goodsfragment_item_model"
@@ -28,7 +30,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/goodsfragment_item_model_marginleft"
                 android:layout_marginTop="@dimen/goodsfragment_item_model_margintop"
-                android:text="SEE CONCEPT"
                 android:textColor="@color/goodsfragment_item_model_textcolor"
                 android:textSize="@dimen/goodsfragment_item_model_textsize"
                 android:textStyle="bold" />
@@ -40,13 +41,12 @@
                 android:layout_below="@id/goodsfragment_item_model"
                 android:layout_marginLeft="@dimen/goodsfragment_item_address_marginleft"
                 android:layout_marginTop="@dimen/goodsfragment_item_address_margintop"
-                android:text="法国巴黎"
                 android:textColor="@color/goodsfragment_item_address_textcolor"
                 android:textSize="@dimen/goodsfragment_item_address_textsize" />
 
             <ImageView
                 android:id="@+id/goodsfragment_item_line"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/goodsfragment_item_line_width"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/goodsfragment_item_address"
                 android:layout_marginLeft="@dimen/goodsfragment_item_line_marginleft"
@@ -61,7 +61,6 @@
                 android:layout_below="@id/goodsfragment_item_line"
                 android:layout_marginLeft="@dimen/goodsfragment_item_name_marginleft"
                 android:layout_marginTop="@dimen/goodsfragment_item_name_margintop"
-                android:text="草莓紅色圓框閱讀鏡"
                 android:textColor="@color/goodsfragment_item_name_textcolor"
                 android:textSize="@dimen/goodsfragment_item_name_textsize" />
 
@@ -72,14 +71,23 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/goodsfragment_item_price_marginright"
                 android:layout_marginTop="@dimen/goodsfragment_item_price_margintop"
-                android:text="¥450"
                 android:textColor="@color/goodsfragment_item_price_textcolor"
                 android:textSize="@dimen/goodsfragment_item_price_textsize"
                 android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/goodsfragment_item_price"
+                android:layout_marginTop="@dimen/goodsfragment_item_price_margintop"
+                android:textSize="@dimen/goodsfragment_item_price_textsize"
+                android:text="¥"
+                android:textColor="@color/goodsfragment_item_price_textcolor"
+                android:textStyle="bold"
+                />
 
 
         </com.zhy.autolayout.AutoRelativeLayout>
-    </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
 
 
 </com.zhy.autolayout.AutoLinearLayout>

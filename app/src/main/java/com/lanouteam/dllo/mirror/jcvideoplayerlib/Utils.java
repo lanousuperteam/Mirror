@@ -1,4 +1,4 @@
-package com.lanouteam.dllo.mirror.jcvideoplayer_lib;
+package com.lanouteam.dllo.mirror.jcvideoplayerlib;
 
 import java.util.Formatter;
 import java.util.Locale;

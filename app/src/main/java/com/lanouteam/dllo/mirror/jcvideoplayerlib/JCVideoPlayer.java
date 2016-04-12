@@ -1,4 +1,4 @@
-package com.lanouteam.dllo.mirror.jcvideoplayer_lib;
+package com.lanouteam.dllo.mirror.jcvideoplayerlib;
 
 import android.app.Activity;
 import android.content.Context;

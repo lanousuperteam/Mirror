@@ -17,7 +17,7 @@ public interface RequestUrls {
     String STORY_LIST = SERVER_URL + "index.php/story/story_list";
 
     //商品列表
-    String GOODS_LIST = SERVER_URL + "index.php/products/goods_list";
+    String GOODS_LIST = SERVER_URL + "index.php/products_test/goods_list";
 
     //商品详情
     String GOODS_INFO = SERVER_URL + "index.php/products/goods_info";
@@ -93,5 +93,7 @@ public interface RequestUrls {
     //商品分类列表
     String MENU_LIST = SERVER_URL + "index.php/index/menu_list";
 
-
+    //每日推荐列表
+    //TODO 后加的
+    String All_LIST = SERVER_URL + "index.php/index/mrtj";
 }

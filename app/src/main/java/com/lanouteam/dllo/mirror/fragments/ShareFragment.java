@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.adapters.ShareRecyclerViewAdapter;
 import com.lanouteam.dllo.mirror.base.BaseFragment;
-import com.lanouteam.dllo.mirror.utils.Popwindow;
 
 import java.util.ArrayList;
 
@@ -18,18 +17,16 @@ import java.util.ArrayList;
  * Created by dllo on 16/4/6.
  */
 public class ShareFragment extends BaseFragment implements View.OnClickListener {
-    private LinearLayout linearLayout;
-    private RecyclerView recyclerView;
-    private Popwindow popwindow;
+    private LinearLayout linearLayout;// 标题的linearlayout
+    private RecyclerView recyclerView;// 专题分享的recyclerView
     private ArrayList<String> datas;
-    private ShareRecyclerViewAdapter adapter;
+    private ShareRecyclerViewAdapter adapter; // 专题分享的recyclerview的适配器
 
     @Override
     protected void initView(View view) {
         linearLayout = bindView(R.id.sharefragment_title_linearlayout);
         recyclerView = bindView(R.id.sharefragment_recyclerview);
 
-        popwindow = new Popwindow(getContext());
         linearLayout.setOnClickListener(this);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
@@ -54,7 +51,7 @@ public class ShareFragment extends BaseFragment implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sharefragment_title_linearlayout:
-                popwindow.showPopUpWindow(v);
+
                 break;
         }
     }

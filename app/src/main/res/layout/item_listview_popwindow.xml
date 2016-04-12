@@ -12,7 +12,8 @@
         android:layout_marginStart="@dimen/popwindow_item_marginstart"
         android:layout_marginTop="@dimen/popwindow_item_margintop"
         android:textColor="@color/popwindow_item_textview_color"
-        android:textSize="@dimen/popwindow_item_textsize" />
+        android:textSize="@dimen/popwindow_item_textsize"
+        android:alpha="0.25"/>
 
     <ImageView
         android:id="@+id/item_list_popupwindow_line"
