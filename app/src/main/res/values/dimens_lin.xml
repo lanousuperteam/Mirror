@@ -2,10 +2,17 @@
 <resources>
 
 
-
-
-
-
-
-
+    <dimen name="popwindow_textview_margintop">78px</dimen>
+    <dimen name="sharefragment_line_margintop">34px</dimen>
+    <dimen name="sharefragment_linearlayout_marginleft">22px</dimen>
+    <dimen name="sharefragment_imageview_width">540px</dimen>
+    <dimen name="sharefragment_imageview_height">704px</dimen>
+    <dimen name="sharefragment_second_linearlayout_height">128px</dimen>
+    <dimen name="sharefragment_line_marginleft">32px</dimen>
+    <dimen name="sharefragment_title_margintop">16px</dimen>
+    <dimen name="sharefragment_title_marginleft">32px</dimen>
+    <dimen name="sharefragment_title_textsize">30px</dimen>
+    <dimen name="goodsfragment_item_linearlayout_width">450px</dimen>
+    <dimen name="goodsfragment_item_linearlayout_height">833px</dimen>
+    <dimen name="goodsfragment_item_line_width">476px</dimen>
 </resources>

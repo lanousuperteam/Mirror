@@ -18,23 +18,21 @@ import com.lanouteam.dllo.mirror.net.NetHelper;
  * Created by dllo on 16/3/30.
  */
 public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecyclerViewAdapter.GoodsViewHolder> {
-    private GoodsFragmentBean datas;
-    private ImageLoader imageLoader;
-    private NetHelper netHelper;
+    private GoodsFragmentBean datas;// 适配器需要的数据
 
-
+    // 向适配器里传数据
     public GoodsRecyclerViewAdapter(GoodsFragmentBean datas) {
         this.datas = datas;
-        //netHelper = new NetHelper(BaseApplication.mContext);
-        //imageLoader = netHelper.getImageLoader();
     }
 
+    // 绑定子布局
     @Override
     public GoodsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_goodsfragment, parent, false);
         return new GoodsViewHolder(view);
     }
 
+    // 把数据传到组件里 在组件上显示
     @Override
     public void onBindViewHolder(GoodsViewHolder holder, int position) {
         if (datas != null && datas.getData().getList().size() > 0) {
@@ -47,11 +45,14 @@ public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecycler
         }
     }
 
+    // 得到数据集合的数量
     @Override
     public int getItemCount() {
         return datas.getData().getList().size();
     }
 
+
+    // 缓存类
     public class GoodsViewHolder extends RecyclerView.ViewHolder {
         private TextView addressTv, modelTv, priceTv, nameTv;
         private ImageView goodsIv;

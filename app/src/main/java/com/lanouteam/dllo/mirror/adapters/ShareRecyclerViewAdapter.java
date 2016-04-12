@@ -14,18 +14,21 @@ import java.util.ArrayList;
  * Created by dllo on 16/4/6.
  */
 public class ShareRecyclerViewAdapter extends RecyclerView.Adapter<ShareRecyclerViewAdapter.ShareViewHolder>{
-    private ArrayList<String> datas;
+    private ArrayList<String> datas;// 适配器需要的数据
 
+    // 向适配器里传入数据集合
     public ShareRecyclerViewAdapter(ArrayList<String> datas) {
         this.datas = datas;
     }
 
+    // 绑定子布局
     @Override
     public ShareViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_sharefragment,null);
         return new ShareViewHolder(view);
     }
 
+    // 向子布局里的组件传入数据
     @Override
     public void onBindViewHolder(ShareViewHolder holder, int position) {
         if (datas != null && datas.size() > 0) {
@@ -33,11 +36,13 @@ public class ShareRecyclerViewAdapter extends RecyclerView.Adapter<ShareRecycler
         }
     }
 
+    // 得到数据集合的数量
     @Override
     public int getItemCount() {
         return datas.size();
     }
 
+    // 缓存类
     public class ShareViewHolder extends RecyclerView.ViewHolder{
         private TextView textView;
 

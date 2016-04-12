@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="popwindow_item_textview_return">返回首页</string>
+    <string name="popwindow_item_textview_exit">退出</string>
 </resources>

@@ -4,25 +4,25 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.lanouteam.dllo.mirror.R;
+import com.lanouteam.dllo.mirror.activity.MainActivity;
 import com.lanouteam.dllo.mirror.base.BaseFragment;
-import com.lanouteam.dllo.mirror.utils.Popwindow;
 
 /**
  * Created by dllo on 16/3/30.
  */
 public class ShoppingCarFragment extends BaseFragment{
     private LinearLayout linearLayout;
-    private Popwindow popwindow;
+    private MainActivity activity;
 
     @Override
     protected void initView(View view) {
         linearLayout = bindView(R.id.shoppingcar_title_linearlayout);
+        activity = (MainActivity) getContext();
 
-        popwindow = new Popwindow(getContext());
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popwindow.showPopUpWindow(v);
+                activity.showMenu();
             }
         });
     }

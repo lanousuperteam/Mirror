@@ -15,14 +15,15 @@ import com.lanouteam.dllo.mirror.bean.AllFragmentBean;
  * Created by dllo on 16/4/6.
  */
 public class AllRecyclerViewAdapter extends RecyclerView.Adapter {
-    private AllFragmentBean datas;
-    private String type;
+    private AllFragmentBean datas; // 适配器需要的数据
+    private String type;// 子布局的type
 
+    // 向适配器里传入数据
     public AllRecyclerViewAdapter(AllFragmentBean datas) {
         this.datas = datas;
-
     }
 
+    // 得到子布局的type
     @Override
     public int getItemViewType(int position) {
         type = datas.getData().getList().get(position).getType();
@@ -33,6 +34,7 @@ public class AllRecyclerViewAdapter extends RecyclerView.Adapter {
         }
     }
 
+    // 根据子布局的type来加载对应的子布局
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == 1) {
@@ -42,6 +44,7 @@ public class AllRecyclerViewAdapter extends RecyclerView.Adapter {
         }
     }
 
+    // 根据子布局的type来加载里面组件的数据
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (getItemViewType(position) == 1){
@@ -52,16 +55,19 @@ public class AllRecyclerViewAdapter extends RecyclerView.Adapter {
             goodsViewHolder.addressTv.setText(datas.getData().getList().get(position).getData_info().getProduct_area());
             goodsViewHolder.goodsIv.setImageURI(Uri.parse(datas.getData().getList().get(position).getData_info().getGoods_img()));
         } else {
+            // 暂时得不到另一种布局的json 先放弃
             // ShareViewHolder shareViewHolder = (ShareViewHolder) holder;
             // shareViewHolder.titleTv
         }
     }
 
+    // 得到数据集合的数量
     @Override
     public int getItemCount() {
         return datas.getData().getList().size();
     }
 
+    // type为1的缓存类 是商品的子布局
     public class GoodsViewHolder extends RecyclerView.ViewHolder {
 
         private TextView addressTv, modelTv, priceTv, nameTv;
@@ -77,6 +83,7 @@ public class AllRecyclerViewAdapter extends RecyclerView.Adapter {
         }
     }
 
+    // type为2的缓存类 是专题分享的子布局
     public class ShareViewHolder extends RecyclerView.ViewHolder {
 
         private TextView titleTv;

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/background"
-    android:orientation="vertical">
+    android:id="@+id/menufragment_menu">
 
     <ListView
-        android:id="@+id/popwindow_listview"
+        android:layout_marginTop="100px"
+        android:id="@+id/menufragment_listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@null">
@@ -14,23 +15,25 @@
     </ListView>
 
     <TextView
-        android:id="@+id/popupwindow_home"
+        android:id="@+id/menufragment_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/popwindow_item_marginstart"
         android:layout_marginTop="@dimen/popwindow_item_margintop"
         android:text="@string/popwindow_item_textview_return"
         android:textColor="@color/popwindow_item_textview_color"
-        android:textSize="@dimen/popwindow_item_textsize" />
+        android:textSize="@dimen/popwindow_item_textsize"
+        android:alpha="0.25"/>
 
     <TextView
-        android:id="@+id/popupwindow_exit"
+        android:id="@+id/menufragment_exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/popwindow_item_marginstart"
         android:layout_marginTop="@dimen/popwindow_textview_margintop"
         android:text="@string/popwindow_item_textview_exit"
         android:textColor="@color/popwindow_item_textview_color"
-        android:textSize="@dimen/popwindow_item_textsize" />
+        android:textSize="@dimen/popwindow_item_textsize"
+        android:alpha="0.25"/>
 
 </LinearLayout>
