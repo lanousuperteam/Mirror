@@ -1,33 +1,23 @@
 package com.lanouteam.dllo.mirror.activity;
 
 import android.content.Intent;
-import android.graphics.PointF;
 import android.net.Uri;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
-
 import com.lanouteam.dllo.mirror.adapters.GoodsContentApapter;
 import com.lanouteam.dllo.mirror.adapters.GoodsContentInterface;
 import com.lanouteam.dllo.mirror.base.BaseActivity;
-import com.lanouteam.dllo.mirror.base.BaseApplication;
 import com.lanouteam.dllo.mirror.bean.GoodsContentBean;
-import com.lanouteam.dllo.mirror.bean.RequestParams;
 import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;

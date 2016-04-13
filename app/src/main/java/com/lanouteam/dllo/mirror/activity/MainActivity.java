@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.DirectionalViewPager;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -15,7 +14,6 @@ import android.widget.Scroller;
 
 import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
-import com.lanouteam.dllo.mirror.adapters.GoodsContentInterface;
 import com.lanouteam.dllo.mirror.adapters.MainViewpagerAdapter;
 import com.lanouteam.dllo.mirror.base.BaseActivity;
 import com.lanouteam.dllo.mirror.bean.MenuListBean;
@@ -37,10 +35,9 @@ public class MainActivity extends BaseActivity implements RequestUrls, NetListen
     private ArrayList<Fragment> fragments; // viewpager里的fragment集合
     private MainViewpagerAdapter adapter; // viewpager的适配器
     private DirectionalViewPager viewPager; // 自定义的viewpager
-    private FrameLayout frameLayout;
-    private int currentItem; // viewpager的当前页数
-    private TopFragment topFragment;
-    private MenuFragment menuFragment;
+    private FrameLayout frameLayout; // 菜单的占位布局
+    private TopFragment topFragment; // 最上面两个小按钮的fragment
+    private MenuFragment menuFragment; // 菜单的fragment
     private NetHelper netHelper;
 
 
@@ -81,14 +78,6 @@ public class MainActivity extends BaseActivity implements RequestUrls, NetListen
     protected void initView() {
         viewPager = bindView(R.id.mainactivity_viewpager);
         frameLayout = bindView(R.id.mainactivity_menu_fragment);
-    }
-
-
-
-    // 得到viewpager的当前页码
-    public int getCurrentItem() {
-        return currentItem;
-
     }
 
     // 设置跳转
@@ -171,7 +160,6 @@ public class MainActivity extends BaseActivity implements RequestUrls, NetListen
     // 当滑动viewpager 会得到当前页面的页码数
     @Override
     public void onPageSelected(int position) {
-        currentItem = position;
         menuFragment.setupAdapter(position);
     }
 

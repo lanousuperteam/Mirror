@@ -3,6 +3,8 @@ package com.lanouteam.dllo.mirror.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.lanouteam.dllo.mirror.R;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -74,7 +76,7 @@ public class SPUtils {
         } else if (defaultObject instanceof Long) {
             return sp.getLong(key, (Long) defaultObject);
         } else {
-            T.showShort(context, "默认数据类型为空,或者类型不符");
+            T.showShort(context, context.getString(R.string.sputils_toast));
         }
         return null;
     }
