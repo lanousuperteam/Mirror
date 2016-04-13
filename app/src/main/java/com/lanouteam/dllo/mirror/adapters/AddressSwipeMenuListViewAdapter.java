@@ -68,8 +68,8 @@ public class AddressSwipeMenuListViewAdapter extends BaseAdapter {
         }else{
             swipeMenuListViewViewHolder= (SwipeMenuListViewViewHolder) convertView.getTag();
         }
-        swipeMenuListViewViewHolder.nameTv.setText("收件人:"+data.get(position).getName());
-        swipeMenuListViewViewHolder.addressTv.setText("地址:"+data.get(position).getAddress());
+        swipeMenuListViewViewHolder.nameTv.setText(context.getString(R.string.menulistview_addressee)+data.get(position).getName());
+        swipeMenuListViewViewHolder.addressTv.setText(context.getString(R.string.menulistview_address)+data.get(position).getAddress());
         swipeMenuListViewViewHolder.telTv.setText(data.get(position).getTel());
         //编辑按钮的点击事件
         swipeMenuListViewViewHolder.editAddressIv.setOnClickListener(new View.OnClickListener() {

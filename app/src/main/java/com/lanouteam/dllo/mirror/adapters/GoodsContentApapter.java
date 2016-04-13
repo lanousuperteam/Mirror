@@ -1,8 +1,5 @@
 package com.lanouteam.dllo.mirror.adapters;
 
-import android.content.Context;
-import android.graphics.PointF;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,13 +11,11 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.lanouteam.dllo.mirror.R;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.lanouteam.dllo.mirror.base.BaseApplication;
 import com.lanouteam.dllo.mirror.bean.GoodsContentBean;
-
+import com.lanouteam.dllo.mirror.bean.RequestParams;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.utils.LoginAndShare;
-
 
 import java.util.HashMap;
 
@@ -28,7 +23,7 @@ import java.util.HashMap;
  * Created by dllo on 16/3/31.
  * 商品二级页面滑动的adapter
  */
-public class GoodsContentApapter extends RecyclerView.Adapter {
+public class GoodsContentApapter extends RecyclerView.Adapter implements RequestParams {
     private GoodsContentBean datas;
     private int layoutScrollValue;
     private LoginAndShare loginAndShare;
@@ -50,8 +45,8 @@ public class GoodsContentApapter extends RecyclerView.Adapter {
 //        //网络解析
 
         goodsInfo = new HashMap();
-        goodsInfo.put("device_type", 2 + "");
-        goodsInfo.put("goods_id", "96Psa1455524521");
+        goodsInfo.put(DEVICE_TYPE, 2 + "");
+        goodsInfo.put(GOODS_ID, "96Psa1455524521");
         netHelper = new NetHelper(BaseApplication.mContext);
         titleImageLoader = netHelper.getImageLoader();
         detailsImageLoader = netHelper.getImageLoader();

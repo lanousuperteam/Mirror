@@ -3,4 +3,8 @@
 
     <string name="popwindow_item_textview_return">返回首页</string>
     <string name="popwindow_item_textview_exit">退出</string>
+    <string name="menulistview_addressee">收件人:</string>
+    <string name="menulistview_address">地址:</string>
+    <string name="share_title">宝贝不错哦</string>
+    <string name="sputils_toast">默认数据类型为空,或者类型不符</string>
 </resources>

@@ -30,7 +30,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     private EditText nameEt, telEt, addressEt;
     private Button addAddressBtn;
     private NetHelper netHelper;
-    private String addr_id;
+    private String addressId;
 
     @Override
     protected int getLayout() {
@@ -47,7 +47,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
             nameEt.setText(addressData.getName());
             telEt.setText(addressData.getTel());
             addressEt.setText(addressData.getAddress());
-            addr_id = addressData.getAddr_id();
+            addressId = addressData.getAddr_id();
         }
         returnIv.setOnClickListener(this);
         addAddressBtn.setOnClickListener(this);
@@ -87,11 +87,10 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 jumpAddressIntent.putExtra("tel", tel);
                 jumpAddressIntent.putExtra("address", address);
 
-
-                if (addr_id != null) {
+                if (addressId != null) {
                     //修改原来的地址信息,传到服务器上
                     mMap.put(TOKEN, "a8205d6b776b7ee55f440ba0e6756c40");
-                    mMap.put(ADDR_ID, addr_id);
+                    mMap.put(ADDR_ID, addressId);
                     mMap.put(USERNAME, name);
                     mMap.put(CELLPHONE, tel);
                     mMap.put(ADDR_INFO, address);
@@ -133,10 +132,10 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
         try {
             JSONObject jsonObject = new JSONObject(object.toString());
             String result = jsonObject.getString("result");
-            if (result.equals("1") && addr_id == null) {
-                Toast.makeText(AddAddressActivity.this, R.string.add_address_state, Toast.LENGTH_SHORT).show();
-            } else if (result.equals("1") && addr_id != null) {
-                Toast.makeText(AddAddressActivity.this, R.string.edit_address, Toast.LENGTH_SHORT).show();
+            if (result.equals("1") && addressId == null) {
+                Toast.makeText(AddAddressActivity.this, "添加地址成功", Toast.LENGTH_SHORT).show();
+            } else if (result.equals("1") && addressId != null) {
+                Toast.makeText(AddAddressActivity.this, "编辑地址成功", Toast.LENGTH_SHORT).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();
