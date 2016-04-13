@@ -25,7 +25,7 @@ import java.util.HashMap;
 /**
  * Created by dllo on 16/4/9.
  */
-public class AddAddressActivity extends BaseActivity implements View.OnClickListener ,RequestUrls,RequestParams,NetListener{
+public class AddAddressActivity extends BaseActivity implements View.OnClickListener, RequestUrls, RequestParams, NetListener {
     private ImageView returnIv;
     private EditText nameEt, telEt, addressEt;
     private Button addAddressBtn;
@@ -41,9 +41,9 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     protected void initData() {
         netHelper = new NetHelper(AddAddressActivity.this);
         //接收传递过来的地址信息类
-        Intent intent=this.getIntent();
+        Intent intent = this.getIntent();
         AddressSwipeMenuBean addressData = (AddressSwipeMenuBean) intent.getSerializableExtra("address");
-        if (addressData!=null) {
+        if (addressData != null) {
             nameEt.setText(addressData.getName());
             telEt.setText(addressData.getTel());
             addressEt.setText(addressData.getAddress());
@@ -72,13 +72,13 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 String name = nameEt.getText().toString();
                 String tel = telEt.getText().toString();
                 String address = addressEt.getText().toString();
-                HashMap<String,String> mMap =new HashMap<>();
+                HashMap<String, String> mMap = new HashMap<>();
                 //设置判断条件
                 if (name.equals("") || tel.equals("") || address.equals("")) {
-                    Toast.makeText(AddAddressActivity.this, "您输入的信息有误,请检查", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddAddressActivity.this, R.string.check_information_error, Toast.LENGTH_SHORT).show();
                     break;
                 } else if (tel.length() != 11 || !tel.substring(0, 1).equals("1")) {
-                    Toast.makeText(AddAddressActivity.this, "您输入的号码信息有误,请检查", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddAddressActivity.this, R.string.check_phone_error, Toast.LENGTH_SHORT).show();
                     break;
                 }
                 //跳转传值
@@ -88,15 +88,15 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 jumpAddressIntent.putExtra("address", address);
 
 
-                if (addr_id!=null){
+                if (addr_id != null) {
                     //修改原来的地址信息,传到服务器上
-                    mMap.put(TOKEN,"a8205d6b776b7ee55f440ba0e6756c40");
-                    mMap.put(ADDR_ID,addr_id);
-                    mMap.put(USERNAME,name);
-                    mMap.put(CELLPHONE,tel);
-                    mMap.put(ADDR_INFO,address);
-                    netHelper.getJsonData(EDIT_ADDRESS,this,mMap);
-                }else {
+                    mMap.put(TOKEN, "a8205d6b776b7ee55f440ba0e6756c40");
+                    mMap.put(ADDR_ID, addr_id);
+                    mMap.put(USERNAME, name);
+                    mMap.put(CELLPHONE, tel);
+                    mMap.put(ADDR_INFO, address);
+                    netHelper.getJsonData(EDIT_ADDRESS, this, mMap);
+                } else {
                     //提交新的地址信息上传到服务器上
                     mMap.put(TOKEN, "a8205d6b776b7ee55f440ba0e6756c40");
                     mMap.put(USERNAME, name);
@@ -107,11 +107,11 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                 jumpBuyDetails();
                 break;
         }
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     private void jumpBuyDetails() {
-        Intent jumpBuyDetailsIntent =new  Intent(AddAddressActivity.this,AddressActivity.class);
+        Intent jumpBuyDetailsIntent = new Intent(AddAddressActivity.this, AddressActivity.class);
         startActivity(jumpBuyDetailsIntent);
         finish();
     }
@@ -120,7 +120,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     //此方法是设置返回键的同时,使返回键失效,利用返回键进行跳转.
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode==KeyEvent.KEYCODE_BACK){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             jumpBuyDetails();
             return true;
         }
@@ -131,12 +131,12 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     public void getSuccess(Object object) {
         L.d(object.toString());
         try {
-            JSONObject jsonObject =new JSONObject(object.toString());
-            String result =jsonObject.getString("result");
-            if (result.equals("1")&&addr_id==null){
-                Toast.makeText(AddAddressActivity.this, "添加地址成功", Toast.LENGTH_SHORT).show();
-            } else if (result.equals("1")&&addr_id!=null){
-                Toast.makeText(AddAddressActivity.this, "编辑地址成功", Toast.LENGTH_SHORT).show();
+            JSONObject jsonObject = new JSONObject(object.toString());
+            String result = jsonObject.getString("result");
+            if (result.equals("1") && addr_id == null) {
+                Toast.makeText(AddAddressActivity.this, R.string.add_address_state, Toast.LENGTH_SHORT).show();
+            } else if (result.equals("1") && addr_id != null) {
+                Toast.makeText(AddAddressActivity.this, R.string.edit_address, Toast.LENGTH_SHORT).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -145,6 +145,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void getFailed(int s) {
-        Toast.makeText(AddAddressActivity.this, "操作失败", Toast.LENGTH_SHORT).show();
+        Toast.makeText(AddAddressActivity.this, R.string.operation_failure, Toast.LENGTH_SHORT).show();
     }
+
 }

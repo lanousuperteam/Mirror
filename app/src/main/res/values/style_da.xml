@@ -12,12 +12,14 @@
         <item name="android:textSize">15sp</item>
         <item name="android:layout_height">80dp</item>
         <item name="android:layout_marginTop">25dp</item>
+        <item name="android:background">@android:color/white</item>
     </style>
 
     <!-- 我的所有地址界面的添加地址的左右边距-->
     <style name="MyAddressPageMargin">
         <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginRight">15dp</item>
+        <item name="android:background">#f1f1f1</item>
     </style>
 
     <!-- 添加地址页TextView 字体样式-->

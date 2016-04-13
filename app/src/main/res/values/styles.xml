@@ -15,8 +15,6 @@
     <!-- 订单管理-->
     <!-- 订单页style布局的左右间距-->
     <style name="IndentDatailsPageMargin">
-        <item name="android:layout_marginLeft">15dp</item>
-        <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_marginTop">20dp</item>
         <item name="android:background">#ffffff</item>
     </style>
@@ -24,7 +22,7 @@
     <style name="AddAddressMargin">
         <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginRight">15dp</item>
-        <item name="android:background">#ffffff</item>
+        <item name="android:background">#f1f1f1</item>
     </style>
 
 
@@ -74,17 +72,16 @@
     <style name="IndentDatailsPageMoneyStyle">
         <item name="android:textColor">#ff5aab</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:layout_marginRight">4dp</item>
     </style>
+
 
 
     <!-- 订单页下单按钮的 style-->
     <style name="IndentDatailsPageOrderBottom">
         <item name="android:textColor">#fff</item>
         <item name="android:textSize">15sp</item>
-        <item name="android:layout_marginLeft">15dp</item>
-        <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_marginTop">25dp</item>
-
     </style>
 
 </resources>

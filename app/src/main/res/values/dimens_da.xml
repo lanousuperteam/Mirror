@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <dimen name="wear_activity_rl_width">330dp</dimen>
+    <dimen name="wear_activity_retrun_iv_marginbutton">10dp</dimen>
 
 </resources>

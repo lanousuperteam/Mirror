@@ -76,7 +76,7 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
                 // set a icon
 //                deleteItem.setIcon(R.mipmap.ic_launcher);
                 deleteItem.setTitleSize(13);
-                deleteItem.setTitle("删除");
+                deleteItem.setTitle(R.string.item_delete_btn);
                 deleteItem.setTitleColor(Color.WHITE);
                 // add to menu
                 menu.addMenuItem(deleteItem);
@@ -102,7 +102,7 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
                                     JSONObject jsonObject = new JSONObject(object.toString());
                                     String result = jsonObject.getString("result");
                                     if (result.equals("1"))
-                                        Toast.makeText(AddressActivity.this, "删除地址", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(AddressActivity.this, R.string.delete_address, Toast.LENGTH_SHORT).show();
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -110,7 +110,7 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
 
                             @Override
                             public void getFailed(int s) {
-                                Toast.makeText(AddressActivity.this, "操作失败", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AddressActivity.this, R.string.operation_failure, Toast.LENGTH_SHORT).show();
                             }
                         }, mMap);
                         addressSwipeMenuListViewAdapter.notifyDataSetChanged();
@@ -134,7 +134,7 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
                             JSONObject jsonObject = new JSONObject(object.toString());
                             String result = jsonObject.getString("result");
                             if (result.equals("1")) {
-                                Toast.makeText(AddressActivity.this, "设置默认地址成功", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AddressActivity.this, R.string.set_default, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -143,7 +143,7 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
 
                     @Override
                     public void getFailed(int s) {
-                        Toast.makeText(AddressActivity.this, "设置失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddressActivity.this, R.string.operation_failure, Toast.LENGTH_SHORT).show();
                     }
                 }, mMap);
                 jumpBuyDetails();

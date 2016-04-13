@@ -5,7 +5,7 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="330dp"
+        android:layout_width="@dimen/wear_activity_rl_width"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true">
 
@@ -50,7 +50,7 @@
             android:id="@+id/activity_wear_return_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/wear_activity_retrun_iv_marginbutton"
             android:background="@mipmap/btn_return" />
 
         <ImageView
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/wear_activity_retrun_iv_marginbutton"
             android:src="@mipmap/btn_buy" />
 
     </RelativeLayout>
