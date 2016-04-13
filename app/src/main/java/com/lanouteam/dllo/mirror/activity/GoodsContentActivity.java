@@ -150,8 +150,8 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
                 /**
                  * 这里的 value 是获得recyclerview 所有的滑动距离,将每一次的滑动距离叠加形成的结果.
                  * */
-                value -= dy;
-                L.d("滑动效果", value + "");
+                value =value- dy;
+                L.d("滑动效果", value + "     " + dy );
                 //这是Recyclerview 的方法来获得当前的 value 值.
                 goodsContentApapter.setScrollValue(value);
                 dyUp = dy > 0;  //该步是第二种动画出现的步骤
