@@ -56,7 +56,7 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
         contactPersonTv = bindView(R.id.activity_indent_details_page_contact_person_tv);
         telTv = bindView(R.id.activity_indent_details_page_tel_tv);
         addressDataTv = bindView(R.id.activity_indent_details_page_address_tv);
-        submitOrderBtn=bindView(R.id.activity_indent_details_page_submit_order_btn);
+        submitOrderBtn = bindView(R.id.activity_indent_details_page_submit_order_btn);
     }
 
     @Override
@@ -72,10 +72,24 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.activity_indent_details_page_submit_order_btn:
                 //TODO 弹出PopWindow
-                appearPay(v);
+//                appearPay(v);
+
+//                /**
+//                 * 支付宝支付测试
+//                 * */
+//                //实例化客户端
+//                AlipayClient client = new DefaultAlipayClient("https://openapi.alipay.com/gateway.do", "app_id", "your private_key", "json", "GBK", "alipay_public_key");
+//                //实例化具体API对应的request类,类名称和接口名称对应,当前调用接口名称：alipay.open.public.template.message.industry.modify
+//
+//                AlipayOpenPublicTemplateMessageIndustryModifyRequest request = new AlipayOpenPublicTemplateMessageIndustryModifyRequest();
+//                //SDK已经封装掉了公共参数，这里只需要传入业务参数
+//                //此次只是参数展示，未进行字符串转义，实际情况下请转义
+//                request.setBizContent();
                 break;
         }
+
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+
     }
 
 
@@ -89,7 +103,7 @@ public class BuyDetailsActivity extends BaseActivity implements View.OnClickList
 
     }
 
-    public void appearPay(View v){
+    public void appearPay(View v) {
         popupWindow = new PopupWindow(this);
         View view = LayoutInflater.from(this).inflate(R.layout.popwindow_mainactivity, null);
         popupWindow.setContentView(view);

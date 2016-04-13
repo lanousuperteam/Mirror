@@ -42,4 +42,7 @@ dependencies {
     compile files('libs/ShareSDK-Wechat-Core-2.7.0.jar')
     compile files('libs/ShareSDK-Wechat-Favorite-2.7.0.jar')
     compile files('libs/ShareSDK-Wechat-Moments-2.7.0.jar')
+    compile files('libs/alipay-sdk-java20160412220055.jar')
+    compile files('libs/commons-logging-1.1.1.jar')
+    compile files('libs/alipaySdk-20160223.jar')
 }

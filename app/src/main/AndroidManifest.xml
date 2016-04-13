@@ -42,6 +42,8 @@
         <activity android:name=".activity.BuyDetailsActivity"/>
         <activity android:name=".activity.AddressActivity"/>
         <activity android:name=".activity.AddAddressActivity"/>
+        <activity android:name=".activity.pay.H5PayDemoActivity"/>
+        <activity android:name=".activity.pay.PayDemoActivity"/>
 
 
         <activity android:name=".activity.GoodsContentActivity">
