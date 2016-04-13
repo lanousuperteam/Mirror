@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.android.volley.toolbox.ImageLoader;
 import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
+import com.lanouteam.dllo.mirror.bean.RequestParams;
 import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.bean.WearBean;
 import com.lanouteam.dllo.mirror.net.NetHelper;
@@ -42,16 +43,16 @@ public class WearDetailShowActivity extends Activity {
         //网络解析
         netHelper = new NetHelper(this);
         wearInfo = new HashMap();
-        wearInfo.put("device_type", 2 + "");
-        wearInfo.put("goods_id", "269");
-        wearInfo.put("version", "1.0.1");
+        wearInfo.put(RequestParams.DEVICE_TYPE, 2 + "");
+        wearInfo.put(RequestParams.GOODS_ID, "269");
+        wearInfo.put(RequestParams.APP_VERSION, "1.0.1");
         wearImageLoader = netHelper.getImageLoader();
         //接收值
         mLocationX = getIntent().getIntExtra("locationX",0);
         mLocationY = getIntent().getIntExtra("locationY", 0);
         mWidth = getIntent().getIntExtra("width", 0);
         mHeight = getIntent().getIntExtra("height", 0);
-        L.i("XY值", mLocationX + "  " + mLocationY + "  "+mWidth+" "+mHeight+"mmmmm");
+
         imageView = new SmoothImageView(this);
         imageView.setOriginalInfo(mWidth, mHeight, mLocationX, mLocationY);
         imageView.transformIn();

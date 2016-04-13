@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--颜色通用-->
     <color name="colorItemBackground">#000000</color>
     <color name="colorText">#ffffff</color>
     <color name="colorItemGoodsFragmentBrand">#333</color>
+    <color name="colorFragmentTopBackground">#00000000</color>
+    <!--佩戴图集video颜色-->
+    <color name="colorWearVideoBackground">#222222</color>
+    <color name="colorWearVideoLinearlayoutBackgroud">#99000000</color>
 
 </resources>

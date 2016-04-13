@@ -31,7 +31,6 @@
 
     <!-- NetHelper 里面的文字-->
     <string name="nethelper_failed">拉取失败</string>
-    <string name="wear_activity_title">商品細節展示</string>
 
 
 </resources>

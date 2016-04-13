@@ -37,6 +37,7 @@
     <dimen name="item_goodsfragment_content_head_goods_name_margin_top">145dp </dimen>
     <dimen name="item_goodsfragment_content_head_brand_margin_top">  7dp  </dimen>
     <dimen name="item_goodsfragment_content_head_line_bottom_margin_top">7dp</dimen>
+    <dimen name="item_goodsfragment_content_head_share_margin_top">90dp</dimen>
 
 
     <dimen name="item_goodsfragment_content_goods_title_brand_text">16sp</dimen>
@@ -60,4 +61,61 @@
     <dimen name="item_goodsfragment_content_goods_title_intro_margin_top">14dp</dimen>
     <dimen name="item_goodsfragment_content_goods_title_intro_margin_right">20dp</dimen>
     <dimen name="item_goodsfragment_content_goods_title_intro_margin_bottom">22dp</dimen>
+    <!-- 商品列表-->
+    <dimen name="popwindow_listview_margintop">100px</dimen>
+    <dimen name="shoppingcarfragment_imageview_marginleft">40px</dimen>
+    <!--顶层fragment-->
+    <dimen name="topfragment_imageview_marginleft">48px</dimen>
+    <dimen name="topfragment_imageview_marginbottom">40px</dimen>
+    <dimen name="topfragment_login_text">30px</dimen>
+    <dimen name="topfragment_login_marginright">48px</dimen>
+    <dimen name="topfragment_login_marginbottom">40px</dimen>
+
+    <!--分享allfragment-->
+    <dimen name="allfragment_share_iv_width">540px</dimen>
+    <dimen name="allfragment_share_auto_marginleft">22px</dimen>
+    <dimen name="allfragment_item_share_imageview_height">704px</dimen>
+    <dimen name="allfragment_item_share_name_margintop">16px</dimen>
+    <dimen name="allfragment_item_auto_height">128px</dimen>
+    <dimen name="allfragment_item_iv_marginleft">32px</dimen>
+    <dimen name="allfragment_item_iv_margintop">34px</dimen>
+    <dimen name="allfragment_item_share_name_marginleft">32px</dimen>
+    <dimen name="allfragment_item_share_name_text">30px</dimen>
+    <!--item_swipemenulistview_address-->
+    <dimen name="item_all_address_marginleft">12dp</dimen>
+    <dimen name="item_all_address_linearlayout_margin_left">12dp</dimen>
+    <dimen name="item_all_address_name_text">13sp</dimen>
+    <dimen name="item_all_address_linearlayout_center_margin_left">12dp</dimen>
+    <dimen name="item_all_address_linearlayout_center_margin_top">8dp</dimen>
+    <dimen name="item_all_address_edit_address_iv">30dp</dimen>
+    <dimen name="item_all_address_tel_margin_bottom">10dp</dimen>
+    <dimen name="item_all_address_tel_text">12sp</dimen>
+    <dimen name="item_all_address_ll_width">0dp</dimen>
+    <dimen name="item_all_address_name_margin_top">10dp</dimen>
+    <dimen name="item_all_address_detailed_address_weight">0dp</dimen>
+    <dimen name="item_all_address_detailed_address_text">12sp</dimen>
+    <dimen name="item_all_address_linearlayout_down_margin_left">12dp</dimen>
+    <dimen name="item_all_address_tel_margin_top">8dp</dimen>
+    <!--佩戴图集video-->
+    <dimen name="wear_video_linearlayout_height">40dp</dimen>
+    <dimen name="wear_video_seekbar_width">0dp</dimen>
+    <dimen name="wear_video_seekbar_maxheight">4dp</dimen>
+    <dimen name="wear_video_seekbar_minheight">4dp</dimen>
+    <dimen name="wear_video_seekbar_paddingbottom">8dp</dimen>
+    <dimen name="wear_video_seekbar_paddingtop">8dp</dimen>
+    <dimen name="wear_video_tv_total_marginright">16dp</dimen>
+    <dimen name="wear_video_fullscreen_paddingright">16dp</dimen>
+    <dimen name="wear_video_linearlayout_top_height">48dp</dimen>
+    <dimen name="wear_video_iv_width">48dp</dimen>
+    <dimen name="wear_video_iv_height">48dp</dimen>
+    <dimen name="wear_video_iv_paddingleft">10dp</dimen>
+    <dimen name="wear_video_tv_paddingleft">10dp</dimen>
+    <dimen name="wear_video_tv_text">18sp</dimen>
+    <dimen name="wear_video_progressbar_loading_width">28dp</dimen>
+    <dimen name="wear_video_progressbar_loading_height">28dp</dimen>
+    <dimen name="wear_video_iv_start_width">60dp</dimen>
+    <dimen name="wear_video_iv_start_height">60dp</dimen>
+    <dimen name="wear_video_tv_current_marginleft">16dp</dimen>
+    <dimen name="wear_video_bottom_progressbar_height">1.5dp</dimen>
+
 </resources>
