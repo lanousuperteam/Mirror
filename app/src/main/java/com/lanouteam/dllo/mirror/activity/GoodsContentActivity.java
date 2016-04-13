@@ -18,6 +18,7 @@ import com.lanouteam.dllo.mirror.adapters.GoodsContentApapter;
 import com.lanouteam.dllo.mirror.adapters.GoodsContentInterface;
 import com.lanouteam.dllo.mirror.base.BaseActivity;
 import com.lanouteam.dllo.mirror.bean.GoodsContentBean;
+import com.lanouteam.dllo.mirror.bean.RequestParams;
 import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
