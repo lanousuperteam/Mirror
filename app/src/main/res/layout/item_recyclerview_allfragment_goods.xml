@@ -79,7 +79,7 @@
                 android:layout_toLeftOf="@id/allfragment_item_goods_price"
                 android:layout_marginTop="@dimen/goodsfragment_item_price_margintop"
                 android:textSize="@dimen/goodsfragment_item_price_textsize"
-                android:text="¥"
+                android:text="@string/goodsfragment_item_price_text"
                 android:textColor="@color/goodsfragment_item_price_textcolor"
                 android:textStyle="bold"
                 />

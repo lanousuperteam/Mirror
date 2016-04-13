@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.base.BaseActivity;
 import com.lanouteam.dllo.mirror.base.BaseApplication;
+import com.lanouteam.dllo.mirror.bean.RequestParams;
 import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.bean.WearBean;
 import com.lanouteam.dllo.mirror.jcvideoplayerlib.JCVideoPlayer;
@@ -52,9 +53,9 @@ public class WearActivity extends BaseActivity implements View.OnClickListener,R
         //网络解析
         netHelper = new NetHelper(this);
         wearInfo = new HashMap();
-        wearInfo.put("device_type", "2" );
-        wearInfo.put("goods_id", "269");
-        wearInfo.put("version", "1.0.1");
+        wearInfo.put(RequestParams.DEVICE_TYPE, "2" );
+        wearInfo.put(RequestParams.GOODS_ID, "269");
+        wearInfo.put(RequestParams.APP_VERSION, "1.0.1");
         wearImageLoader = netHelper.getImageLoader();
         //video上的图片填充类型:图片充满
         JCVideoPlayer.setThumbImageViewScalType(ImageView.ScaleType.CENTER_CROP);

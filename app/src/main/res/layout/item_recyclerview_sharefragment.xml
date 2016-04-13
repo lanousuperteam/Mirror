@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/sharefragment_title_margintop"
                     android:layout_marginLeft="@dimen/sharefragment_title_marginleft"
-                    android:text="冷美人的慵懒随性风"
+                    android:text="@string/sharefragment_item_title_text"
                     android:textColor="@color/sharefragment_title_textcolor"
                     android:textSize="@dimen/sharefragment_title_textsize" />
 

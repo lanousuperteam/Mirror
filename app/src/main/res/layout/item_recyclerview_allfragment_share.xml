@@ -7,27 +7,27 @@
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="22px"
+        android:layout_marginLeft="@dimen/allfragment_share_auto_marginleft"
         android:orientation="vertical"
-        android:background="#fff">
+        android:background="@color/colorText">
 
         <ImageView
             android:id="@+id/allfragment_item_share_imageview"
-            android:layout_width="540px"
-            android:layout_height="704px"
+            android:layout_width="@dimen/allfragment_share_iv_width"
+            android:layout_height="@dimen/allfragment_item_share_imageview_height"
             android:src="@mipmap/ic_launcher" />
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="128px"
+            android:layout_height="@dimen/allfragment_item_auto_height"
             android:orientation="vertical">
 
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32px"
-                android:layout_marginTop="34px"
+                android:layout_marginLeft="@dimen/allfragment_item_iv_marginleft"
+                android:layout_marginTop="@dimen/allfragment_item_iv_margintop"
                 android:src="@mipmap/icon_black_line" />
 
             <LinearLayout
@@ -38,11 +38,11 @@
                     android:id="@+id/allfragment_item_share_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16px"
-                    android:layout_marginLeft="32px"
-                    android:text="冷美人的慵懒随性风"
-                    android:textColor="#000"
-                    android:textSize="30px" />
+                    android:layout_marginTop="@dimen/allfragment_item_share_name_margintop"
+                    android:layout_marginLeft="@dimen/allfragment_item_share_name_marginleft"
+                    android:text="@string/allfragment_item_share_name_text"
+                    android:textColor="@color/colorItemBackground"
+                    android:textSize="@dimen/allfragment_item_share_name_text" />
 
             </LinearLayout>
         </com.zhy.autolayout.AutoLinearLayout>

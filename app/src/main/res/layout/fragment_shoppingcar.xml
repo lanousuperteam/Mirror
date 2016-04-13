@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/icon_shopping_car_nothing"
-            android:layout_marginLeft="40px"/>
+            android:layout_marginLeft="@dimen/shoppingcarfragment_imageview_marginleft"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
