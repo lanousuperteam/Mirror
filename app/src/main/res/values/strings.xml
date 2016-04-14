@@ -31,6 +31,7 @@
 
     <!-- NetHelper 里面的文字-->
     <string name="nethelper_failed">拉取失败</string>
+    <string name="item_popupwindow_pay_wechat_pay">微信支付</string>
 
 
 </resources>
