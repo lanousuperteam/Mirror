@@ -26,24 +26,25 @@ import java.util.HashMap;
 public class GoodsContentApapter extends RecyclerView.Adapter implements RequestParams {
     private GoodsContentBean datas;
     private int layoutScrollValue;
-    private LoginAndShare loginAndShare;
+    //分享
     private String id="28JeX1452078872";
+    private LoginAndShare loginAndShare;
+    //布局类型
     final int TYPE_HEAD = 0;
     final int TYPE_TRANSPARENT = 1;
     final int TYPE_GOODS_TITLE = 2;
     final int TYPE_GOODS_DETAILS = 3;
-
+    //网络
     private NetHelper netHelper;
     private HashMap goodsInfo;
     private ImageLoader detailsImageLoader, titleImageLoader;
-
+    //传值接口
     private GoodsContentInterface goodsContentInterface;
 
 
     public GoodsContentApapter(GoodsContentBean datas) {
         this.datas = datas;
-//        //网络解析
-
+        //网络解析
         goodsInfo = new HashMap();
         goodsInfo.put(DEVICE_TYPE, 2 + "");
         goodsInfo.put(GOODS_ID, "96Psa1455524521");
@@ -52,7 +53,6 @@ public class GoodsContentApapter extends RecyclerView.Adapter implements Request
         detailsImageLoader = netHelper.getImageLoader();
         loginAndShare=new LoginAndShare(id);
 
-
     }
 
     /**
@@ -60,18 +60,13 @@ public class GoodsContentApapter extends RecyclerView.Adapter implements Request
      */
     public void setScrollValue(int scrollValue) {
         this.layoutScrollValue = scrollValue;
-        //刷新UI
-        /**
-         * 必须加上这句话,持续的刷新从Actvity 接收的滑动值.
-         * */
+        //刷新UI,必须加上这句话,持续的刷新从Actvity 接收的滑动值.
         try {
             notifyDataSetChanged();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-
     /**
      * 决定元素的布局使用哪种类型
      *
@@ -92,7 +87,6 @@ public class GoodsContentApapter extends RecyclerView.Adapter implements Request
         else
 
             return TYPE_GOODS_DETAILS;
-
     }
 
     /**
@@ -175,17 +169,16 @@ public class GoodsContentApapter extends RecyclerView.Adapter implements Request
             ((GoodsTitleViewHolder) holder).goodsTitleBrandTv.setText(datas.getData().getBrand());
             ((GoodsTitleViewHolder) holder).goodsTitleCountryTv.setText(datas.getData().getGoods_data().get(0).getCountry());
             ((GoodsTitleViewHolder) holder).goodsTitleEnglishTv.setText(datas.getData().getGoods_data().get(0).getEnglish());
-            ((GoodsTitleViewHolder) holder).goodsTitleIntroContent.setText(datas.getData().getGoods_data().get(position).getIntroContent());
+            ((GoodsTitleViewHolder) holder).goodsTitleIntroContent.setText(datas.getData().getGoods_data().get(0).getIntroContent());
             ((GoodsTitleViewHolder) holder).goodsTitleLocationTv.setText(datas.getData().getGoods_data().get(0).getLocation());
-           // ((GoodsTitleViewHolder) holder).goodsTitleImg.setImageURI(Uri.parse(datas.getData().getGoods_pic()));
+
             titleImageLoader.get(datas.getData().getGoods_pic(),titleImageLoader.getImageListener(((GoodsTitleViewHolder) holder).goodsTitleImg,R.mipmap.ic_launcher,R.mipmap.background));
 
 
 
         } else if (holder instanceof GoodsDetailsViewHolder) {
 
-            if (datas.getData().getDesign_des().get(position - 3).getType().equals("1")) {
-
+            if (datas.getData().getDesign_des().get(position - 3).getType().equals("1")&&position-2<(datas.getData().getGoods_data().size())) {
 
                 int valueDetails = layoutScrollValue;
 
@@ -196,24 +189,20 @@ public class GoodsContentApapter extends RecyclerView.Adapter implements Request
                 ((GoodsDetailsViewHolder) holder).goodsDetailsRelativeLayout.setLayoutParams(paramsDetails);
                 ((GoodsDetailsViewHolder) holder).goodsDetailsRelativeLayout.setVisibility(View.VISIBLE);
                 //加载网络数据喽!!!!!!!
-                //((GoodsDetailsViewHolder) holder).goodsDetailsImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0f));
-                ((GoodsDetailsViewHolder) holder).goodsDetailsDetailsName.setText(datas.getData().getGoods_data().get(position - 2).getName());
-                ((GoodsDetailsViewHolder) holder).goodsDetailsIntroContent.setText(datas.getData().getGoods_data().get(position - 2).getIntroContent());
-               // ((GoodsDetailsViewHolder) holder).goodsDetailsImg.setImageURI(Uri.parse(datas.getData().getDesign_des().get(position - 3).getImg()));
+
+                    ((GoodsDetailsViewHolder) holder).goodsDetailsDetailsName.setText(datas.getData().getGoods_data().get(position - 2).getName());
+                    ((GoodsDetailsViewHolder) holder).goodsDetailsIntroContent.setText(datas.getData().getGoods_data().get(position - 2).getIntroContent());
+
                 detailsImageLoader.get(datas.getData().getDesign_des().get(position - 3).getImg(),detailsImageLoader.getImageListener(((GoodsDetailsViewHolder) holder).goodsDetailsImg,R.mipmap.ic_launcher,R.mipmap.background));
 
             } else {
 
-              //  ((GoodsDetailsViewHolder) holder).goodsDetailsImg.getHierarchy().setActualImageFocusPoint(new PointF(0.5f, 0f));
-                ((GoodsDetailsViewHolder) holder).goodsDetailsRelativeLayout.setVisibility(View.INVISIBLE);
 
-                  //  ((GoodsDetailsViewHolder) holder).goodsDetailsImg.setImageURI(Uri.parse(datas.getData().getDesign_des().get(position - 3).getImg()));
+                ((GoodsDetailsViewHolder) holder).goodsDetailsRelativeLayout.setVisibility(View.INVISIBLE);
                     detailsImageLoader.get(datas.getData().getDesign_des().get(position - 3).getImg(),detailsImageLoader.getImageListener(((GoodsDetailsViewHolder) holder).goodsDetailsImg,R.mipmap.ic_launcher,R.mipmap.background));
 
             }
-
         }
-
 
     }
 
@@ -230,7 +219,7 @@ public class GoodsContentApapter extends RecyclerView.Adapter implements Request
     public class HeadViewHolder extends RecyclerView.ViewHolder {
         //需要网络解析的数据
         private TextView headGoodsNameTv, headBrandTv, headInfoDesTv, headGoodsPriceTv;
-        private RelativeLayout relativeLayoutHead;
+        private RelativeLayout relativeLayoutHead;//透明度
         private ImageView imageViewShare;
 
         public HeadViewHolder(View itemView) {

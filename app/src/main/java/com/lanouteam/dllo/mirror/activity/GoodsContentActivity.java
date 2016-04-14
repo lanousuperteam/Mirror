@@ -43,17 +43,22 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
     //网络解析
     private HashMap goodsInfo;
     private NetHelper netHelper;
+    private String id;
     @Override
     protected int getLayout() {
         return R.layout.activity_goods_content;
     }
     @Override
     protected void initData() {
+//        Intent allIntent=getIntent();
+//        String id=allIntent.getStringExtra(RequestParams.GOODS_ID);
+        Intent goodsIntent=getIntent();
+        id=goodsIntent.getStringExtra(RequestParams.GOODS_ID);
         wearTv.setOnClickListener(this);
         //网络解析
         goodsInfo = new HashMap();
         goodsInfo.put(RequestParams.DEVICE_TYPE, "2");
-        goodsInfo.put(RequestParams.GOODS_ID, "96Psa1455524521");
+        goodsInfo.put(RequestParams.GOODS_ID, id);
         netHelper = new NetHelper(this);
 
         netHelper.getJsonData(RequestUrls.GOODS_INFO, new NetListener() {
@@ -71,7 +76,7 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
                 //解析图片
                 backgroundIv.setImageURI(Uri.parse(data.getData().getGoods_img()));
                 /**
-                 * 第二种动画出现的方法 通过接口传值(position)通过判断滑动的position位置控制动画
+                 * 动画出现的方法 通过接口传值(position)通过判断滑动的position位置控制动画
                  * */
                 goodsContentApapter.setPosition(new GoodsContentInterface() {
                     @Override
@@ -113,12 +118,9 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
 
             }
         }, goodsInfo);
-
-
         /**
          * 该方法为对recycleview进行滑动监听 获取滑动距离
          * */
-
         goodsContentRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -126,44 +128,11 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
                 value -= dy;
                 L.d("滑动效果", value + "      " + dy);
                 goodsContentApapter.setScrollValue(value);
-                dyUp = dy > 0;  //该步是第二种动画出现的步骤
-
+                dyUp = dy > 0;  //该步是动画出现的步骤
                 L.i("dy", "dy" + " " + dy + "      ");
-
-                 // 底部动画操作 !!!该方法有待商榷,先暂时注掉,采用方法二
-                //***************************************************************************************
-//                if (dyUp) {//判断滑动方向  dy>0为上滑 //该数值为滑动到recycleview第三个布局by滑动的数值范围
-//
-//
-//                    if (value <= -2500 && isup) {
-//
-//                        Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.goods_content_layout_into);
-//                        relativeLayoutButtom.setAnimation(animation);
-//                        relativeLayoutButtom.setVisibility(View.VISIBLE);
-//                        isup = false;
-//                        isDown = true;
-//                        isVisible = true;
-//                    }
-//
-//                } else {
-//
-//
-//                    if (isVisible && value >= -2600 && isDown) {
-//
-//                        Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.goods_content_layout_out);
-//                        relativeLayoutButtom.setAnimation(animation);
-//                        relativeLayoutButtom.setVisibility(View.INVISIBLE);
-//                        isup = true;
-//                        isDown = false;
-//
-//                    }
-//
-//                }
-                //***************************************************************************************
             }
         });
     }
-
 
     @Override
     protected void initView() {
@@ -180,11 +149,9 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_goods_content_tv:
-                Intent intentWear = new Intent();
-                intentWear.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intentWear.setClass(this, WearActivity.class);
+                Intent intentWear = new Intent(this, WearActivity.class);
+                intentWear.putExtra(RequestParams.GOODS_ID,id);
                 startActivity(intentWear);
-
         }
 
     }

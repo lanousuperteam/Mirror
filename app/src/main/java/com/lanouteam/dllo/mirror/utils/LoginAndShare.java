@@ -22,6 +22,9 @@ public class LoginAndShare {
         this.id = id;
     }
 
+    /**
+     * 我的分享
+     */
     public void MyShare() {
         ShareSDK.initSDK(BaseApplication.mContext);
         OnekeyShare oks = new OnekeyShare();
@@ -47,6 +50,7 @@ public class LoginAndShare {
     }
 
     /**
+     * 我的登录:
      * 微信登录:Wechat.NAME
      * 微博登录:SinaWeibo.NAME
      * QQ空间登录:QZone.NAME

@@ -1,5 +1,6 @@
 package com.lanouteam.dllo.mirror.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,8 +12,10 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
+import com.lanouteam.dllo.mirror.activity.GoodsContentActivity;
 import com.lanouteam.dllo.mirror.activity.MainActivity;
 import com.lanouteam.dllo.mirror.adapters.GoodsRecyclerViewAdapter;
+import com.lanouteam.dllo.mirror.adapters.OnRecyclerviewItemClickListener;
 import com.lanouteam.dllo.mirror.base.BaseFragment;
 import com.lanouteam.dllo.mirror.bean.GoodsFragmentBean;
 import com.lanouteam.dllo.mirror.bean.MenuListBean;
@@ -72,6 +75,15 @@ public class GoodsFragment extends BaseFragment implements RequestUrls, View.OnC
                 GoodsFragmentBean bean = gson.fromJson(object.toString(), GoodsFragmentBean.class);
                 adapter = new GoodsRecyclerViewAdapter(bean);
                 recyclerView.setAdapter(adapter);
+                adapter.setOnItemClickListener(new OnRecyclerviewItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, String data) {
+                        Intent goodsIntent = new Intent(getActivity(), GoodsContentActivity.class);
+                        String id=data;
+                        goodsIntent.putExtra(RequestParams.GOODS_ID,id);
+                        startActivity(goodsIntent);
+                    }
+                });
             }
 
             @Override

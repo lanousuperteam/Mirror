@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.lanouteam.dllo.mirror.jcvideoplayerlib.JCVideoPlayer
+    <com.lanouteam.dllo.mirror.utils.jcvideoplayerlib.JCVideoPlayer
         android:id="@+id/jcvideoplayer"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

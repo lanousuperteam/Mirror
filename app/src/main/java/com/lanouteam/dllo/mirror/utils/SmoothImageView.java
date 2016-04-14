@@ -90,7 +90,7 @@ public class SmoothImageView extends ImageView {
 	}
 
 
-
+/**********************************************************************************************/
 	private class Transfrom {
 		float startScale;// 图片开始的缩放值
 		float endScale;// 图片结束的缩放值
@@ -123,9 +123,7 @@ public class SmoothImageView extends ImageView {
 	 * 初始化进入的变量信息
 	 */
 	private void initTransform() {
-//		if (getDrawable() == null) {
-//			return;
-//		}
+
 		if (mBitmap == null || mBitmap.isRecycled()) {
 			mBitmap = ((BitmapDrawable) getDrawable()).getBitmap();
 		}
@@ -173,7 +171,7 @@ public class SmoothImageView extends ImageView {
 
 		mTransfrom.rect = new LocationSizeF();
 	}
-
+    /********************************************************************************************/
 	private class LocationSizeF implements Cloneable{
 		float left;
 		float top;
@@ -191,7 +189,8 @@ public class SmoothImageView extends ImageView {
 		}
 
 	}
-
+	/*******************************************************************************************/
+    //对图片进行操作
 	private void getBmpMatrix() {
 		if (getDrawable() == null) {
 			return;
@@ -208,6 +207,10 @@ public class SmoothImageView extends ImageView {
 				-(mTransfrom.scale * mBitmap.getHeight() / 2 - mTransfrom.rect.height / 2));
 	}
 
+	/**
+	 * 对图片动画绘制
+	 * @param canvas 画布
+	 */
 	@Override
 	protected void onDraw(Canvas canvas) {
 		if (getDrawable() == null) {
@@ -254,6 +257,10 @@ public class SmoothImageView extends ImageView {
 		}
 	}
 
+	/**
+	 *
+	 * @param state 图片的状态:是进入还是返回
+	 */
 	private void startTransform(final int state) {
 		if (mTransfrom == null) {
 			return;
@@ -278,7 +285,7 @@ public class SmoothImageView extends ImageView {
 			PropertyValuesHolder alphaHolder = PropertyValuesHolder.ofInt("alpha", 255, 0);
 			valueAnimator.setValues(scaleHolder, leftHolder, topHolder, widthHolder, heightHolder, alphaHolder);
 		}
-//ValueAnimator的AnimatorUpdateListener可以得到动画执行每一帧所返回的值,
+        //ValueAnimator的AnimatorUpdateListener可以得到动画执行每一帧所返回的值,
 		valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 			@Override
 			public synchronized void onAnimationUpdate(ValueAnimator animation) {
@@ -333,9 +340,8 @@ public class SmoothImageView extends ImageView {
 
 	public interface TransformListener {
 		/**
-		 *
 		 * @param mode
-		 *            STATE_TRANSFORM_IN 1 ,STATE_TRANSFORM_OUT 2
+		 * STATE_TRANSFORM_IN 1 ,STATE_TRANSFORM_OUT 2
 		 */
 		void onTransformComplete(int mode);// mode 1
 	}

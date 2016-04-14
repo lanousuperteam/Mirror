@@ -1,4 +1,4 @@
-package com.lanouteam.dllo.mirror.jcvideoplayerlib;
+package com.lanouteam.dllo.mirror.utils.jcvideoplayerlib;
 
 import android.content.Context;
 import android.graphics.PixelFormat;

@@ -16,7 +16,7 @@
     <!--佩戴图集-->
     <string name="wear_activity_title">商品細節展示</string>
     <!--顶部fragment-->
-    <string name="topfragment_login_text">登陆</string>
+    <string name="topfragment_login_text">登錄</string>
     <!--货物allfragment-->
     <string name="allfragment_item_share_name_text">冷美人的慵懒随性风</string>
     <string name="goodsfragment_item_price_text">¥</string>

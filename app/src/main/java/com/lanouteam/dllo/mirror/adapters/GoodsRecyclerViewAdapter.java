@@ -13,12 +13,14 @@ import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.base.BaseApplication;
 import com.lanouteam.dllo.mirror.bean.GoodsFragmentBean;
 import com.lanouteam.dllo.mirror.net.NetHelper;
+import com.lanouteam.dllo.mirror.utils.L;
 
 /**
  * Created by dllo on 16/3/30.
  */
-public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecyclerViewAdapter.GoodsViewHolder> {
+public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecyclerViewAdapter.GoodsViewHolder> implements View.OnClickListener {
     private GoodsFragmentBean datas;// 适配器需要的数据
+    private OnRecyclerviewItemClickListener mOnItemClickListener = null;//声明一个接口的变量
 
     // 向适配器里传数据
     public GoodsRecyclerViewAdapter(GoodsFragmentBean datas) {
@@ -29,7 +31,9 @@ public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecycler
     @Override
     public GoodsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_goodsfragment, parent, false);
-        return new GoodsViewHolder(view);
+        GoodsViewHolder goodsVh=new GoodsViewHolder(view);
+        view.setOnClickListener(this);
+        return goodsVh;
     }
 
     // 把数据传到组件里 在组件上显示
@@ -41,7 +45,7 @@ public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecycler
             holder.priceTv.setText(datas.getData().getList().get(position).getGoods_price());
             holder.nameTv.setText(datas.getData().getList().get(position).getBrand());
             holder.goodsIv.setImageURI(Uri.parse(datas.getData().getList().get(position).getGoods_img()));
-
+            holder.itemView.setTag(datas.getData().getList().get(position).getGoods_id());
         }
     }
 
@@ -49,6 +53,14 @@ public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecycler
     @Override
     public int getItemCount() {
         return datas.getData().getList().size();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(mOnItemClickListener!=null){
+            mOnItemClickListener.onItemClick(v, (String) v.getTag());
+            L.i("tag",(String) v.getTag()+"second");
+        }
     }
 
 
@@ -67,4 +79,9 @@ public class GoodsRecyclerViewAdapter extends RecyclerView.Adapter<GoodsRecycler
             goodsIv = (ImageView) itemView.findViewById(R.id.goodsfragment_item_imageview);
         }
     }
+    //最后暴露给外面的调用者，定义一个设置Listener的方法（）：
+    public void setOnItemClickListener(OnRecyclerviewItemClickListener listener) {
+        this.mOnItemClickListener = listener;
+    }
+
 }

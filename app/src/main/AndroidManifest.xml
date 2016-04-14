@@ -37,7 +37,13 @@
 
         <activity android:name=".activity.WelcomeActivity"/>
         <activity android:name=".activity.LoginActivity"/>
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.CreateAccountActivity"/>
         <activity android:name=".activity.BuyDetailsActivity"/>
         <activity android:name=".activity.AddressActivity"/>
@@ -45,11 +51,6 @@
 
 
         <activity android:name=".activity.GoodsContentActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         
@@ -66,7 +67,7 @@
         <meta-data android:name="design_height" android:value="1319">
         </meta-data>
         <activity
-            android:name=".jcvideoplayerlib.JCFullScreenActivity"
+            android:name=".utils.jcvideoplayerlib.JCFullScreenActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" />
 
@@ -76,7 +77,6 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize">
-
 
             <intent-filter>
                 <data android:scheme="tencent100371282" />
