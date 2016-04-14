@@ -26,13 +26,11 @@ import com.lanouteam.dllo.mirror.utils.jcvideoplayerlib.JCVideoPlayer;
 import java.util.HashMap;
 
 
-
 /**
  * Created by dllo on 16/4/8.
  */
-public class WearActivity extends BaseActivity implements View.OnClickListener,RequestUrls {
-    //视频
-    private JCVideoPlayer jcVideoPlayer;
+public class WearActivity extends BaseActivity implements View.OnClickListener, RequestUrls {
+
     //网络解析
     private NetHelper netHelper;
     private HashMap wearInfo;
@@ -41,9 +39,9 @@ public class WearActivity extends BaseActivity implements View.OnClickListener,R
     //组件
     private WearListViewAdapter wearListViewAdapter;
     private ListView wearListView;
-    private View viewHead = LayoutInflater.from(BaseApplication.mContext).inflate(R.layout.item_listview_wear_activity_head, null);
+    private ImageView imageViewBuy, imageViewReturn;
+    //
 
-    private ImageView imageViewBuy,imageViewReturn;
 
     @Override
     protected int getLayout() {
@@ -52,14 +50,14 @@ public class WearActivity extends BaseActivity implements View.OnClickListener,R
 
     @Override
     protected void initData() {
-        Intent goodsIntent=getIntent();
-         id=goodsIntent.getStringExtra(RequestParams.GOODS_ID);
+        Intent goodsIntent = getIntent();
+        id = goodsIntent.getStringExtra(RequestParams.GOODS_ID);
         //video上的图片填充类型:图片充满
         JCVideoPlayer.setThumbImageViewScalType(ImageView.ScaleType.CENTER_CROP);
         //网络解析
         netHelper = new NetHelper(this);
         wearInfo = new HashMap();
-        wearInfo.put(RequestParams.DEVICE_TYPE, "2" );
+        wearInfo.put(RequestParams.DEVICE_TYPE, "2");
         wearInfo.put(RequestParams.GOODS_ID, id);
         wearInfo.put(RequestParams.APP_VERSION, "1.0.1");
         wearImageLoader = netHelper.getImageLoader();
@@ -73,7 +71,7 @@ public class WearActivity extends BaseActivity implements View.OnClickListener,R
 
                 wearListViewAdapter = new WearListViewAdapter(data);
                 wearListView.setAdapter(wearListViewAdapter);
-                wearListView.addHeaderView(viewHead);
+
             }
 
             @Override
@@ -89,20 +87,19 @@ public class WearActivity extends BaseActivity implements View.OnClickListener,R
 
     @Override
     protected void initView() {
-        jcVideoPlayer = (JCVideoPlayer) viewHead.findViewById(R.id.wear_activity_video_controller);
         wearListView = bindView(R.id.wear_activity_listview);
-        imageViewBuy= bindView(R.id.activity_wear_buy);
-        imageViewReturn=bindView(R.id.activity_wear_return_iv);
+        imageViewBuy = bindView(R.id.activity_wear_buy);
+        imageViewReturn = bindView(R.id.activity_wear_return_iv);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.activity_wear_buy:
-                Intent intentBuy=new Intent(WearActivity.this,GoodsContentActivity.class);
+                Intent intentBuy = new Intent(WearActivity.this, GoodsContentActivity.class);
                 startActivity(intentBuy);
             case R.id.activity_wear_return_iv:
-                Intent intentReturn=new Intent(WearActivity.this,GoodsContentActivity.class);
+                Intent intentReturn = new Intent(WearActivity.this, GoodsContentActivity.class);
                 startActivity(intentReturn);
         }
     }
@@ -112,20 +109,32 @@ public class WearActivity extends BaseActivity implements View.OnClickListener,R
      */
     public class WearListViewAdapter extends BaseAdapter {
         private WearBean data;
-
+        final int TYPE_HEAD = 0;
+        final int TYPE_PHOTOS = 1;
 
         public WearListViewAdapter(WearBean data) {
             this.data = data;
 
         }
+
+        @Override
+        public int getItemViewType(int position) {
+            if (position == 0) {
+                return TYPE_HEAD;
+            } else {
+                return TYPE_PHOTOS;
+            }
+
+        }
+
         @Override
         public int getCount() {
-            return data != null && data.getData().getWear_video().size()> 0 ? data.getData().getWear_video().size() : 0;
+            return data != null && data.getData().getWear_video().size() > 0 ? data.getData().getWear_video().size() : 0;
         }
 
         @Override
         public Object getItem(int position) {
-            return data.getData().getWear_video().get(position)== null ? data.getData().getWear_video().get(position) : null;
+            return data.getData().getWear_video().get(position) == null ? data.getData().getWear_video().get(position) : null;
         }
 
         @Override
@@ -145,25 +154,6 @@ public class WearActivity extends BaseActivity implements View.OnClickListener,R
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
-
-            for (int i = 0; i < data.getData().getWear_video().size(); i++) {
-
-                if (data.getData().getWear_video().get(i).getType().equals("8")) {
-                    jcVideoPlayer.setUp(data.getData().getWear_video().get(i).getData(), null);
-                    Log.i("url请求", data.getData().getWear_video().get(i).getData());
-                }
-
-                if (data.getData().getWear_video().get(i).getType().equals("9")) {
-                    wearImageLoader.get(data.getData().getWear_video().get(i).getData(), wearImageLoader.getImageListener(jcVideoPlayer.ivThumb, R.mipmap.ic_launcher, R.mipmap.background));
-
-                    Log.i("url请求", data.getData().getWear_video().get(i).getData());
-                }else{
-                    wearImageLoader.get(data.getData().getWear_video().get(i).getData(), wearImageLoader.getImageListener(
-                            holder.imageViewPhoto, R.mipmap.ic_launcher, R.mipmap.background));
-                }
-            }
-
-
 
             /**
              * getLocationOnScreen:计算图片在该屏幕上的坐标. 参数为int类型的XY坐标.
@@ -193,16 +183,6 @@ public class WearActivity extends BaseActivity implements View.OnClickListener,R
                 }
             });
 
-//            //imageloader进行网络解析图片
-//            if (data.getData().getWear_video().get(position).getType().equals("9")) {
-//            }else{
-//                for (int j = 0; j <data.getData().getWear_video().size()-2 ; j++) {
-//
-//                }
-//
-//            }
-
-
             return convertView;
 
         }
@@ -214,6 +194,7 @@ public class WearActivity extends BaseActivity implements View.OnClickListener,R
             JCVideoPlayer jcVideoPlayer;
         }
     }
+
     @Override
     protected void onPause() {
         super.onPause();
