@@ -101,11 +101,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.PayActivity"/>
-
         <!-- 支付宝-->
         <activity
-            android:name=".pay.H5PayDemoActivity"
+            android:name=".activity.H5PayDemoActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
             android:screenOrientation="behind" >
