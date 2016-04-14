@@ -1,7 +1,10 @@
 package com.lanouteam.dllo.mirror.activity;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
@@ -39,12 +42,18 @@ public class WearDetailShowActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //activity的背景
+        Resources res = getResources();
+        Drawable drawable = res.getDrawable(R.color.goodsfragment_item_price_textcolor);
+        this.getWindow().setBackgroundDrawable(drawable);
 
         //网络解析
+        Intent intent=getIntent();
+        String id=intent.getStringExtra(RequestParams.GOODS_ID);
         netHelper = new NetHelper(this);
         wearInfo = new HashMap();
         wearInfo.put(RequestParams.DEVICE_TYPE, 2 + "");
-        wearInfo.put(RequestParams.GOODS_ID, "269");
+        wearInfo.put(RequestParams.GOODS_ID, id);
         wearInfo.put(RequestParams.APP_VERSION, "1.0.1");
         wearImageLoader = netHelper.getImageLoader();
         //接收值
@@ -59,17 +68,26 @@ public class WearDetailShowActivity extends Activity {
         imageView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));//创建一个指定宽高参数  参数为-1,-1因为代表MATCH_PARENT(源码中有说明)
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         setContentView(imageView);
-
-        netHelper.getJsonData(RequestUrls.GOODS_LIST, new NetListener() {
+        //解析图片
+        netHelper.getJsonData(RequestUrls.GOODS_INFO, new NetListener() {
             @Override
             public void getSuccess(Object object) {
                 Gson gson = new Gson();
                 WearBean data = gson.fromJson(object.toString(), WearBean.class);
-                wearImageLoader.get(data.getData().getList().get(0).getWear_video().get(1).getData(), wearImageLoader.getImageListener(
-                        imageView, Color.BLACK, R.mipmap.ic_launcher));
+
+                for (int i = 0; i <data.getData().getWear_video().size() ; i++) {
+                    if(data.getData().getWear_video().get(i).getType().equals("8")&&data.getData().getWear_video().get(i).getType().equals("9")){
+
+                    }else{
+                        wearImageLoader.get(data.getData().getWear_video().get(i).getData(), wearImageLoader.getImageListener(
+                                imageView, Color.BLACK, R.mipmap.ic_launcher));
+                    }
+
+
+
+                }
 
             }
-
             @Override
             public void getFailed(int s) {
 
@@ -110,9 +128,7 @@ public class WearDetailShowActivity extends Activity {
         });
         imageView.transformOut();
         return true;
-
     }
-
     @Override
     protected void onPause() {
         super.onPause();

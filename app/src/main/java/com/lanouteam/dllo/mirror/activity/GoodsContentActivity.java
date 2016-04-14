@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
-import com.lanouteam.dllo.mirror.adapters.GoodsContentApapter;
+import com.lanouteam.dllo.mirror.adapters.GoodsContentAdapter;
 import com.lanouteam.dllo.mirror.adapters.GoodsContentInterface;
 import com.lanouteam.dllo.mirror.base.BaseActivity;
 import com.lanouteam.dllo.mirror.bean.GoodsContentBean;
@@ -34,26 +34,31 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
     private SimpleDraweeView backgroundIv;
     private TextView wearTv;
     private RecyclerView goodsContentRecyclerView;
-    private GoodsContentApapter goodsContentApapter;
-    private RelativeLayout relativeLayoutButtom;
+    private GoodsContentAdapter goodsContentApapter;
+    private RelativeLayout relativeLayoutBottom;
     //异步滑动
     private int value;
-    private boolean isup = true, isDown = true, isVisible = false;
+    private boolean isUp = true, isDown = true, isVisible = false;
     private boolean dyUp = true;
     //网络解析
     private HashMap goodsInfo;
     private NetHelper netHelper;
+    private String id;
     @Override
     protected int getLayout() {
         return R.layout.activity_goods_content;
     }
     @Override
     protected void initData() {
+//        Intent allIntent=getIntent();
+//        String id=allIntent.getStringExtra(RequestParams.GOODS_ID);
+        Intent goodsIntent=getIntent();
+        id=goodsIntent.getStringExtra(RequestParams.GOODS_ID);
         wearTv.setOnClickListener(this);
         //网络解析
         goodsInfo = new HashMap();
         goodsInfo.put(RequestParams.DEVICE_TYPE, "2");
-        goodsInfo.put(RequestParams.GOODS_ID, "96Psa1455524521");
+        goodsInfo.put(RequestParams.GOODS_ID, id);
         netHelper = new NetHelper(this);
 
         netHelper.getJsonData(RequestUrls.GOODS_INFO, new NetListener() {
@@ -63,7 +68,7 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
                 Gson gson = new Gson();
                 GoodsContentBean data = gson.fromJson(object.toString(), GoodsContentBean.class);
 
-                goodsContentApapter = new GoodsContentApapter(data);
+                goodsContentApapter = new GoodsContentAdapter(data);
                 GridLayoutManager gm = new GridLayoutManager(getBaseContext(), 1);
                 gm.setOrientation(LinearLayoutManager.VERTICAL);
                 goodsContentRecyclerView.setLayoutManager(gm);
@@ -71,7 +76,7 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
                 //解析图片
                 backgroundIv.setImageURI(Uri.parse(data.getData().getGoods_img()));
                 /**
-                 * 第二种动画出现的方法 通过接口传值(position)通过判断滑动的position位置控制动画
+                 * 动画出现的方法 通过接口传值(position)通过判断滑动的position位置控制动画
                  * */
                 goodsContentApapter.setPosition(new GoodsContentInterface() {
                     @Override
@@ -82,12 +87,12 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
 
 
                             //该数值为滑动到recycleview第三个布局by滑动的数值范围
-                            if (position == 3 && isup) {
+                            if (position == 3 && isUp) {
 
                                 Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.goods_content_layout_into);
-                                relativeLayoutButtom.setAnimation(animation);
-                                relativeLayoutButtom.setVisibility(View.VISIBLE);
-                                isup = false;
+                                relativeLayoutBottom.setAnimation(animation);
+                                relativeLayoutBottom.setVisibility(View.VISIBLE);
+                                isUp = false;
                                 isDown = true;
                                 isVisible = true;
                             }
@@ -96,9 +101,9 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
                             if (position == 1 && isVisible && isDown) {
 
                                 Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.goods_content_layout_out);
-                                relativeLayoutButtom.setAnimation(animation);
-                                relativeLayoutButtom.setVisibility(View.INVISIBLE);
-                                isup = true;
+                                relativeLayoutBottom.setAnimation(animation);
+                                relativeLayoutBottom.setVisibility(View.INVISIBLE);
+                                isUp = true;
                                 isDown = false;
                                 isVisible = false;
                             }
@@ -113,12 +118,9 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
 
             }
         }, goodsInfo);
-
-
         /**
          * 该方法为对recycleview进行滑动监听 获取滑动距离
          * */
-
         goodsContentRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -126,49 +128,16 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
                 value -= dy;
                 L.d("滑动效果", value + "      " + dy);
                 goodsContentApapter.setScrollValue(value);
-                dyUp = dy > 0;  //该步是第二种动画出现的步骤
-
+                dyUp = dy > 0;  //该步是动画出现的步骤
                 L.i("dy", "dy" + " " + dy + "      ");
-
-                 // 底部动画操作 !!!该方法有待商榷,先暂时注掉,采用方法二
-                //***************************************************************************************
-//                if (dyUp) {//判断滑动方向  dy>0为上滑 //该数值为滑动到recycleview第三个布局by滑动的数值范围
-//
-//
-//                    if (value <= -2500 && isup) {
-//
-//                        Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.goods_content_layout_into);
-//                        relativeLayoutButtom.setAnimation(animation);
-//                        relativeLayoutButtom.setVisibility(View.VISIBLE);
-//                        isup = false;
-//                        isDown = true;
-//                        isVisible = true;
-//                    }
-//
-//                } else {
-//
-//
-//                    if (isVisible && value >= -2600 && isDown) {
-//
-//                        Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.goods_content_layout_out);
-//                        relativeLayoutButtom.setAnimation(animation);
-//                        relativeLayoutButtom.setVisibility(View.INVISIBLE);
-//                        isup = true;
-//                        isDown = false;
-//
-//                    }
-//
-//                }
-                //***************************************************************************************
             }
         });
     }
 
-
     @Override
     protected void initView() {
         goodsContentRecyclerView = bindView(R.id.activity_goods_content_recyclerview);
-        relativeLayoutButtom = bindView(R.id.activity_goods_content_relativelayout);
+        relativeLayoutBottom = bindView(R.id.activity_goods_content_relativelayout);
         backgroundIv = bindView(R.id.activity_goods_content_background_iv);
         wearTv = bindView(R.id.activity_goods_content_tv);
 
@@ -180,11 +149,9 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_goods_content_tv:
-                Intent intentWear = new Intent();
-                intentWear.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intentWear.setClass(this, WearActivity.class);
+                Intent intentWear = new Intent(this, WearActivity.class);
+                intentWear.putExtra(RequestParams.GOODS_ID,id);
                 startActivity(intentWear);
-
         }
 
     }
