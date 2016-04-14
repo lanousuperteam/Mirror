@@ -17,17 +17,17 @@ import java.util.ArrayList;
  * Created by dllo on 16/4/6.
  */
 public class ShareFragment extends BaseFragment implements View.OnClickListener {
-    private LinearLayout linearLayout;// 标题的linearlayout
+    private LinearLayout shareLinearLayout;// 标题的linearlayout
     private RecyclerView recyclerView;// 专题分享的recyclerView
     private ArrayList<String> datas;
     private ShareRecyclerViewAdapter adapter; // 专题分享的recyclerview的适配器
 
     @Override
     protected void initView(View view) {
-        linearLayout = bindView(R.id.sharefragment_title_linearlayout);
+        shareLinearLayout = bindView(R.id.sharefragment_title_linearlayout);
         recyclerView = bindView(R.id.sharefragment_recyclerview);
 
-        linearLayout.setOnClickListener(this);
+        shareLinearLayout.setOnClickListener(this);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
         gridLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);

@@ -15,4 +15,23 @@
     <dimen name="goodsfragment_item_linearlayout_width">450px</dimen>
     <dimen name="goodsfragment_item_linearlayout_height">833px</dimen>
     <dimen name="goodsfragment_item_line_width">476px</dimen>
+    <dimen name="sharecontentfragment_width">640px</dimen>
+    <dimen name="sharecontentfragment_linearlayout_marginbottom">150px</dimen>
+    <dimen name="sharecontentfragment_tag_tv_margintop">66px</dimen>
+    <dimen name="sharecontentfragment_tag_tv_marginleft">62px</dimen>
+    <dimen name="sharecontentfragment_tag_tv_textsize">22px</dimen>
+    <dimen name="sharecontentfragment_title_tv_margintop">22px</dimen>
+    <dimen name="sharecontentfragment_title_tv_marginleft">62px</dimen>
+    <dimen name="sharecontentfragment_title_tv_textsize">34px</dimen>
+    <dimen name="sharecontentfragment_content_tv_margintop">22px</dimen>
+    <dimen name="sharecontentfragment_content_tv_marginleft">62px</dimen>
+    <dimen name="sharecontentfragment_content_tv_marginright">62px</dimen>
+    <dimen name="sharecontentfragment_content_tv_textsize">20px</dimen>
+    <dimen name="sharecontentfragment_content_tv_marginbottom">66px</dimen>
+    <dimen name="sharecontentactivity_delete_iv_margintop">50px</dimen>
+    <dimen name="sharecontentactivity_delete_iv_marginright">50px</dimen>
+    <dimen name="sharecontentactivity_share_iv_marginbottom">40px</dimen>
+    <dimen name="sharecontentactivity_share_iv_marginright">40px</dimen>
+
+
 </resources>

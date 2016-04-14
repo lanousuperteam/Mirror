@@ -2,48 +2,49 @@
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
-        android:layout_width="640px"
+        android:layout_width="@dimen/sharecontentfragment_width"
         android:layout_height="wrap_content"
-        android:background="@mipmap/icon_special_topic_frame"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="150px"
-        android:orientation="vertical"
-        >
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/sharecontentfragment_linearlayout_marginbottom"
+        android:background="@mipmap/icon_special_topic_frame"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/sharecontentfragment_tag_tv"
-            android:layout_marginTop="66px"
-            android:layout_marginLeft="62px"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:textSize="22px" />
+            android:layout_marginLeft="@dimen/sharecontentfragment_tag_tv_marginleft"
+            android:layout_marginTop="@dimen/sharecontentfragment_tag_tv_margintop"
+            android:textColor="@color/sharecontentfragment_tag_tv_textcolor"
+            android:textSize="@dimen/sharecontentfragment_tag_tv_textsize" />
+
         <TextView
             android:id="@+id/sharecontentfragment_title_tv"
-            android:layout_marginTop="22px"
-            android:layout_marginLeft="62px"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="34px"
-            android:textColor="#fff"
-            android:textStyle="bold"/>
+            android:layout_marginLeft="@dimen/sharecontentfragment_title_tv_marginleft"
+            android:layout_marginTop="@dimen/sharecontentfragment_title_tv_margintop"
+            android:textColor="@color/sharecontentfragment_title_tv_textcolor"
+            android:textSize="@dimen/sharecontentfragment_title_tv_textsize"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/sharecontentfragment_content_tv"
-            android:layout_marginTop="22px"
-            android:layout_marginLeft="62px"
-            android:layout_marginRight="62px"
-            android:lineSpacingMultiplier="1.2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:textSize="20px"
-            android:layout_marginBottom="66px"/>
+            android:layout_marginBottom="@dimen/sharecontentfragment_content_tv_marginbottom"
+            android:layout_marginLeft="@dimen/sharecontentfragment_content_tv_marginleft"
+            android:layout_marginRight="@dimen/sharecontentfragment_content_tv_marginright"
+            android:layout_marginTop="@dimen/sharecontentfragment_content_tv_margintop"
+            android:lineSpacingMultiplier="1.2"
+            android:textColor="@color/sharecontentfragment_content_tv_textcolor"
+            android:textSize="@dimen/sharecontentfragment_content_tv_textsize" />
 
 
     </LinearLayout>
-
-
 
 
 </com.zhy.autolayout.AutoRelativeLayout>

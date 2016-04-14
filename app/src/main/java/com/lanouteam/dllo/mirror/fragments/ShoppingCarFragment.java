@@ -11,15 +11,15 @@ import com.lanouteam.dllo.mirror.base.BaseFragment;
  * Created by dllo on 16/3/30.
  */
 public class ShoppingCarFragment extends BaseFragment{
-    private LinearLayout linearLayout;
+    private LinearLayout shoppingLinearLayout;
     private MainActivity activity;
 
     @Override
     protected void initView(View view) {
-        linearLayout = bindView(R.id.shoppingcar_title_linearlayout);
+        shoppingLinearLayout = bindView(R.id.shoppingcar_title_linearlayout);
         activity = (MainActivity) getContext();
 
-        linearLayout.setOnClickListener(new View.OnClickListener() {
+        shoppingLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 activity.showMenu();

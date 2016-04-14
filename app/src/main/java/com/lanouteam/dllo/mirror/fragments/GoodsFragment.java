@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,7 +17,6 @@ import com.lanouteam.dllo.mirror.adapters.GoodsRecyclerViewAdapter;
 import com.lanouteam.dllo.mirror.adapters.OnRecyclerviewItemClickListener;
 import com.lanouteam.dllo.mirror.base.BaseFragment;
 import com.lanouteam.dllo.mirror.bean.GoodsFragmentBean;
-import com.lanouteam.dllo.mirror.bean.MenuListBean;
 import com.lanouteam.dllo.mirror.bean.RequestParams;
 import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.net.NetHelper;
@@ -31,7 +29,7 @@ import java.util.HashMap;
  * Created by dllo on 16/3/30.
  */
 public class GoodsFragment extends BaseFragment implements RequestUrls, View.OnClickListener,RequestParams {
-    private LinearLayout linearLayout;// 标题的linearlayout 用来设置监听
+    private LinearLayout goodsLinearLayout;// 标题的linearlayout 用来设置监听
     private TextView titleTv;// 标题的文字
     private GoodsRecyclerViewAdapter adapter;// 商品分类的recyclerView的适配器
     private RecyclerView recyclerView;// 商品分类的recyclerView
@@ -45,12 +43,12 @@ public class GoodsFragment extends BaseFragment implements RequestUrls, View.OnC
     @Override
     protected void initView(View view) {
         // 绑定布局
-        linearLayout = bindView(R.id.goodsfragment_title_linearlayout);
+        goodsLinearLayout = bindView(R.id.goodsfragment_title_linearlayout);
         recyclerView = bindView(R.id.goodsfragment_recyclerview);
         titleTv = bindView(R.id.goodsfragment_title_tv);
         activity = (MainActivity) getContext();
 
-        linearLayout.setOnClickListener(this);
+        goodsLinearLayout.setOnClickListener(this);
 
         // 网络请求
         netHelper = new NetHelper(getContext());

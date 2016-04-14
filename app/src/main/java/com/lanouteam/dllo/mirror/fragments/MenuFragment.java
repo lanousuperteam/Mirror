@@ -27,7 +27,7 @@ public class MenuFragment extends BaseFragment implements RequestUrls, NetListen
     private MainActivity activity;
     private NetHelper netHelper;
     private MenuListViewAdapter adapter;
-    private LinearLayout linearLayout;
+    private LinearLayout menuLinearLayout;
     private TextView homeTv;
     private MenuListBean bean;
 
@@ -35,12 +35,12 @@ public class MenuFragment extends BaseFragment implements RequestUrls, NetListen
     @Override
     protected void initView(View view) {
         menuListView = bindView(R.id.menufragment_listview);
-        linearLayout = bindView(R.id.menufragment_menu);
+        menuLinearLayout = bindView(R.id.menufragment_menu);
         homeTv = bindView(R.id.menufragment_home);
         activity = (MainActivity) getContext();
 
 
-        linearLayout.setOnClickListener(new View.OnClickListener() {
+        menuLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 activity.disappearMenu();
