@@ -53,7 +53,7 @@ public class MenuListViewAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, final ViewGroup parent) {
         PopwindowHolder holder = null;
         if (convertView == null) {
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_listview_popwindow, null);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_listview_menufragment, null);
             holder = new PopwindowHolder();
             holder.titleTv = (TextView) convertView.findViewById(R.id.item_list_popupwindow_title);
             holder.lineIv = (ImageView) convertView.findViewById(R.id.item_list_popupwindow_line);

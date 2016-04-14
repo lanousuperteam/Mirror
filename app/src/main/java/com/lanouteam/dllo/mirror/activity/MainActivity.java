@@ -82,6 +82,7 @@ public class MainActivity extends BaseActivity implements RequestUrls, NetListen
 
     // 设置跳转
     public void getPositionFromPopwindow(int position) {
+        //TODO: 16/4/14  需要改
         disappearMenu();
         // 这个是设置viewPager切换过度时间的类
         ViewPagerScroller scroller = new ViewPagerScroller(this);

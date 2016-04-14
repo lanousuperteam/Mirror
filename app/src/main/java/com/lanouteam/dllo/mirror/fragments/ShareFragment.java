@@ -35,6 +35,7 @@ public class ShareFragment extends BaseFragment implements View.OnClickListener 
 
         datas = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
+            // TODO: 16/4/14   假数据
             datas.add("冷美人的慵懒随性风");
         }
 

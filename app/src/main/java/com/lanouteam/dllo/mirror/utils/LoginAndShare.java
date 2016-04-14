@@ -15,17 +15,11 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
  * Created by dllo on 16/4/12.
  */
 public class LoginAndShare {
-    private String id;
-    private String shareUrl = "http://api101.test.mirroreye.cn/index.php/goodweb/info?id=";
-
-    public LoginAndShare(String id) {
-        this.id = id;
-    }
 
     /**
      * 我的分享
      */
-    public void MyShare() {
+    public void MyShare(String shareUrl, String id) {
         ShareSDK.initSDK(BaseApplication.mContext);
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权
@@ -55,9 +49,9 @@ public class LoginAndShare {
      * 微博登录:SinaWeibo.NAME
      * QQ空间登录:QZone.NAME
      */
-    public void MyLogin() {
+    public void MyLogin(String tag) {
         ShareSDK.initSDK(BaseApplication.mContext);
-        Platform platform2 = ShareSDK.getPlatform(id);
+        Platform platform2 = ShareSDK.getPlatform(tag);
         if (platform2.isAuthValid()) {
             platform2.removeAccount();
         }
