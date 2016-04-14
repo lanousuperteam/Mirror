@@ -23,7 +23,7 @@ import java.util.HashMap;
  * Created by dllo on 16/3/31.
  * 商品二级页面滑动的adapter
  */
-public class GoodsContentApapter extends RecyclerView.Adapter implements RequestParams {
+public class GoodsContentAdapter extends RecyclerView.Adapter implements RequestParams {
     private GoodsContentBean datas;
     private int layoutScrollValue;
     //分享
@@ -36,18 +36,15 @@ public class GoodsContentApapter extends RecyclerView.Adapter implements Request
     final int TYPE_GOODS_DETAILS = 3;
     //网络
     private NetHelper netHelper;
-    private HashMap goodsInfo;
     private ImageLoader detailsImageLoader, titleImageLoader;
     //传值接口
     private GoodsContentInterface goodsContentInterface;
 
 
-    public GoodsContentApapter(GoodsContentBean datas) {
+    public GoodsContentAdapter(GoodsContentBean datas) {
         this.datas = datas;
         //网络解析
-        goodsInfo = new HashMap();
-        goodsInfo.put(DEVICE_TYPE, 2 + "");
-        goodsInfo.put(GOODS_ID, "96Psa1455524521");
+
         netHelper = new NetHelper(BaseApplication.mContext);
         titleImageLoader = netHelper.getImageLoader();
         detailsImageLoader = netHelper.getImageLoader();

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
-import com.lanouteam.dllo.mirror.adapters.GoodsContentApapter;
+import com.lanouteam.dllo.mirror.adapters.GoodsContentAdapter;
 import com.lanouteam.dllo.mirror.adapters.GoodsContentInterface;
 import com.lanouteam.dllo.mirror.base.BaseActivity;
 import com.lanouteam.dllo.mirror.bean.GoodsContentBean;
@@ -34,11 +34,11 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
     private SimpleDraweeView backgroundIv;
     private TextView wearTv;
     private RecyclerView goodsContentRecyclerView;
-    private GoodsContentApapter goodsContentApapter;
-    private RelativeLayout relativeLayoutButtom;
+    private GoodsContentAdapter goodsContentApapter;
+    private RelativeLayout relativeLayoutBottom;
     //异步滑动
     private int value;
-    private boolean isup = true, isDown = true, isVisible = false;
+    private boolean isUp = true, isDown = true, isVisible = false;
     private boolean dyUp = true;
     //网络解析
     private HashMap goodsInfo;
@@ -68,7 +68,7 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
                 Gson gson = new Gson();
                 GoodsContentBean data = gson.fromJson(object.toString(), GoodsContentBean.class);
 
-                goodsContentApapter = new GoodsContentApapter(data);
+                goodsContentApapter = new GoodsContentAdapter(data);
                 GridLayoutManager gm = new GridLayoutManager(getBaseContext(), 1);
                 gm.setOrientation(LinearLayoutManager.VERTICAL);
                 goodsContentRecyclerView.setLayoutManager(gm);
@@ -87,12 +87,12 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
 
 
                             //该数值为滑动到recycleview第三个布局by滑动的数值范围
-                            if (position == 3 && isup) {
+                            if (position == 3 && isUp) {
 
                                 Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.goods_content_layout_into);
-                                relativeLayoutButtom.setAnimation(animation);
-                                relativeLayoutButtom.setVisibility(View.VISIBLE);
-                                isup = false;
+                                relativeLayoutBottom.setAnimation(animation);
+                                relativeLayoutBottom.setVisibility(View.VISIBLE);
+                                isUp = false;
                                 isDown = true;
                                 isVisible = true;
                             }
@@ -101,9 +101,9 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
                             if (position == 1 && isVisible && isDown) {
 
                                 Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.goods_content_layout_out);
-                                relativeLayoutButtom.setAnimation(animation);
-                                relativeLayoutButtom.setVisibility(View.INVISIBLE);
-                                isup = true;
+                                relativeLayoutBottom.setAnimation(animation);
+                                relativeLayoutBottom.setVisibility(View.INVISIBLE);
+                                isUp = true;
                                 isDown = false;
                                 isVisible = false;
                             }
@@ -137,7 +137,7 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void initView() {
         goodsContentRecyclerView = bindView(R.id.activity_goods_content_recyclerview);
-        relativeLayoutButtom = bindView(R.id.activity_goods_content_relativelayout);
+        relativeLayoutBottom = bindView(R.id.activity_goods_content_relativelayout);
         backgroundIv = bindView(R.id.activity_goods_content_background_iv);
         wearTv = bindView(R.id.activity_goods_content_tv);
 
