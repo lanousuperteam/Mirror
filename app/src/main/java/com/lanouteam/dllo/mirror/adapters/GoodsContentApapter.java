@@ -50,7 +50,7 @@ public class GoodsContentApapter extends RecyclerView.Adapter implements Request
         netHelper = new NetHelper(BaseApplication.mContext);
         titleImageLoader = netHelper.getImageLoader();
         detailsImageLoader = netHelper.getImageLoader();
-        loginAndShare=new LoginAndShare(id);
+        loginAndShare=new LoginAndShare();
 
 
     }
@@ -155,7 +155,7 @@ public class GoodsContentApapter extends RecyclerView.Adapter implements Request
             ((HeadViewHolder) holder).imageViewShare.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    loginAndShare.MyShare();
+                    loginAndShare.MyShare("http://api101.test.mirroreye.cn/index.php/goodweb/info?id=",id);
                 }
             });
 

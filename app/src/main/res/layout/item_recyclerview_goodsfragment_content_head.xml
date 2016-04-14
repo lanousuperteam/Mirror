@@ -84,6 +84,7 @@
         android:layout_below="@id/item_goodsfragment_content_head_info_des"
         android:layout_marginTop="@dimen/item_goodsfragment_content_head_price_margin_top"
         android:layout_centerHorizontal="true"/>
+    <!-- TODO -->
     <TextView
         android:id="@+id/item_goodsfragment_content_head_scroll"
         android:layout_width="wrap_content"
