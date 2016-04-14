@@ -133,9 +133,9 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
             JSONObject jsonObject = new JSONObject(object.toString());
             String result = jsonObject.getString("result");
             if (result.equals("1") && addressId == null) {
-                Toast.makeText(AddAddressActivity.this, "添加地址成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddAddressActivity.this, R.string.add_address_state, Toast.LENGTH_SHORT).show();
             } else if (result.equals("1") && addressId != null) {
-                Toast.makeText(AddAddressActivity.this, "编辑地址成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddAddressActivity.this, R.string.edit_address, Toast.LENGTH_SHORT).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();
