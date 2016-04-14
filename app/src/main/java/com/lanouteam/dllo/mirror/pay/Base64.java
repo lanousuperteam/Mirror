@@ -1,4 +1,4 @@
-package com.lanouteam.dllo.mirror.activity.pay;
+package com.lanouteam.dllo.mirror.pay;
 
 public final class Base64 {
 

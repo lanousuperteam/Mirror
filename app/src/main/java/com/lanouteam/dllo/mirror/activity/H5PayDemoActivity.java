@@ -1,4 +1,4 @@
-package com.lanouteam.dllo.mirror.activity.pay;
+package com.lanouteam.dllo.mirror.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

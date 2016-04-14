@@ -36,6 +36,7 @@
     <string name="item_delete_btn">删除</string>
     <string name="delete_address">删除地址</string>
     <string name="set_default">设置默认地址</string>
+    <string name="item_popupwindow_pay_ali_pay">支付宝支付</string>
 
 
 </resources>

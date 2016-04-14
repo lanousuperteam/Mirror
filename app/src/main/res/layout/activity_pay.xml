@@ -14,9 +14,9 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.lanouteam.dllo.mirror.activity.pay.ExternalFragment"
+        android:name="com.lanouteam.dllo.mirror.pay.ExternalFragment"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        tools:layout="@layout/pay_external" />
+        tools:layout="@layout/item_pay_external" />
 
 </LinearLayout>

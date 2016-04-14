@@ -12,6 +12,10 @@
         <item name="android:windowEnterAnimation">@anim/into</item>
     </style>
 
+    <style name="PayActivityAnimation" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pay_activity_into</item>
+    </style>
+
     <!-- 订单管理-->
     <!-- 订单页style布局的左右间距-->
     <style name="IndentDatailsPageMargin">

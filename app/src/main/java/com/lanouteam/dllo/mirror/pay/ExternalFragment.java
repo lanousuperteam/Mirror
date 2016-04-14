@@ -1,4 +1,4 @@
-package com.lanouteam.dllo.mirror.activity.pay;
+package com.lanouteam.dllo.mirror.pay;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,6 +13,6 @@ public class ExternalFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.pay_external, container, false);
+		return inflater.inflate(R.layout.item_pay_external, container, false);
 	}
 }

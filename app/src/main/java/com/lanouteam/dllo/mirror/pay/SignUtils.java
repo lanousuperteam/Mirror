@@ -1,4 +1,4 @@
-package com.lanouteam.dllo.mirror.activity.pay;
+package com.lanouteam.dllo.mirror.pay;
 
 import java.security.KeyFactory;
 import java.security.PrivateKey;
