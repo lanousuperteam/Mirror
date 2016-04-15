@@ -49,13 +49,13 @@ public class MenuFragment extends BaseFragment implements RequestUrls, NetListen
         homeTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.getPositionFromPopwindow(0);
+                activity.jumpViewPager(0);
             }
         });
         menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                activity.getPositionFromPopwindow(position);
+                activity.jumpViewPager(position);
             }
         });
 
