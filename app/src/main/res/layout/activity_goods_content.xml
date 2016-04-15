@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <ImageView
         android:id="@+id/activity_goods_content_background_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

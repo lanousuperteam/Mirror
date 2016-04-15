@@ -20,6 +20,7 @@ import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
 import com.lanouteam.dllo.mirror.utils.L;
 import com.lanouteam.dllo.mirror.utils.SmoothImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
@@ -32,6 +33,7 @@ public class WearDetailShowActivity extends Activity {
     private int mLocationY;
     private int mWidth;
     private int mHeight;
+    private String uriPhoto;
     //网络解析
     private NetHelper netHelper;
     private HashMap wearInfo;
@@ -61,7 +63,7 @@ public class WearDetailShowActivity extends Activity {
         mLocationY = getIntent().getIntExtra("locationY", 0);
         mWidth = getIntent().getIntExtra("width", 0);
         mHeight = getIntent().getIntExtra("height", 0);
-
+        uriPhoto=getIntent().getStringExtra("photoUri");
         imageView = new SmoothImageView(this);
         imageView.setOriginalInfo(mWidth, mHeight, mLocationX, mLocationY);
         imageView.transformIn();
@@ -69,30 +71,11 @@ public class WearDetailShowActivity extends Activity {
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         setContentView(imageView);
         //解析图片
-        netHelper.getJsonData(RequestUrls.GOODS_INFO, new NetListener() {
-            @Override
-            public void getSuccess(Object object) {
-                Gson gson = new Gson();
-                WearBean data = gson.fromJson(object.toString(), WearBean.class);
+//        wearImageLoader.get(uriPhoto, wearImageLoader.getImageListener(
+//                imageView, R.mipmap.ic_launcher, R.mipmap.background));
 
-                for (int i = 0; i <data.getData().getWear_video().size() ; i++) {
-                    if(data.getData().getWear_video().get(i).getType().equals("8")&&data.getData().getWear_video().get(i).getType().equals("9")){
+        Picasso.with(WearDetailShowActivity.this).load(uriPhoto).into(imageView);
 
-                    }else{
-                        wearImageLoader.get(data.getData().getWear_video().get(i).getData(), wearImageLoader.getImageListener(
-                                imageView, Color.BLACK, R.mipmap.ic_launcher));
-                    }
-
-
-
-                }
-
-            }
-            @Override
-            public void getFailed(int s) {
-
-            }
-        }, wearInfo);
 
     }
 

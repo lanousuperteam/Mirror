@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
 import com.lanouteam.dllo.mirror.utils.L;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
@@ -31,7 +33,7 @@ import java.util.HashMap;
  */
 public class GoodsContentActivity extends BaseActivity implements View.OnClickListener,RequestParams {
     //定义组件
-    private SimpleDraweeView backgroundIv;
+    private ImageView backgroundIv;
     private TextView wearTv;
     private RecyclerView goodsContentRecyclerView;
     private GoodsContentAdapter goodsContentApapter;
@@ -50,8 +52,6 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
     }
     @Override
     protected void initData() {
-//        Intent allIntent=getIntent();
-//        String id=allIntent.getStringExtra(RequestParams.GOODS_ID);
         Intent goodsIntent=getIntent();
         id=goodsIntent.getStringExtra(RequestParams.GOODS_ID);
         wearTv.setOnClickListener(this);
@@ -74,7 +74,7 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
                 goodsContentRecyclerView.setLayoutManager(gm);
                 goodsContentRecyclerView.setAdapter(goodsContentApapter);
                 //解析图片
-                backgroundIv.setImageURI(Uri.parse(data.getData().getGoods_img()));
+                Picasso.with(GoodsContentActivity.this).load(data.getData().getGoods_img()).into(backgroundIv);
                 /**
                  * 动画出现的方法 通过接口传值(position)通过判断滑动的position位置控制动画
                  * */
@@ -138,7 +138,7 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
     protected void initView() {
         goodsContentRecyclerView = bindView(R.id.activity_goods_content_recyclerview);
         relativeLayoutBottom = bindView(R.id.activity_goods_content_relativelayout);
-        backgroundIv = bindView(R.id.activity_goods_content_background_iv);
+        backgroundIv =bindView(R.id.activity_goods_content_background_iv);
         wearTv = bindView(R.id.activity_goods_content_tv);
 
 

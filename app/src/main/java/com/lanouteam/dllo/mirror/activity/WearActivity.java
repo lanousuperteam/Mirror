@@ -1,6 +1,8 @@
 package com.lanouteam.dllo.mirror.activity;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +24,7 @@ import com.lanouteam.dllo.mirror.bean.WearBean;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
 import com.lanouteam.dllo.mirror.utils.jcvideoplayerlib.JCVideoPlayer;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +35,8 @@ import java.util.List;
  * Created by dllo on 16/4/8.
  */
 public class WearActivity extends BaseActivity implements View.OnClickListener, RequestUrls {
+    //视频
+    private JCVideoPlayer jcVideoPlayer;
     //网络解析
     private NetHelper netHelper;
     private HashMap wearInfo;
@@ -40,6 +45,7 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
     //组件
     private WearRecyclerviewViewAdapter wearRecyclerviewAdapter;
     private RecyclerView  wearRecyclerView;
+    private View viewHead=LayoutInflater.from(BaseApplication.mContext).inflate(R.layout.item_recyclerview_wear_activity_head, null);
 
     private ImageView imageViewBuy, imageViewReturn;
     //
@@ -68,11 +74,24 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
 
                 Gson gson = new Gson();
                 WearBean data = gson.fromJson(object.toString(), WearBean.class);
+//                for (int i = 0; i < data.getData().getWear_video().size(); i++) {
+//                    if(data.getData().getWear_video().get(i).getType().equals("9")){
+////
+//                        wearImageLoader.get(data.getData().getWear_video().get(i).getData(), wearImageLoader.getImageListener(jcVideoPlayer.ivThumb, R.mipmap.ic_launcher, R.mipmap.ic_launcher));
+//
+//                        Log.i("klaskld",data.getData().getWear_video().get(i).getData()+"  快速打开啥快递");
+//
+//                    }
+//
+//                }
                 wearRecyclerviewAdapter = new WearRecyclerviewViewAdapter(data.getData().getWear_video());
                 GridLayoutManager gm = new GridLayoutManager(getBaseContext(), 1);
                 gm.setOrientation(LinearLayoutManager.VERTICAL);
                 wearRecyclerView.setLayoutManager(gm);
                 wearRecyclerView.setAdapter(wearRecyclerviewAdapter);
+              //  wearRecyclerView.addView(viewHead);
+
+
 
             }
 
@@ -92,6 +111,9 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
         wearRecyclerView = bindView(R.id.wear_activity_listview);
         imageViewBuy = bindView(R.id.activity_wear_buy);
         imageViewReturn = bindView(R.id.activity_wear_return_iv);
+        jcVideoPlayer= (JCVideoPlayer) viewHead.findViewById(R.id.wear_activity_video_controller);
+
+
     }
 
     @Override
@@ -101,8 +123,7 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
                 Intent intentBuy = new Intent(WearActivity.this, GoodsContentActivity.class);
                 startActivity(intentBuy);
             case R.id.activity_wear_return_iv:
-                Intent intentReturn = new Intent(WearActivity.this, GoodsContentActivity.class);
-                startActivity(intentReturn);
+                finish();
         }
     }
 
@@ -110,7 +131,9 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
      * 该activity对应的adapter
      */
     public class WearRecyclerviewViewAdapter extends RecyclerView.Adapter {
-
+        List<String> imageList = new ArrayList<>();
+        String videoUrl = null;
+        String videoImg = null;
 
         private List<WearBean.DataEntity.Wear_videoEntity> list;
         final int TYPE_HEAD = 0;
@@ -122,6 +145,7 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
 
         @Override
         public int getItemViewType(int position) {
+
             if (position == 0) {
                 return TYPE_HEAD;
             } else {
@@ -133,10 +157,10 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             if (viewType == TYPE_HEAD) {
-                View viewHead = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerviewview_wear_activity_head, parent, false);
+                View viewHead = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_wear_activity_head, parent, false);
                 return new HeadViewHolder(viewHead);
             } else {
-                View viewPhotos = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerviewview_wear_activity, null);
+                View viewPhotos = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_wear_activity, null);
                 return new PhotosViewHolder(viewPhotos);
             }
         }
@@ -146,9 +170,7 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
         public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
 
             List<String> videoList = new ArrayList<>();
-            String videoUrl = null;
-            String videoImg = null;
-            final List<String> imageList = new ArrayList<>();
+//            final List<String> imageList = new ArrayList<>();
             for (int i = 0; i < list.size(); i++) {
                 String type = list.get(i).getType();
                 if (type.equals("8")) {
@@ -179,26 +201,29 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
             if (holder instanceof PhotosViewHolder) {
 
 
-                // Uri uri = Uri.parse(imageList.get(position - 1));
-                //  ((PhotosViewHolder) holder).iv.setImageURI(uri);
-                wearImageLoader.get(imageList.get(position - 1),wearImageLoader.getImageListener(((PhotosViewHolder) holder).iv,R.mipmap.ic_launcher,R.mipmap.ic_launcher));
-                Log.i("URII", imageList.get(position - 1)+"  DD");
+//                 Uri uri = Uri.parse(imageList.get(position - 1));
+//                  ((PhotosViewHolder) holder).iv.setImageURI(uri);
+              //  wearImageLoader.get(imageList.get(position - 1),wearImageLoader.getImageListener(((PhotosViewHolder) holder).iv,R.mipmap.ic_launcher,R.mipmap.ic_launcher));
+                Log.i("URII", imageList.get(position - 1) + "  DD");
+                Picasso.with(WearActivity.this).load(imageList.get(position - 1)).into(((PhotosViewHolder) holder).iv);
+
 
                 ((PhotosViewHolder) holder).iv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
-                        Intent intent = new Intent(BaseApplication.mContext, WearDetailShowActivity.class);
-
+                        Intent intent = new Intent();
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         intent.putStringArrayListExtra("images", (ArrayList<String>) imageList);
                         intent.putExtra("position", position);
                         int[] location = new int[2];
                         ((PhotosViewHolder) holder).iv.getLocationOnScreen(location);//location 里 有iv 的横纵坐标
                         intent.putExtra("locationX", location[0]);//必须
                         intent.putExtra("locationY", location[1]);//必须
-
+                        intent.putExtra("photoUri",imageList.get(position - 1));
                         intent.putExtra("width", ((PhotosViewHolder) holder).iv.getWidth());//必须
                         intent.putExtra("height", ((PhotosViewHolder) holder).iv.getHeight());//必须
+                        intent.setClass(BaseApplication.mContext,WearDetailShowActivity.class);
                         BaseApplication.mContext.startActivity(intent);
                     }
                 });
