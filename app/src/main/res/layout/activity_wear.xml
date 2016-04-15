@@ -27,7 +27,7 @@
             android:layout_marginTop="@dimen/wear_activity_line_margin_top"
             android:src="@mipmap/icon_register_line" />
 
-        <ListView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/wear_activity_listview"
             android:layout_width="@dimen/wear_activity_tv_width"
             android:layout_height="match_parent"
@@ -35,7 +35,7 @@
             android:layout_centerHorizontal="true">
 
 
-        </ListView>
+        </android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>
 

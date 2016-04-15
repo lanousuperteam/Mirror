@@ -1,13 +1,14 @@
 package com.lanouteam.dllo.mirror.activity;
 
 import android.content.Intent;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.google.gson.Gson;
@@ -20,25 +21,26 @@ import com.lanouteam.dllo.mirror.bean.WearBean;
 
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
-import com.lanouteam.dllo.mirror.utils.L;
 import com.lanouteam.dllo.mirror.utils.jcvideoplayerlib.JCVideoPlayer;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
  * Created by dllo on 16/4/8.
  */
 public class WearActivity extends BaseActivity implements View.OnClickListener, RequestUrls {
-
     //网络解析
     private NetHelper netHelper;
     private HashMap wearInfo;
     private ImageLoader wearImageLoader;
     private String id;
     //组件
-    private WearListViewAdapter wearListViewAdapter;
-    private ListView wearListView;
+    private WearRecyclerviewViewAdapter wearRecyclerviewAdapter;
+    private RecyclerView  wearRecyclerView;
+
     private ImageView imageViewBuy, imageViewReturn;
     //
 
@@ -52,8 +54,6 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
     protected void initData() {
         Intent goodsIntent = getIntent();
         id = goodsIntent.getStringExtra(RequestParams.GOODS_ID);
-        //video上的图片填充类型:图片充满
-        JCVideoPlayer.setThumbImageViewScalType(ImageView.ScaleType.CENTER_CROP);
         //网络解析
         netHelper = new NetHelper(this);
         wearInfo = new HashMap();
@@ -68,9 +68,11 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
 
                 Gson gson = new Gson();
                 WearBean data = gson.fromJson(object.toString(), WearBean.class);
-
-                wearListViewAdapter = new WearListViewAdapter(data);
-                wearListView.setAdapter(wearListViewAdapter);
+                wearRecyclerviewAdapter = new WearRecyclerviewViewAdapter(data.getData().getWear_video());
+                GridLayoutManager gm = new GridLayoutManager(getBaseContext(), 1);
+                gm.setOrientation(LinearLayoutManager.VERTICAL);
+                wearRecyclerView.setLayoutManager(gm);
+                wearRecyclerView.setAdapter(wearRecyclerviewAdapter);
 
             }
 
@@ -87,7 +89,7 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     protected void initView() {
-        wearListView = bindView(R.id.wear_activity_listview);
+        wearRecyclerView = bindView(R.id.wear_activity_listview);
         imageViewBuy = bindView(R.id.activity_wear_buy);
         imageViewReturn = bindView(R.id.activity_wear_return_iv);
     }
@@ -107,14 +109,15 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
     /**
      * 该activity对应的adapter
      */
-    public class WearListViewAdapter extends BaseAdapter {
-        private WearBean data;
+    public class WearRecyclerviewViewAdapter extends RecyclerView.Adapter {
+
+
+        private List<WearBean.DataEntity.Wear_videoEntity> list;
         final int TYPE_HEAD = 0;
         final int TYPE_PHOTOS = 1;
 
-        public WearListViewAdapter(WearBean data) {
-            this.data = data;
-
+        public WearRecyclerviewViewAdapter(List<WearBean.DataEntity.Wear_videoEntity> list) {
+            this.list = list;
         }
 
         @Override
@@ -124,80 +127,109 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
             } else {
                 return TYPE_PHOTOS;
             }
-
         }
 
-        @Override
-        public int getCount() {
-            return data != null && data.getData().getWear_video().size() > 0 ? data.getData().getWear_video().size() : 0;
-        }
 
         @Override
-        public Object getItem(int position) {
-            return data.getData().getWear_video().get(position) == null ? data.getData().getWear_video().get(position) : null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            final ViewHolder holder;
-            if (convertView == null) {
-                convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_listview_wear_activity, null);
-                holder = new ViewHolder();
-                holder.imageViewPhoto = (ImageView) convertView.findViewById(R.id.item_wear_activity_iv);
-                holder.jcVideoPlayer = (JCVideoPlayer) convertView.findViewById(R.id.wear_activity_video_controller);
-                convertView.setTag(holder);
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            if (viewType == TYPE_HEAD) {
+                View viewHead = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerviewview_wear_activity_head, parent, false);
+                return new HeadViewHolder(viewHead);
             } else {
-                holder = (ViewHolder) convertView.getTag();
+                View viewPhotos = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerviewview_wear_activity, null);
+                return new PhotosViewHolder(viewPhotos);
+            }
+        }
+
+
+        @Override
+        public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
+
+            List<String> videoList = new ArrayList<>();
+            String videoUrl = null;
+            String videoImg = null;
+            final List<String> imageList = new ArrayList<>();
+            for (int i = 0; i < list.size(); i++) {
+                String type = list.get(i).getType();
+                if (type.equals("8")) {
+                    videoList.add(list.get(i).getData());
+                    videoUrl = list.get(i).getData();
+
+                } else if (type.equals("9")) {
+                    videoImg = list.get(i).getData();
+
+                } else {
+                    imageList.add(list.get(i).getData());
+                }
+
+
             }
 
-            /**
-             * getLocationOnScreen:计算图片在该屏幕上的坐标. 参数为int类型的XY坐标.
-             *
-             * location: 两个整数的数组来保存坐标
-             */
-            holder.imageViewPhoto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //带动画跳转传值
+            if (holder instanceof HeadViewHolder) {
 
-                    Intent intent = new Intent(WearActivity.this, WearDetailShowActivity.class);
+                JCVideoPlayer.setThumbImageViewScalType(ImageView.ScaleType.FIT_XY);
+                ((HeadViewHolder) holder).jCVideoPlayer.ivStart.performClick();
 
-                    int[] location = new int[2];
-                    holder.imageViewPhoto.getLocationOnScreen(location);
-                    intent.putExtra("locationX", location[0]);
-                    intent.putExtra("locationY", location[1]);
-                    intent.putExtra(RequestParams.GOODS_ID, id);
-
-                    intent.putExtra("width", holder.imageViewPhoto.getWidth());
-                    intent.putExtra("height", holder.imageViewPhoto.getHeight());
-                    L.i("XY值", location[0] + "  " + location[1] + "  " + holder.imageViewPhoto.getWidth() + "  " + holder.imageViewPhoto.getHeight() + "");
+                ((HeadViewHolder) holder).jCVideoPlayer.setUp(videoUrl, "", false);
 
 
-                    startActivity(intent);
-                    overridePendingTransition(0, 0);
-                }
-            });
+                wearImageLoader.get(videoImg, wearImageLoader.getImageListener(((HeadViewHolder) holder).jCVideoPlayer.ivThumb, R.mipmap.ic_launcher, R.mipmap.ic_launcher));
 
-            return convertView;
+            }
+            if (holder instanceof PhotosViewHolder) {
+
+
+                // Uri uri = Uri.parse(imageList.get(position - 1));
+                //  ((PhotosViewHolder) holder).iv.setImageURI(uri);
+                wearImageLoader.get(imageList.get(position - 1),wearImageLoader.getImageListener(((PhotosViewHolder) holder).iv,R.mipmap.ic_launcher,R.mipmap.ic_launcher));
+                Log.i("URII", imageList.get(position - 1)+"  DD");
+
+                ((PhotosViewHolder) holder).iv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(BaseApplication.mContext, WearDetailShowActivity.class);
+
+                        intent.putStringArrayListExtra("images", (ArrayList<String>) imageList);
+                        intent.putExtra("position", position);
+                        int[] location = new int[2];
+                        ((PhotosViewHolder) holder).iv.getLocationOnScreen(location);//location 里 有iv 的横纵坐标
+                        intent.putExtra("locationX", location[0]);//必须
+                        intent.putExtra("locationY", location[1]);//必须
+
+                        intent.putExtra("width", ((PhotosViewHolder) holder).iv.getWidth());//必须
+                        intent.putExtra("height", ((PhotosViewHolder) holder).iv.getHeight());//必须
+                        BaseApplication.mContext.startActivity(intent);
+                    }
+                });
+            }
+        }
+
+
+        @Override
+        public int getItemCount() {
+            return list != null && list.size() - 1 > 0 ? list.size() - 1 : 0;
 
         }
 
-        //新建一个缓存类 需要解析的数据
-        public class ViewHolder {
+        public class HeadViewHolder extends RecyclerView.ViewHolder {
 
-            ImageView imageViewPhoto;
-            JCVideoPlayer jcVideoPlayer;
+            private JCVideoPlayer jCVideoPlayer;
+
+            public HeadViewHolder(View itemView) {
+                super(itemView);
+                jCVideoPlayer = (JCVideoPlayer) itemView.findViewById(R.id.wear_activity_video_controller);
+            }
         }
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        JCVideoPlayer.releaseAllVideos();
+        public class PhotosViewHolder extends RecyclerView.ViewHolder {
+
+            private ImageView iv;
+
+            public PhotosViewHolder(View itemView) {
+                super(itemView);
+                iv = (ImageView) itemView.findViewById(R.id.item_wear_activity_iv);
+            }
+        }
     }
 }
