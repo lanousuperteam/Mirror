@@ -32,6 +32,9 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     private NetHelper netHelper;
     private String addressId;
 
+
+
+
     @Override
     protected int getLayout() {
         return R.layout.activity_add_address;
@@ -51,6 +54,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
         }
         returnIv.setOnClickListener(this);
         addAddressBtn.setOnClickListener(this);
+
     }
 
     @Override

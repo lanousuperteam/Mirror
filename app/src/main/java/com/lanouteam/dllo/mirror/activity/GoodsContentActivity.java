@@ -1,7 +1,6 @@
 package com.lanouteam.dllo.mirror.activity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.adapters.GoodsContentAdapter;
@@ -31,7 +29,7 @@ import java.util.HashMap;
 /**
  * Created by dllo on 16/3/31.
  */
-public class GoodsContentActivity extends BaseActivity implements View.OnClickListener,RequestParams {
+public class GoodsContentActivity extends BaseActivity implements View.OnClickListener, RequestParams {
     //定义组件
     private ImageView backgroundIv;
     private TextView wearTv;
@@ -46,14 +44,16 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
     private HashMap goodsInfo;
     private NetHelper netHelper;
     private String id;
+
     @Override
     protected int getLayout() {
         return R.layout.activity_goods_content;
     }
+
     @Override
     protected void initData() {
-        Intent goodsIntent=getIntent();
-        id=goodsIntent.getStringExtra(RequestParams.GOODS_ID);
+        Intent goodsIntent = getIntent();
+        id = goodsIntent.getStringExtra(RequestParams.GOODS_ID);
         wearTv.setOnClickListener(this);
         //网络解析
         goodsInfo = new HashMap();
@@ -84,8 +84,6 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
 
                         //该数值为滑动到recycleview第三个布局by滑动的数值范围
                         if (dyUp) {//判断滑动方向  dy>0为上滑
-
-
                             //该数值为滑动到recycleview第三个布局by滑动的数值范围
                             if (position == 3 && isUp) {
 
@@ -138,7 +136,7 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
     protected void initView() {
         goodsContentRecyclerView = bindView(R.id.activity_goods_content_recyclerview);
         relativeLayoutBottom = bindView(R.id.activity_goods_content_relativelayout);
-        backgroundIv =bindView(R.id.activity_goods_content_background_iv);
+        backgroundIv = bindView(R.id.activity_goods_content_background_iv);
         wearTv = bindView(R.id.activity_goods_content_tv);
 
 
@@ -150,7 +148,7 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
         switch (v.getId()) {
             case R.id.activity_goods_content_tv:
                 Intent intentWear = new Intent(this, WearActivity.class);
-                intentWear.putExtra(RequestParams.GOODS_ID,id);
+                intentWear.putExtra(RequestParams.GOODS_ID, id);
                 startActivity(intentWear);
         }
 
