@@ -9,11 +9,11 @@
 
     <ImageView
         android:id="@+id/item_goodsfragment_content_goods_details_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
+        android:layout_width="370dp"
+        android:layout_height="375dp"
+        android:src="@mipmap/icon_shopping_car_nothing"
         android:layout_centerHorizontal="true"
-        android:src="@mipmap/ic_launcher" />
+        />
 <!--        fresco:actualImageScaleType="focusCrop"-->
     <RelativeLayout
         android:id="@+id/item_goodsfragment_content_goods_details_relativelayout"
@@ -39,7 +39,7 @@
             android:layout_below="@id/item_goodsfragment_content_goods_details_line_top"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/item_goodsfragment_content_details_name_margin_top"
-            android:text="@string/item_goodsfragment_content_details_name_text"
+            android:text=""
             android:textColor="@color/colorText"
             android:textSize="@dimen/item_goodsfragment_content_details_name_tetx"
             android:textStyle="bold" />
@@ -62,7 +62,7 @@
             android:layout_below="@+id/item_goodsfragment_content_goods_details_line_bottom"
             android:layout_marginBottom="@dimen/item_goodsfragment_content_details_intro_content_margin_bottom"
             android:layout_marginTop="@dimen/item_goodsfragment_content_details_intro_content_margin_top"
-            android:text="@string/item_goodsfragment_content_details_intro_content_test_text"
+            android:text=""
             android:textColor="@color/colorText"
             android:textSize="@dimen/item_goodsfragment_content_details_intro_content_text" />
 

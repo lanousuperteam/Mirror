@@ -110,9 +110,10 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/activity_indent_details_page_goods_iv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/icon_shopping_car_nothing" />
             </LinearLayout>
 
             <LinearLayout
@@ -121,19 +122,21 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/activity_indent_details_page_title_tv"
                     style="@style/IndentDatailsPageProductName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/indent_datails_page_product_name_marginBottom"
                     android:layout_marginTop="@dimen/indent_datails_page_product_name_marginTop"
-                    android:text="@string/indent_datails_page_product_name"
+                    android:text=""
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/activity_indent_details_page_details_tv"
                     style="@style/IndentDatailsPageProductInformation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/IndentDatailsPageProductInformation" />
+                    android:text="" />
 
 
                 <LinearLayout
@@ -150,10 +153,11 @@
 
 
                     <TextView
+                        android:id="@+id/activity_indent_details_page_monery_tv"
                         style="@style/IndentDatailsPageMoneyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/indent_datails_page_money_value" />
+                        android:text="" />
 
                 </LinearLayout>
 

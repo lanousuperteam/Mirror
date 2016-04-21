@@ -30,7 +30,7 @@
     <dimen name="item_goodsfragment_content_head_info_text">12sp</dimen>
     <dimen name="item_goodsfragment_content_head_info_margin_top">25dp</dimen>
     <dimen name="item_goodsfragment_content_head_price_text">18sp</dimen>
-    <dimen name="item_goodsfragment_content_head_price_margin_top">20dp</dimen>
+    <dimen name="item_goodsfragment_content_head_price_margin_top">15dp</dimen>
     <dimen name="item_goodsfragment_content_head_scroll_text">12sp</dimen>
     <dimen name="item_goodsfragment_content_head_scroll_margin_top">24dp</dimen>
     <dimen name="item_goodsfragment_content_head_down_margin_top">7dp</dimen>

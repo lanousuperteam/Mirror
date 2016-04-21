@@ -100,6 +100,8 @@ public interface RequestUrls {
     String MENU_LIST = SERVER_URL + "index.php/index/menu_list";
 
     //每日推荐列表
-    //TODO 后加的
+
     String All_LIST = SERVER_URL + "index.php/index/mrtj";
+    //分享
+    String Share="http://api101.test.mirroreye.cn/index.php/goodweb/info?id=";
 }

@@ -1,12 +1,17 @@
 package com.lanouteam.dllo.mirror.activity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,9 +21,12 @@ import com.lanouteam.dllo.mirror.bean.RequestParams;
 import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.db.AddressDataHelperSingle;
 import com.lanouteam.dllo.mirror.db.Admin;
+import com.lanouteam.dllo.mirror.fragments.TopFragment;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
 import com.lanouteam.dllo.mirror.utils.L;
+import com.lanouteam.dllo.mirror.utils.LoginAndShare;
+import com.lanouteam.dllo.mirror.utils.SPUtils;
 import com.lanouteam.dllo.mirror.utils.T;
 
 import org.json.JSONException;
@@ -26,6 +34,10 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
+
+import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.wechat.friends.Wechat;
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by dllo on 16/3/29.
@@ -36,6 +48,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private Button loginBtn;
     private TextView forgetPasswordTv;
     private String phoneNumber;
+    private LoginAndShare loginAndShare;
+
 
     @Override
     protected int getLayout() {
@@ -53,6 +67,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         findViewById(R.id.login_activity_create_account_btn).setOnClickListener(this);
         phoneNumberEt.addTextChangedListener(this);
         passwordEt.addTextChangedListener(this);
+        loginAndShare=new LoginAndShare();
+
+
+
     }
 
     @Override
@@ -64,21 +82,26 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         passwordEt = bindView(R.id.login_activity_password_et);
         loginBtn = bindView(R.id.login_activity_login_btn);
         forgetPasswordTv = bindView(R.id.login_activity_forget_password_tv);
+
     }
 
     @Override
     public void onClick(View v) {
         phoneNumber = phoneNumberEt.getText().toString();
         String passwords = passwordEt.getText().toString();
+
+
+
+
         switch (v.getId()) {
             case R.id.login_activity_delete:
                 finish();
                 break;
             case R.id.login_activity_weibo_iv:
-
+                loginAndShare.MyLogin(SinaWeibo.NAME);
                 break;
             case R.id.login_activity_weChat_iv:
-
+                loginAndShare.MyLogin(Wechat.NAME);
                 break;
             case R.id.login_activity_create_account_btn:
                 Intent jumpCreateAccountActivityIntent = new Intent(LoginActivity.this, CreateAccountActivity.class);
@@ -137,23 +160,39 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             String result = accountData.getString("result");
             String msg = accountData.getString("msg");
             if (result.equals("1")) {
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        EventBus.getDefault().post(phoneNumber);
+
+                        finish();
+
+                    }
+                }).start();
                 Toast.makeText(LoginActivity.this, R.string.login_success, Toast.LENGTH_SHORT).show();
+                SPUtils.put(this, "shoppingCar", true);
                 String token = accountData.getJSONObject("data").getString("token");
-                L.d(token);
+                SPUtils.put(this,"token",token);
                 String uid = accountData.getJSONObject("data").getString("uid");
+
                 //利用数据库储存数据
                 AddressDataHelperSingle addressDataHelperSingle=AddressDataHelperSingle.getInstance(LoginActivity.this);
                 List<Admin> names = addressDataHelperSingle.queryListName(phoneNumber);
+
                 //判断该用户名是否存在数据库,如果存在就无需添加到数据库中.
+
                 if (names == null) {
                     addressDataHelperSingle.insert(new Admin(phoneNumber, token, uid));
                 }
             } else {
                 Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        finish();
 
     }
 

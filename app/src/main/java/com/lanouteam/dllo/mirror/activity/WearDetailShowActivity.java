@@ -37,9 +37,10 @@ public class WearDetailShowActivity extends Activity {
     //网络解析
     private NetHelper netHelper;
     private HashMap wearInfo;
-    private ImageLoader wearImageLoader;
+
     //自定义imageview
     SmoothImageView imageView = null;
+    private ImageView buyIv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class WearDetailShowActivity extends Activity {
         wearInfo.put(RequestParams.DEVICE_TYPE, 2 + "");
         wearInfo.put(RequestParams.GOODS_ID, id);
         wearInfo.put(RequestParams.APP_VERSION, "1.0.1");
-        wearImageLoader = netHelper.getImageLoader();
+
         //接收值
         mLocationX = getIntent().getIntExtra("locationX",0);
         mLocationY = getIntent().getIntExtra("locationY", 0);
@@ -71,9 +72,6 @@ public class WearDetailShowActivity extends Activity {
         imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
         setContentView(imageView);
         //解析图片
-//        wearImageLoader.get(uriPhoto, wearImageLoader.getImageListener(
-//                imageView, R.mipmap.ic_launcher, R.mipmap.background));
-
         Picasso.with(WearDetailShowActivity.this).load(uriPhoto).into(imageView);
 
 

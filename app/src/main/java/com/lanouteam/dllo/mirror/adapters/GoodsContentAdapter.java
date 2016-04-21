@@ -11,11 +11,14 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.lanouteam.dllo.mirror.R;
+import com.lanouteam.dllo.mirror.activity.GoodsContentActivity;
 import com.lanouteam.dllo.mirror.base.BaseApplication;
 import com.lanouteam.dllo.mirror.bean.GoodsContentBean;
 import com.lanouteam.dllo.mirror.bean.RequestParams;
+import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.utils.LoginAndShare;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
@@ -25,9 +28,10 @@ import java.util.HashMap;
  */
 public class GoodsContentAdapter extends RecyclerView.Adapter implements RequestParams {
     private GoodsContentBean datas;
-    private int layoutScrollValue;
+    private int layoutScrollValue,disBottom;
+
     //分享
-    private String id="28JeX1452078872";
+    private String id;
     private LoginAndShare loginAndShare;
     //布局类型
     final int TYPE_HEAD = 0;
@@ -36,19 +40,20 @@ public class GoodsContentAdapter extends RecyclerView.Adapter implements Request
     final int TYPE_GOODS_DETAILS = 3;
     //网络
     private NetHelper netHelper;
-    private ImageLoader detailsImageLoader, titleImageLoader;
+
     //传值接口
     private GoodsContentInterface goodsContentInterface;
 
 
     public GoodsContentAdapter(GoodsContentBean datas) {
         this.datas = datas;
+
         //网络解析
 
         netHelper = new NetHelper(BaseApplication.mContext);
-        titleImageLoader = netHelper.getImageLoader();
-        detailsImageLoader = netHelper.getImageLoader();
-        loginAndShare=new LoginAndShare();
+//        titleImageLoader = netHelper.getImageLoader();
+//        detailsImageLoader = netHelper.getImageLoader();
+        loginAndShare = new LoginAndShare();
 
     }
 
@@ -64,6 +69,7 @@ public class GoodsContentAdapter extends RecyclerView.Adapter implements Request
             e.printStackTrace();
         }
     }
+
     /**
      * 决定元素的布局使用哪种类型
      *
@@ -131,22 +137,28 @@ public class GoodsContentAdapter extends RecyclerView.Adapter implements Request
         goodsContentInterface.getPosition(position);//为注掉的动画的第二种方法,将adapter的position传入activity
 
         if (holder instanceof HeadViewHolder) {
-            double valueScroll = layoutScrollValue;
-            //TODO 背景颜色改变
-            //TODO 接着做背景透明度
-//            ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (255 - (-valueScroll / 10) * 1.25f));
-//            Log.i("透明度", "  " + ((HeadViewHolder) holder).relativeLayoutHead.getBackground().getAlpha() + "     value值" + valueScroll + "     高度" + ((HeadViewHolder) holder).relativeLayoutHead.getHeight());
+
+
+            disBottom = ((HeadViewHolder) holder).relativeLayoutHead.getBottom();
+            if(disBottom==0){
+                ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha(255);
+            }else{
+                ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (disBottom / 6.7));
+
+            }
 
             //加载网络数据喽!!!!!!!
             ((HeadViewHolder) holder).headGoodsNameTv.setText(datas.getData().getGoods_name());
             ((HeadViewHolder) holder).headBrandTv.setText(datas.getData().getBrand());
             ((HeadViewHolder) holder).headGoodsPriceTv.setText(datas.getData().getGoods_price() + "");
             ((HeadViewHolder) holder).headInfoDesTv.setText(datas.getData().getInfo_des());
+            id=datas.getData().getGoods_id();
 
             ((HeadViewHolder) holder).imageViewShare.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    loginAndShare.MyShare("http://api101.test.mirroreye.cn/index.php/goodweb/info?id=",id);
+                    loginAndShare.MyShare(RequestUrls.Share, id);
+
                 }
             });
 
@@ -169,13 +181,12 @@ public class GoodsContentAdapter extends RecyclerView.Adapter implements Request
             ((GoodsTitleViewHolder) holder).goodsTitleIntroContent.setText(datas.getData().getGoods_data().get(0).getIntroContent());
             ((GoodsTitleViewHolder) holder).goodsTitleLocationTv.setText(datas.getData().getGoods_data().get(0).getLocation());
 
-            titleImageLoader.get(datas.getData().getGoods_pic(),titleImageLoader.getImageListener(((GoodsTitleViewHolder) holder).goodsTitleImg,R.mipmap.ic_launcher,R.mipmap.background));
-
+            Picasso.with(BaseApplication.mContext).load(datas.getData().getGoods_pic()).resize(600, 600).centerCrop().into(((GoodsTitleViewHolder) holder).goodsTitleImg);
 
 
         } else if (holder instanceof GoodsDetailsViewHolder) {
 
-            if (datas.getData().getDesign_des().get(position - 3).getType().equals("1")&&position-2<(datas.getData().getGoods_data().size())) {
+            if (datas.getData().getDesign_des().get(position - 3).getType().equals("1") && position - 2 < (datas.getData().getGoods_data().size())) {
 
                 int valueDetails = layoutScrollValue;
 
@@ -187,17 +198,14 @@ public class GoodsContentAdapter extends RecyclerView.Adapter implements Request
                 ((GoodsDetailsViewHolder) holder).goodsDetailsRelativeLayout.setVisibility(View.VISIBLE);
                 //加载网络数据喽!!!!!!!
 
-                    ((GoodsDetailsViewHolder) holder).goodsDetailsDetailsName.setText(datas.getData().getGoods_data().get(position - 2).getName());
-                    ((GoodsDetailsViewHolder) holder).goodsDetailsIntroContent.setText(datas.getData().getGoods_data().get(position - 2).getIntroContent());
-
-                detailsImageLoader.get(datas.getData().getDesign_des().get(position - 3).getImg(),detailsImageLoader.getImageListener(((GoodsDetailsViewHolder) holder).goodsDetailsImg,R.mipmap.ic_launcher,R.mipmap.background));
-
+                ((GoodsDetailsViewHolder) holder).goodsDetailsDetailsName.setText(datas.getData().getGoods_data().get(position - 2).getName());
+                ((GoodsDetailsViewHolder) holder).goodsDetailsIntroContent.setText(datas.getData().getGoods_data().get(position - 2).getIntroContent());
+                Picasso.with(BaseApplication.mContext).load(datas.getData().getDesign_des().get(position - 3).getImg()).resize(600, 600).centerCrop().into(((GoodsDetailsViewHolder) holder).goodsDetailsImg);
             } else {
 
 
                 ((GoodsDetailsViewHolder) holder).goodsDetailsRelativeLayout.setVisibility(View.INVISIBLE);
-                    detailsImageLoader.get(datas.getData().getDesign_des().get(position - 3).getImg(),detailsImageLoader.getImageListener(((GoodsDetailsViewHolder) holder).goodsDetailsImg,R.mipmap.ic_launcher,R.mipmap.background));
-
+                Picasso.with(BaseApplication.mContext).load(datas.getData().getDesign_des().get(position - 3).getImg()).resize(650, 650).into(((GoodsDetailsViewHolder) holder).goodsDetailsImg);
             }
         }
 
@@ -226,7 +234,7 @@ public class GoodsContentAdapter extends RecyclerView.Adapter implements Request
             headInfoDesTv = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_head_info_des);
             headGoodsPriceTv = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_head_goods_price);
             relativeLayoutHead = (RelativeLayout) itemView.findViewById(R.id.item_goodsfragment_content_head_relativelayout);
-            imageViewShare= (ImageView) itemView.findViewById(R.id.item_goodsfragment_content_head_share);
+            imageViewShare = (ImageView) itemView.findViewById(R.id.item_goodsfragment_content_head_share);
         }
     }
 
@@ -241,7 +249,7 @@ public class GoodsContentAdapter extends RecyclerView.Adapter implements Request
     public class GoodsTitleViewHolder extends RecyclerView.ViewHolder {
         //需要网络解析的数据
         private TextView goodsTitleBrandTv, goodsTitleCountryTv, goodsTitleLocationTv, goodsTitleEnglishTv, goodsTitleIntroContent;
-        private  ImageView  goodsTitleImg;
+        private ImageView goodsTitleImg;
         private RelativeLayout goodsTitleRelativeLayout;
 
         public GoodsTitleViewHolder(View itemView) {
@@ -262,7 +270,7 @@ public class GoodsContentAdapter extends RecyclerView.Adapter implements Request
     public class GoodsDetailsViewHolder extends RecyclerView.ViewHolder {
         //需要网络解析的数据
         private TextView goodsDetailsDetailsName, goodsDetailsIntroContent;
-        private ImageView  goodsDetailsImg;
+        private ImageView goodsDetailsImg;
         private RelativeLayout goodsDetailsRelativeLayout, detailsRelativeLayoutAll;
 
         public GoodsDetailsViewHolder(View itemView) {

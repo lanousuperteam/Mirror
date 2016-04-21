@@ -16,6 +16,7 @@ import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
 import com.lanouteam.dllo.mirror.utils.L;
+import com.lanouteam.dllo.mirror.utils.SPUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,7 +31,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
     private EditText nameEt, telEt, addressEt;
     private Button addAddressBtn;
     private NetHelper netHelper;
-    private String addressId;
+    private String addressId,token;
 
     @Override
     protected int getLayout() {
@@ -39,6 +40,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void initData() {
+        token= (String) SPUtils.get(this,"token",getString(R.string.add_address_activity_fail));
         netHelper = new NetHelper(AddAddressActivity.this);
         //接收传递过来的地址信息类
         Intent intent = this.getIntent();
@@ -82,14 +84,14 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                     break;
                 }
                 //跳转传值
-                Intent jumpAddressIntent = new Intent(AddAddressActivity.this, AddressActivity.class);
-                jumpAddressIntent.putExtra("name", name);
-                jumpAddressIntent.putExtra("tel", tel);
-                jumpAddressIntent.putExtra("address", address);
+               // Intent jumpAddressIntent = new Intent(AddAddressActivity.this, AddressActivity.class);
+//                jumpAddressIntent.putExtra("name", name);
+//                jumpAddressIntent.putExtra("tel", tel);
+//                jumpAddressIntent.putExtra("address", address);
 
                 if (addressId != null) {
                     //修改原来的地址信息,传到服务器上
-                    mMap.put(TOKEN, "a8205d6b776b7ee55f440ba0e6756c40");
+                    mMap.put(TOKEN, token);
                     mMap.put(ADDR_ID, addressId);
                     mMap.put(USERNAME, name);
                     mMap.put(CELLPHONE, tel);
@@ -97,7 +99,7 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                     netHelper.getJsonData(EDIT_ADDRESS, this, mMap);
                 } else {
                     //提交新的地址信息上传到服务器上
-                    mMap.put(TOKEN, "a8205d6b776b7ee55f440ba0e6756c40");
+                    mMap.put(TOKEN, token);
                     mMap.put(USERNAME, name);
                     mMap.put(CELLPHONE, tel);
                     mMap.put(ADDR_INFO, address);

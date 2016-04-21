@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -24,6 +25,7 @@ import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
 import com.lanouteam.dllo.mirror.utils.L;
+import com.lanouteam.dllo.mirror.utils.SPUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -35,6 +37,7 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
     //定义组件
     private ImageView backgroundIv;
     private TextView wearTv;
+    private ImageView buyIv,returnIv;
     private RecyclerView goodsContentRecyclerView;
     private GoodsContentAdapter goodsContentApapter;
     private RelativeLayout relativeLayoutBottom;
@@ -46,6 +49,7 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
     private HashMap goodsInfo;
     private NetHelper netHelper;
     private String id;
+    private GoodsContentBean data;
     @Override
     protected int getLayout() {
         return R.layout.activity_goods_content;
@@ -55,6 +59,8 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
         Intent goodsIntent=getIntent();
         id=goodsIntent.getStringExtra(RequestParams.GOODS_ID);
         wearTv.setOnClickListener(this);
+        buyIv.setOnClickListener(this);
+        returnIv.setOnClickListener(this);
         //网络解析
         goodsInfo = new HashMap();
         goodsInfo.put(RequestParams.DEVICE_TYPE, "2");
@@ -66,7 +72,7 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
             public void getSuccess(Object object) {
 
                 Gson gson = new Gson();
-                GoodsContentBean data = gson.fromJson(object.toString(), GoodsContentBean.class);
+                data = gson.fromJson(object.toString(), GoodsContentBean.class);
 
                 goodsContentApapter = new GoodsContentAdapter(data);
                 GridLayoutManager gm = new GridLayoutManager(getBaseContext(), 1);
@@ -74,7 +80,7 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
                 goodsContentRecyclerView.setLayoutManager(gm);
                 goodsContentRecyclerView.setAdapter(goodsContentApapter);
                 //解析图片
-                Picasso.with(GoodsContentActivity.this).load(data.getData().getGoods_img()).into(backgroundIv);
+                Picasso.with(GoodsContentActivity.this).load(data.getData().getGoods_img()).resize(750, 750).into(backgroundIv);
                 /**
                  * 动画出现的方法 通过接口传值(position)通过判断滑动的position位置控制动画
                  * */
@@ -126,12 +132,13 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 value -= dy;
-                L.d("滑动效果", value + "      " + dy);
+
                 goodsContentApapter.setScrollValue(value);
                 dyUp = dy > 0;  //该步是动画出现的步骤
-                L.i("dy", "dy" + " " + dy + "      ");
+
             }
         });
+
     }
 
     @Override
@@ -140,6 +147,8 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
         relativeLayoutBottom = bindView(R.id.activity_goods_content_relativelayout);
         backgroundIv =bindView(R.id.activity_goods_content_background_iv);
         wearTv = bindView(R.id.activity_goods_content_tv);
+        buyIv=bindView(R.id.activity_goods_content_buy_iv);
+        returnIv=bindView(R.id.activity_goods_content_return_iv);
 
 
     }
@@ -148,10 +157,32 @@ public class GoodsContentActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+
             case R.id.activity_goods_content_tv:
                 Intent intentWear = new Intent(this, WearActivity.class);
-                intentWear.putExtra(RequestParams.GOODS_ID,id);
+                intentWear.putExtra(RequestParams.GOODS_ID, id);
                 startActivity(intentWear);
+                break;
+            case R.id.activity_goods_content_buy_iv:
+
+                boolean isTrue= (boolean) SPUtils.get(GoodsContentActivity.this,"shoppingCar",true);
+               if(isTrue) {
+                   Intent intentBuy=new Intent(this,BuyDetailsActivity.class);
+                   intentBuy.putExtra(RequestParams.GOODS_ID,id);
+                   intentBuy.putExtra(RequestParams.GOODSNAME,data.getData().getGoods_name());
+                   intentBuy.putExtra(RequestParams.PRICE,data.getData().getGoods_price());
+                   startActivity(intentBuy);
+               }else{
+                   Intent intentLogin=new Intent(this,LoginActivity.class);
+                   startActivity(intentLogin);
+               }
+
+                break;
+            case R.id.activity_goods_content_return_iv:
+                finish();
+                break;
+
+
         }
 
     }

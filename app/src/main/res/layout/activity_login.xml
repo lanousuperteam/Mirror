@@ -49,6 +49,7 @@
         android:layout_below="@id/login_activity_phone_number_tv"
         android:layout_marginTop="@dimen/login_activity_line_margin_top"
         android:background="@mipmap/et_phone_number"
+        android:numeric="integer"
         style="@style/LoginAndCreateAccountEditText"
         />
 

@@ -71,7 +71,7 @@ public class SmoothImageView extends ImageView {
 
 
 	/**
-	 * 用于开始进入的方法。 调用此方前，需已经调用过setOriginalInfo
+	 * 用于开始进入的方法。 调用此方前，需已经调用过setOriginalInfo//设置原始图片的信息方法
 	 */
 	public void transformIn() {
 		mState = STATE_TRANSFORM_IN;
@@ -95,7 +95,7 @@ public class SmoothImageView extends ImageView {
 		float startScale;// 图片开始的缩放值
 		float endScale;// 图片结束的缩放值
 		float scale;// 属性ValueAnimator计算出来的值
-		LocationSizeF startRect;// 开始的区域
+		LocationSizeF startRect;// 开始的区域  left top width height
 		LocationSizeF endRect;// 结束的区域
 		LocationSizeF rect;// 属性ValueAnimator计算出来的值
 

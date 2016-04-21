@@ -9,16 +9,16 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/item_pay_external_linearlayout_margin"
             android:gravity="center_vertical"
             android:orientation="horizontal" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:text="商品名称:"
-                android:textColor="#777777"
+                android:layout_marginRight="@dimen/item_pay_external_linearlayout_margin"
+                android:text="@string/item_pay_external_goods_name"
+                android:textColor="@color/itemPayExternalTextLeft"
                 tools:ignore="HardcodedText" />
 
             <TextView
@@ -26,48 +26,48 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:text="测试的商品"
-                android:textColor="#333333"
+                android:text="@string/item_pay_external_test_goods"
+                android:textColor="@color/itemPayExternalTextRight"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/item_pay_external_linearlayout_margin"
             android:gravity="center_vertical"
             android:orientation="horizontal" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:text="商品描述:"
-                android:textColor="#777777"
+                android:layout_marginRight="@dimen/item_pay_external_linearlayout_margin"
+                android:text="@string/item_pay_external_goods_describe"
+                android:textColor="@color/itemPayExternalTextLeft"
                 tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:text="该测试商品的详细描述"
-                android:textColor="#333333"
+                android:text="@string/item_pay_external_test_goods_describe"
+                android:textColor="@color/itemPayExternalTextRight"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/item_pay_external_linearlayout_margin"
             android:gravity="center_vertical"
             android:orientation="horizontal" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:text="商品价格:"
-                android:textColor="#777777"
+                android:layout_marginRight="@dimen/item_pay_external_linearlayout_margin"
+                android:text="@string/item_pay_external_goods_price"
+                android:textColor="@color/itemPayExternalTextLeft"
                 tools:ignore="HardcodedText" />
 
             <TextView
@@ -75,8 +75,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:text="0.01元"
-                android:textColor="#ff6600"
+                android:text="@string/item_pay_external_price"
+                android:textColor="@color/itemPayExternalTextPrice"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
 
@@ -84,18 +84,18 @@
             android:id="@+id/pay"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/item_pay_external_linearlayout_margin"
             android:onClick="pay"
-            android:text="支付"
+            android:text="@string/item_pay_external_pay"
             tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/h5pay"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/item_pay_external_linearlayout_margin"
             android:onClick="h5Pay"
-            android:text="网页支付转native"
+            android:text="@string/item_pay_external_pay_online"
             tools:ignore="HardcodedText" />
     </LinearLayout>
 
