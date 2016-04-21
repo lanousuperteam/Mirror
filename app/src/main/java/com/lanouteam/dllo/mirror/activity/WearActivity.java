@@ -1,13 +1,9 @@
 package com.lanouteam.dllo.mirror.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +17,6 @@ import com.lanouteam.dllo.mirror.base.BaseApplication;
 import com.lanouteam.dllo.mirror.bean.RequestParams;
 import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.bean.WearBean;
-
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
 import com.lanouteam.dllo.mirror.utils.SPUtils;
@@ -193,7 +188,7 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
                 ((HeadViewHolder) holder).jCVideoPlayer.setUp(videoUrl, "", false);
 
 
-                wearImageLoader.get(videoImg, wearImageLoader.getImageListener(((HeadViewHolder) holder).jCVideoPlayer.ivThumb, Color.BLACK, R.mipmap.ic_launcher));
+                wearImageLoader.get(videoImg, wearImageLoader.getImageListener(((HeadViewHolder) holder).jCVideoPlayer.ivThumb, R.mipmap.ic_launcher, R.mipmap.ic_launcher));
 
             }
             if (holder instanceof PhotosViewHolder) {

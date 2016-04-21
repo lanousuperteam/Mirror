@@ -1,8 +1,6 @@
 package com.lanouteam.dllo.mirror.fragments;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
@@ -18,9 +16,6 @@ import com.lanouteam.dllo.mirror.activity.MainActivity;
 import com.lanouteam.dllo.mirror.base.BaseApplication;
 import com.lanouteam.dllo.mirror.base.BaseFragment;
 import com.lanouteam.dllo.mirror.db.AddressDataHelperSingle;
-import com.lanouteam.dllo.mirror.db.DaoMaster;
-import com.lanouteam.dllo.mirror.db.DaoSession;
-import com.lanouteam.dllo.mirror.utils.L;
 import com.lanouteam.dllo.mirror.utils.SPUtils;
 
 import de.greenrobot.event.EventBus;
@@ -35,6 +30,7 @@ public class TopFragment extends BaseFragment implements View.OnClickListener {
     private AddressDataHelperSingle addressDataHelperSingle;
     private MainActivity mainActivity;
     private boolean isTrue;
+
 
 
     @Override
@@ -65,7 +61,6 @@ public class TopFragment extends BaseFragment implements View.OnClickListener {
     public int initLayout() {
         return R.layout.fragment_top;
     }
-
     // 按钮动画
         private void playHeartbeatAnimation(final View view) {
             AnimationSet animationSet = new AnimationSet(true);
