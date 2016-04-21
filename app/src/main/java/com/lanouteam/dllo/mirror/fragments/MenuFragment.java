@@ -104,14 +104,14 @@ public class MenuFragment extends BaseFragment implements RequestUrls, NetListen
     // 显示Dialog
     public void showDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("确定退出登录");
+        builder.setTitle("确定退出登錄");
         // 点击确定的点击事件
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 确认退出的时候 会保存未登录的状态 并且把购物车改成登陆
                 SPUtils.put(getContext(), "shoppingCar", false);
-                activity.topFragment.loginTv.setText("登录");
+                activity.topFragment.loginTv.setText("登錄");
             }
         });
         // 点击取消的点击事件
