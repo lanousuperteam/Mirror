@@ -7,4 +7,8 @@
     <string name="menulistview_address">地址:</string>
     <string name="share_title">宝贝不错哦</string>
     <string name="sputils_toast">默认数据类型为空,或者类型不符</string>
+    <string name="topfragment_exit_string">退出登录</string>
+    <string name="topfragment_remove_string">取消</string>
+    <string name="topfragment_shoppingcar_string">購物車</string>
+    <string name="topfragment_login_string">登錄</string>
 </resources>

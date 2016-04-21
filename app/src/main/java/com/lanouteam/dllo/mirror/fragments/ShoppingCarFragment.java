@@ -11,7 +11,7 @@ import com.lanouteam.dllo.mirror.base.BaseFragment;
  * Created by dllo on 16/3/30.
  */
 public class ShoppingCarFragment extends BaseFragment{
-    private LinearLayout shoppingLinearLayout;
+    private LinearLayout shoppingLinearLayout;// 标题的linearlayout 用来设置监听
     private MainActivity activity;
 
     @Override
@@ -19,6 +19,7 @@ public class ShoppingCarFragment extends BaseFragment{
         shoppingLinearLayout = bindView(R.id.shoppingcar_title_linearlayout);
         activity = (MainActivity) getContext();
 
+        // 点击标题弹出菜单
         shoppingLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
