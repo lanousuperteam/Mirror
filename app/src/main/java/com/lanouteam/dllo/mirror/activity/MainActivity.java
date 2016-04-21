@@ -6,11 +6,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.DirectionalViewPager;
 import android.support.v4.view.ViewPager;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
@@ -31,7 +33,7 @@ import com.lanouteam.dllo.mirror.net.NetListener;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class MainActivity extends BaseActivity implements RequestUrls, NetListener, ViewPager.OnPageChangeListener,RequestParams {
+public class MainActivity extends BaseActivity implements RequestUrls, NetListener, ViewPager.OnPageChangeListener, RequestParams {
     private ArrayList<Fragment> fragments; // viewpager里的fragment集合
     private MainViewpagerAdapter adapter; // viewpager的适配器
     private DirectionalViewPager viewPager; // 自定义的viewpager
@@ -39,6 +41,7 @@ public class MainActivity extends BaseActivity implements RequestUrls, NetListen
     private TopFragment topFragment; // 最上面两个小按钮的fragment
     private MenuFragment menuFragment; // 菜单的fragment
     private NetHelper netHelper;
+    private long exitTime;
 
 
     // 绑定布局
@@ -208,5 +211,19 @@ public class MainActivity extends BaseActivity implements RequestUrls, NetListen
         }
     }
 
-
+    // 点击两下退出键才能退出
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                Toast.makeText(getApplicationContext(), "确定真的离开我了么~", Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

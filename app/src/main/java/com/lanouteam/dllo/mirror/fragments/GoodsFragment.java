@@ -28,7 +28,7 @@ import java.util.HashMap;
 /**
  * Created by dllo on 16/3/30.
  */
-public class GoodsFragment extends BaseFragment implements RequestUrls, View.OnClickListener,RequestParams {
+public class GoodsFragment extends BaseFragment implements RequestUrls, View.OnClickListener, RequestParams {
     private LinearLayout goodsLinearLayout;// 标题的linearlayout 用来设置监听
     private TextView titleTv;// 标题的文字
     private GoodsRecyclerViewAdapter adapter;// 商品分类的recyclerView的适配器
@@ -77,8 +77,8 @@ public class GoodsFragment extends BaseFragment implements RequestUrls, View.OnC
                     @Override
                     public void onItemClick(View view, String data) {
                         Intent goodsIntent = new Intent(getActivity(), GoodsContentActivity.class);
-                        String id=data;
-                        goodsIntent.putExtra(RequestParams.GOODS_ID,id);
+                        String id = data;
+                        goodsIntent.putExtra(RequestParams.GOODS_ID, id);
                         startActivity(goodsIntent);
                     }
                 });

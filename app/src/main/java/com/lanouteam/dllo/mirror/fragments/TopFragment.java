@@ -16,7 +16,6 @@ import com.lanouteam.dllo.mirror.base.BaseFragment;
  */
 public class TopFragment extends BaseFragment{
     private ImageView logoIv;
-
     @Override
     protected void initView(View view) {
         logoIv = bindView(R.id.topfragment_logo);
@@ -33,7 +32,6 @@ public class TopFragment extends BaseFragment{
     public int initLayout() {
         return R.layout.fragment_top;
     }
-
     // 按钮动画
         private void playHeartbeatAnimation() {
             AnimationSet animationSet = new AnimationSet(true);
