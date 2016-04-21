@@ -3,7 +3,6 @@ package com.lanouteam.dllo.mirror.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,8 +33,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import de.greenrobot.event.EventBus;
-
 /**
  * Created by dllo on 16/4/8.
  */
@@ -59,7 +56,6 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
         token = (String) SPUtils.get(this, "token",getString(R.string.add_address_activity_fail));
         addressSwipeMenuBeans = new ArrayList<>();
         //正常情况下,使用网络拉取全部地址数据
-
         netHelper = new NetHelper(this);
         final HashMap<String, String> mMap = new HashMap<>();
         mMap.put(TOKEN, token);
@@ -180,7 +176,8 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
         switch (v.getId()) {
             case R.id.activity_address_add_btn:
                 jumpAddAddressIntent = new Intent(AddressActivity.this, AddAddressActivity.class);
-                startActivityForResult(jumpAddAddressIntent, 0x101);
+                startActivity(jumpAddAddressIntent);
+                finish();
                 break;
             case R.id.activity_address_return_iv:
                 jumpBuyDetails();

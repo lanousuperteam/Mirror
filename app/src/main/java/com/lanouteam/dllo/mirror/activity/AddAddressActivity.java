@@ -87,11 +87,6 @@ public class AddAddressActivity extends BaseActivity implements View.OnClickList
                     Toast.makeText(AddAddressActivity.this, R.string.check_phone_error, Toast.LENGTH_SHORT).show();
                     break;
                 }
-                //跳转传值
-               // Intent jumpAddressIntent = new Intent(AddAddressActivity.this, AddressActivity.class);
-//                jumpAddressIntent.putExtra("name", name);
-//                jumpAddressIntent.putExtra("tel", tel);
-//                jumpAddressIntent.putExtra("address", address);
 
                 if (addressId != null) {
                     //修改原来的地址信息,传到服务器上

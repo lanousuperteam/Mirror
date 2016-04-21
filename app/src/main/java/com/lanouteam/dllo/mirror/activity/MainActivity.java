@@ -29,6 +29,7 @@ import com.lanouteam.dllo.mirror.fragments.ShoppingCarFragment;
 import com.lanouteam.dllo.mirror.fragments.TopFragment;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
+import com.lanouteam.dllo.mirror.utils.NetUtils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -62,10 +63,19 @@ public class MainActivity extends BaseActivity implements RequestUrls, NetListen
         // 向适配器里传入数据管理器 和fragment的集合
         adapter = new MainViewpagerAdapter(getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
+
+
         // 设置viewpager的滑动方向
         viewPager.setOrientation(DirectionalViewPager.VERTICAL);
 
         viewPager.setOnPageChangeListener(this);
+
+
+        //开始进行断网检测就跳转到第一页上面.
+        if (!NetUtils.isConnected(this)){
+            Toast.makeText(MainActivity.this, "请连接网络", Toast.LENGTH_SHORT).show();
+        }
+        viewPager.setCurrentItem(0);
 
         // 向两个占位布局里加入fragment
         FragmentManager fm = getSupportFragmentManager();
@@ -146,6 +156,7 @@ public class MainActivity extends BaseActivity implements RequestUrls, NetListen
 
 
         }
+        adapter.notifyDataSetChanged();
 
 
     }

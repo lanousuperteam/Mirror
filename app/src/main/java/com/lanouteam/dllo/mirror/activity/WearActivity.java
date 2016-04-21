@@ -204,11 +204,11 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         int[] location = new int[2];
                         ((PhotosViewHolder) holder).iv.getLocationOnScreen(location);//location 里 有iv 的横纵坐标
-                        intent.putExtra("locationX", location[0]);//必须
-                        intent.putExtra("locationY", location[1]);//必须
+                        intent.putExtra("locationX", location[0]);
+                        intent.putExtra("locationY", location[1]);
                         intent.putExtra("photoUri",imageList.get(position - 1));
-                        intent.putExtra("width", ((PhotosViewHolder) holder).iv.getWidth());//必须
-                        intent.putExtra("height", ((PhotosViewHolder) holder).iv.getHeight());//必须
+                        intent.putExtra("width", ((PhotosViewHolder) holder).iv.getWidth());
+                        intent.putExtra("height", ((PhotosViewHolder) holder).iv.getHeight());
                         intent.setClass(BaseApplication.mContext,WearDetailShowActivity.class);
                         BaseApplication.mContext.startActivity(intent);
                     }

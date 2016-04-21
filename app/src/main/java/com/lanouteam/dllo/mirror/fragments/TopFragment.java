@@ -40,8 +40,6 @@ public class TopFragment extends BaseFragment implements View.OnClickListener {
         EventBus.getDefault().register(this);
         addressDataHelperSingle=AddressDataHelperSingle.getInstance(BaseApplication.mContext);
 
-
-
     }
 
     @Override

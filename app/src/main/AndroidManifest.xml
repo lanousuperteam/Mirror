@@ -54,7 +54,7 @@
         </activity>
         <activity android:name=".activity.CreateAccountActivity"/>
         <activity android:name=".activity.BuyDetailsActivity"/>
-        <activity android:name=".activity.AddressActivity"/>
+        <activity android:name=".activity.AddressActivity" />
         <activity android:name=".activity.AddAddressActivity"/>
 
 

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.activity.AddAddressActivity;
+import com.lanouteam.dllo.mirror.activity.AddressActivity;
 import com.lanouteam.dllo.mirror.bean.AddressSwipeMenuBean;
 
 import java.util.List;
@@ -24,7 +25,6 @@ import java.util.List;
 public class AddressSwipeMenuListViewAdapter extends BaseAdapter {
     private List<AddressSwipeMenuBean> data;
     private Context context;
-    private AddressSwipeMenuListViewInterface addressSwipeMenuListViewInterface;
     private Intent intent;
 
     public AddressSwipeMenuListViewAdapter(List<AddressSwipeMenuBean> data,Context context,Intent intent) {
@@ -34,9 +34,6 @@ public class AddressSwipeMenuListViewAdapter extends BaseAdapter {
     }
 
 
-    public void setAddressSwipeMenuListViewInterface(AddressSwipeMenuListViewInterface addressSwipeMenuListViewInterface) {
-        this.addressSwipeMenuListViewInterface = addressSwipeMenuListViewInterface;
-    }
 
     @Override
     public int getCount() {
@@ -78,9 +75,11 @@ public class AddressSwipeMenuListViewAdapter extends BaseAdapter {
                 //将类序列化直接传递过去.
                 intent =new Intent(context, AddAddressActivity.class);
                 Bundle bundle=new Bundle();
-                bundle.putSerializable("address",data.get(position));
+                bundle.putSerializable("address", data.get(position));
                 intent.putExtras(bundle);
                 context.startActivity(intent);
+                AddressActivity addressActivity= (AddressActivity) context;
+                addressActivity.finish();
             }
         });
         return convertView;

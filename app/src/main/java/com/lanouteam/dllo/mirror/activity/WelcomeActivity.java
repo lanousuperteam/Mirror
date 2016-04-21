@@ -57,7 +57,7 @@ public class WelcomeActivity extends BaseActivity implements RequestUrls, NetLis
         };
         //2s后跳转  安排在指定的时间执行指定的任务。
         //参数1,完成的任务实例    参数2,时间    参数3,每隔一段时间再重复任务(可有可无)
-        timer.schedule(task, 1000 * 10);
+        timer.schedule(task, 1000 * 2);
 
     }
 
