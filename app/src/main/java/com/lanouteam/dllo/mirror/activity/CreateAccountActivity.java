@@ -75,7 +75,7 @@ public class CreateAccountActivity extends BaseActivity implements View.OnClickL
         codeEt = bindView(R.id.create_account_activity_code_et);
         sendCodeBtn = bindView(R.id.create_account_activity_send_code_btn);
         passwordEt = bindView(R.id.create_account_activity_password_et);
-        createAccountBtn=bindView(R.id.login_activity_create_account_btn);
+        createAccountBtn=bindView(R.id.create_account_activity_create_account_btn);
         returnIv=bindView(R.id.create_account_activity_return_iv);
     }
 

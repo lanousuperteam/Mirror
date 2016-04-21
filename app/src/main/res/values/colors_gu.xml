@@ -8,5 +8,9 @@
     <!--佩戴图集video颜色-->
     <color name="colorWearVideoBackground">#222222</color>
     <color name="colorWearVideoLinearlayoutBackgroud">#99000000</color>
+   <!--item_pay_external-->
+    <color name="itemPayExternalTextLeft">#777777</color>
+    <color name="itemPayExternalTextRight">#333333</color>
+    <color name="itemPayExternalTextPrice">#ff6600</color>
 
 </resources>

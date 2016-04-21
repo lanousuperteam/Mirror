@@ -3,6 +3,7 @@ package com.lanouteam.dllo.mirror.activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,6 +24,7 @@ import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
 import com.lanouteam.dllo.mirror.utils.DensityUtils;
+import com.lanouteam.dllo.mirror.utils.SPUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,6 +33,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by dllo on 16/4/8.
@@ -43,6 +47,7 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
     private ImageView returnIv;
     private NetHelper netHelper;
     private Intent jumpAddAddressIntent;
+    private String token;
 
     @Override
     protected int getLayout() {
@@ -51,11 +56,13 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     protected void initData() {
+        token = (String) SPUtils.get(this, "token",getString(R.string.add_address_activity_fail));
         addressSwipeMenuBeans = new ArrayList<>();
         //正常情况下,使用网络拉取全部地址数据
+
         netHelper = new NetHelper(this);
         final HashMap<String, String> mMap = new HashMap<>();
-        mMap.put(TOKEN, "a8205d6b776b7ee55f440ba0e6756c40");
+        mMap.put(TOKEN, token);
         mMap.put(DEVICE_TYPE, "2");
         netHelper.getJsonData(ADDRESS_LIST, this, mMap);
         addressSwipeMenuListViewAdapter = new AddressSwipeMenuListViewAdapter(addressSwipeMenuBeans, this, jumpAddAddressIntent);
@@ -92,7 +99,7 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
                 switch (index) {
                     case 0:
                         HashMap<String, String> mMap = new HashMap<>();
-                        mMap.put(TOKEN, "a8205d6b776b7ee55f440ba0e6756c40");
+                        mMap.put(TOKEN, token);
                         mMap.put(ADDR_ID, addressSwipeMenuBeans.get(position).getAddr_id());
                         addressSwipeMenuBeans.remove(position);
                         netHelper.getJsonData(DEL_ADDRESS, new NetListener() {
@@ -124,16 +131,19 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 HashMap<String, String> mMap = new HashMap<>();
-                //TODO 这一块等思博主框架搭载完.
-                mMap.put(TOKEN, "a8205d6b776b7ee55f440ba0e6756c40");
+
+                mMap.put(TOKEN, token);
                 mMap.put(ADDR_ID, addressSwipeMenuBeans.get(position).getAddr_id());
                 netHelper.getJsonData(MR_ADDRESS, new NetListener() {
                     @Override
                     public void getSuccess(Object object) {
                         try {
                             JSONObject jsonObject = new JSONObject(object.toString());
+
                             String result = jsonObject.getString("result");
                             if (result.equals("1")) {
+
+
                                 Toast.makeText(AddressActivity.this, R.string.set_default, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -161,6 +171,7 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
         addressSwipeMenuListView = bindView(R.id.activity_address_listview);
         addAddressBtn = bindView(R.id.activity_address_add_btn);
         returnIv = bindView(R.id.activity_address_return_iv);
+
     }
 
 
@@ -180,8 +191,6 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
 
 
     public void jumpBuyDetails() {
-        Intent jumpBuyDetailsIntent = new Intent(AddressActivity.this, BuyDetailsActivity.class);
-        startActivity(jumpBuyDetailsIntent);
         finish();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
@@ -222,4 +231,5 @@ public class AddressActivity extends BaseActivity implements View.OnClickListene
     public void getFailed(int s) {
 
     }
+
 }

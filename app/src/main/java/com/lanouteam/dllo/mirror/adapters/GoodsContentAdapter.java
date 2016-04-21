@@ -9,13 +9,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.base.BaseApplication;
 import com.lanouteam.dllo.mirror.bean.GoodsContentBean;
 import com.lanouteam.dllo.mirror.bean.RequestParams;
+import com.lanouteam.dllo.mirror.bean.RequestUrls;
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.utils.LoginAndShare;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by dllo on 16/3/31.
@@ -23,9 +24,11 @@ import com.lanouteam.dllo.mirror.utils.LoginAndShare;
  */
 public class GoodsContentAdapter extends RecyclerView.Adapter implements RequestParams {
     private GoodsContentBean datas;
-    private int layoutScrollValue;
+    private int layoutScrollValue,disBottom;
+
     //分享
-    private String id = "28JeX1452078872";
+    private String id;
+
     private LoginAndShare loginAndShare;
     //布局类型
     final int TYPE_HEAD = 0;
@@ -34,18 +37,19 @@ public class GoodsContentAdapter extends RecyclerView.Adapter implements Request
     final int TYPE_GOODS_DETAILS = 3;
     //网络
     private NetHelper netHelper;
-    private ImageLoader detailsImageLoader, titleImageLoader;
+
     //传值接口
     private GoodsContentInterface goodsContentInterface;
 
 
     public GoodsContentAdapter(GoodsContentBean datas) {
         this.datas = datas;
+
         //网络解析
 
         netHelper = new NetHelper(BaseApplication.mContext);
-        titleImageLoader = netHelper.getImageLoader();
-        detailsImageLoader = netHelper.getImageLoader();
+
+
         loginAndShare = new LoginAndShare();
 
     }

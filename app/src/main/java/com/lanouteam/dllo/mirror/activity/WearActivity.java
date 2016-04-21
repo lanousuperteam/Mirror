@@ -1,6 +1,7 @@
 package com.lanouteam.dllo.mirror.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -23,6 +24,7 @@ import com.lanouteam.dllo.mirror.bean.WearBean;
 
 import com.lanouteam.dllo.mirror.net.NetHelper;
 import com.lanouteam.dllo.mirror.net.NetListener;
+import com.lanouteam.dllo.mirror.utils.SPUtils;
 import com.lanouteam.dllo.mirror.utils.jcvideoplayerlib.JCVideoPlayer;
 import com.squareup.picasso.Picasso;
 
@@ -35,8 +37,7 @@ import java.util.List;
  * Created by dllo on 16/4/8.
  */
 public class WearActivity extends BaseActivity implements View.OnClickListener, RequestUrls {
-    //视频
-    private JCVideoPlayer jcVideoPlayer;
+
     //网络解析
     private NetHelper netHelper;
     private HashMap wearInfo;
@@ -74,22 +75,12 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
 
                 Gson gson = new Gson();
                 WearBean data = gson.fromJson(object.toString(), WearBean.class);
-//                for (int i = 0; i < data.getData().getWear_video().size(); i++) {
-//                    if(data.getData().getWear_video().get(i).getType().equals("9")){
-////
-//                        wearImageLoader.get(data.getData().getWear_video().get(i).getData(), wearImageLoader.getImageListener(jcVideoPlayer.ivThumb, R.mipmap.ic_launcher, R.mipmap.ic_launcher));
-//
-//                        Log.i("klaskld",data.getData().getWear_video().get(i).getData()+"  快速打开啥快递");
-//
-//                    }
-//
-//                }
                 wearRecyclerviewAdapter = new WearRecyclerviewViewAdapter(data.getData().getWear_video());
                 GridLayoutManager gm = new GridLayoutManager(getBaseContext(), 1);
                 gm.setOrientation(LinearLayoutManager.VERTICAL);
                 wearRecyclerView.setLayoutManager(gm);
                 wearRecyclerView.setAdapter(wearRecyclerviewAdapter);
-              //  wearRecyclerView.addView(viewHead);
+
 
 
 
@@ -111,7 +102,6 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
         wearRecyclerView = bindView(R.id.wear_activity_listview);
         imageViewBuy = bindView(R.id.activity_wear_buy);
         imageViewReturn = bindView(R.id.activity_wear_return_iv);
-        jcVideoPlayer= (JCVideoPlayer) viewHead.findViewById(R.id.wear_activity_video_controller);
 
 
     }
@@ -120,8 +110,16 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.activity_wear_buy:
-                Intent intentBuy = new Intent(WearActivity.this, GoodsContentActivity.class);
-                startActivity(intentBuy);
+                boolean isTrue= (boolean) SPUtils.get(WearActivity.this, "shoppingCar", true);
+                if(isTrue) {
+                    Intent intentBuy = new Intent(WearActivity.this, BuyDetailsActivity.class);
+                    intentBuy.putExtra(RequestParams.GOODS_ID,id);
+                    startActivity(intentBuy);
+                }else{
+                    Intent intentLogin=new Intent(this,LoginActivity.class);
+                    startActivity(intentLogin);
+                }
+
             case R.id.activity_wear_return_iv:
                 finish();
         }
@@ -170,7 +168,7 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
         public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
 
             List<String> videoList = new ArrayList<>();
-//            final List<String> imageList = new ArrayList<>();
+
             for (int i = 0; i < list.size(); i++) {
                 String type = list.get(i).getType();
                 if (type.equals("8")) {
@@ -195,16 +193,11 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
                 ((HeadViewHolder) holder).jCVideoPlayer.setUp(videoUrl, "", false);
 
 
-                wearImageLoader.get(videoImg, wearImageLoader.getImageListener(((HeadViewHolder) holder).jCVideoPlayer.ivThumb, R.mipmap.ic_launcher, R.mipmap.ic_launcher));
+                wearImageLoader.get(videoImg, wearImageLoader.getImageListener(((HeadViewHolder) holder).jCVideoPlayer.ivThumb, Color.BLACK, R.mipmap.ic_launcher));
 
             }
             if (holder instanceof PhotosViewHolder) {
 
-
-//                 Uri uri = Uri.parse(imageList.get(position - 1));
-//                  ((PhotosViewHolder) holder).iv.setImageURI(uri);
-              //  wearImageLoader.get(imageList.get(position - 1),wearImageLoader.getImageListener(((PhotosViewHolder) holder).iv,R.mipmap.ic_launcher,R.mipmap.ic_launcher));
-                Log.i("URII", imageList.get(position - 1) + "  DD");
                 Picasso.with(WearActivity.this).load(imageList.get(position - 1)).into(((PhotosViewHolder) holder).iv);
 
 
@@ -214,8 +207,6 @@ public class WearActivity extends BaseActivity implements View.OnClickListener, 
 
                         Intent intent = new Intent();
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent.putStringArrayListExtra("images", (ArrayList<String>) imageList);
-                        intent.putExtra("position", position);
                         int[] location = new int[2];
                         ((PhotosViewHolder) holder).iv.getLocationOnScreen(location);//location 里 有iv 的横纵坐标
                         intent.putExtra("locationX", location[0]);//必须

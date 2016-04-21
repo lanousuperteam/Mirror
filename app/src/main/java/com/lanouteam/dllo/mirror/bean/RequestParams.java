@@ -198,6 +198,7 @@ public interface RequestParams {
     String GOODS_NUM="goods_num";
     String PRICE="price";
     String DISCOUT_ID="discout_id";
+    String GOODSNAME="goodsname";
 
     /**
      * 请求我的订单详情
@@ -210,6 +211,7 @@ public interface RequestParams {
      * */
     //我的订单详情
     String ORDER_ID="order_id";
+    String ORDER_NO="order_no";
 
 
     /**

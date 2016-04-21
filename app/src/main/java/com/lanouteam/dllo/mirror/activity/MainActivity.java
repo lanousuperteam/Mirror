@@ -36,7 +36,7 @@ public class MainActivity extends BaseActivity implements RequestUrls, NetListen
     private MainViewpagerAdapter adapter; // viewpager的适配器
     private DirectionalViewPager viewPager; // 自定义的viewpager
     private FrameLayout frameLayout; // 菜单的占位布局
-    private TopFragment topFragment; // 最上面两个小按钮的fragment
+    public TopFragment topFragment; // 最上面两个小按钮的fragment
     private MenuFragment menuFragment; // 菜单的fragment
     private NetHelper netHelper;
 

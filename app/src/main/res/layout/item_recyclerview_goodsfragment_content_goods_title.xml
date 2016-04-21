@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/item_goodsfragment_content_goods_title_brand_margin_left"
         android:layout_marginTop="@dimen/item_goodsfragment_content_goods_title_brand_margin_top"
-        android:text="@string/item_goodsfragment_content_goods_title_brand_text"
+        android:text=""
         android:textColor="@color/colorItemGoodsFragmentBrand"
         android:textSize="@dimen/item_goodsfragment_content_goods_title_brand_text" />
 
@@ -26,11 +26,11 @@
 
     <ImageView
         android:id="@+id/item_goodsfragment_content_goods_title_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="370dp"
+        android:layout_height="375dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/item_goodsfragment_content_goods_title_line"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/icon_shopping_car_nothing" />
 
     <RelativeLayout
         android:id="@+id/item_goodsfragment_content_goods_title_relativelayout"
@@ -56,7 +56,7 @@
             android:layout_alignRight="@id/item_goodsfragment_content_goods_title_whiteline_top"
             android:layout_below="@id/item_goodsfragment_content_goods_title_whiteline_top"
             android:layout_marginTop="@dimen/item_goodsfragment_content_goods_title_country_margin_top"
-            android:text="@string/item_goodsfragment_content_goods_title_test_country_text"
+            android:text=""
             android:textColor="@color/colorText"
             android:textSize="@dimen/item_goodsfragment_content_goods_title_country_text" />
 
@@ -68,7 +68,7 @@
             android:layout_marginRight="@dimen/item_goodsfragment_content_goods_title_location_margin_right"
             android:layout_marginTop="@dimen/item_goodsfragment_content_goods_title_location_margin_top"
             android:layout_toLeftOf="@id/item_goodsfragment_content_goods_title_country"
-            android:text="@string/item_goodsfragment_content_goods_title_location_test_text"
+            android:text=""
             android:textColor="@color/colorText"
             android:textSize="@dimen/item_goodsfragment_content_goods_title_location_text" />
 
@@ -79,7 +79,7 @@
             android:layout_alignRight="@id/item_goodsfragment_content_goods_title_location"
             android:layout_below="@id/item_goodsfragment_content_goods_title_location"
             android:layout_marginTop="@dimen/item_goodsfragment_content_goods_title_english_margin_top"
-            android:text="The frame comes from Korea"
+            android:text=""
             android:textColor="@color/colorText"
             android:textSize="@dimen/item_goodsfragment_content_goods_title_english_text"
 
@@ -103,7 +103,7 @@
             android:layout_marginBottom="@dimen/item_goodsfragment_content_goods_title_intro_margin_bottom"
             android:layout_marginRight="@dimen/item_goodsfragment_content_goods_title_intro_margin_right"
             android:layout_marginTop="@dimen/item_goodsfragment_content_goods_title_intro_margin_top"
-            android:text="@string/item_goodsfragment_content_goods_title_intro_test_text"
+            android:text=""
             android:textColor="@color/colorText" />
 
     </RelativeLayout>

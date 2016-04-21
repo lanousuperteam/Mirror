@@ -89,5 +89,6 @@
     <dimen name="item_wear_activity_iv_margin_top">10dp</dimen>
     <dimen name="item_wear_activity_video_height">165dp</dimen>
     <dimen name="item_wear_activity_video_margin_top">10dp</dimen>
+    <dimen name="item_pay_external_linearlayout_margin">10dp</dimen>
 
 </resources>

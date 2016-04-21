@@ -7,7 +7,7 @@
         android:id="@+id/activity_goods_content_background_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/ic_launcher"
+        android:background="@mipmap/nothing"
         android:scaleType="fitXY"/>
 
         <android.support.v7.widget.RecyclerView
@@ -40,6 +40,7 @@
             android:gravity="center"
            />
         <ImageView
+            android:id="@+id/activity_goods_content_buy_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/btn_buy"
