@@ -7,11 +7,11 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.lanouteam.dllo.mirror.R;
 import com.lanouteam.dllo.mirror.activity.MainActivity;
-
 import com.lanouteam.dllo.mirror.adapters.MenuListViewAdapter;
 import com.lanouteam.dllo.mirror.base.BaseFragment;
 import com.lanouteam.dllo.mirror.bean.MenuListBean;
@@ -44,7 +44,7 @@ public class MenuFragment extends BaseFragment implements RequestUrls, NetListen
         menuLinearLayout.setOnClickListener(this);
         homeTv.setOnClickListener(this);
         exitTv.setOnClickListener(this);
-
+        // 点击菜单的时候使Activity得ViewPager跳转
         menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -54,6 +54,7 @@ public class MenuFragment extends BaseFragment implements RequestUrls, NetListen
 
 
         netHelper = new NetHelper(getContext());
+        // 网络请求
         netHelper.getJsonData(MENU_LIST, this, null);
     }
 
@@ -66,6 +67,7 @@ public class MenuFragment extends BaseFragment implements RequestUrls, NetListen
     public void getSuccess(Object object) {
         Gson gson = new Gson();
         bean = gson.fromJson(object.toString(), MenuListBean.class);
+        // 把请求下来的数据传送到适配器里
         adapter = new MenuListViewAdapter(bean);
         menuListView.setAdapter(adapter);
 
@@ -84,35 +86,39 @@ public class MenuFragment extends BaseFragment implements RequestUrls, NetListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            // 点击空白的地方使菜单消失
             case R.id.menufragment_menu:
                 activity.disappearMenu();
                 break;
+            // 点击返回首页跳转到首页
             case R.id.menufragment_home:
                 activity.jumpViewPager(0);
                 break;
+            // 点击退出显示Dialog
             case R.id.menufragment_exit:
                 showDialog();
                 break;
         }
     }
 
+    // 显示Dialog
     public void showDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("退出登录");
+        builder.setTitle("确定退出登录");
+        // 点击确定的点击事件
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                // 确认退出的时候 会保存未登录的状态 并且把购物车改成登陆
                 SPUtils.put(getContext(), "shoppingCar", false);
-                activity.topFragment.loginTv.setText("登錄");
-
-
+                activity.topFragment.loginTv.setText("登录");
             }
         });
+        // 点击取消的点击事件
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                Toast.makeText(getContext(), "取消", Toast.LENGTH_SHORT).show();
             }
         });
         builder.show();

@@ -11,8 +11,8 @@ import com.lanouteam.dllo.mirror.base.BaseFragment;
  * Created by dllo on 16/4/13.
  */
 public class ShareContentFragment extends BaseFragment {
-    private TextView tagTv, titleTv, contentTv;
-    private String tagText, titleText, contentText;
+    private TextView tagTv, titleTv, contentTv;// 黑框里的textView
+    private String tagText, titleText, contentText;// 黑框里的文字
 
 
     @Override
@@ -21,11 +21,13 @@ public class ShareContentFragment extends BaseFragment {
         titleTv = bindView(R.id.sharecontentfragment_title_tv);
         contentTv = bindView(R.id.sharecontentfragment_content_tv);
 
+        // 获取到文字
         Bundle bundle = getArguments();
         tagText = bundle.getString("tag");
         titleText = bundle.getString("title");
         contentText = bundle.getString("content");
 
+        // 设置在textView里
         tagTv.setText(tagText);
         titleTv.setText(titleText);
         contentTv.setText(contentText);
